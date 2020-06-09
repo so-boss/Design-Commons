@@ -1,0 +1,24 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.tabs {
+  list-style-type: none;
+  width:auto;
+  margin: 0px 0px 8px -4px !important;
+}
+.tabItem {
+  margin-top: 0 !important;
+}
+
+.tablist {
+
+}
+.tabItem:focus {
+  background-color: #0000;
+  outline: 0px none;
+  border: 0px none;
+}
