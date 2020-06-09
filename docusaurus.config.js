@@ -8,6 +8,7 @@ module.exports = {
   organizationName: 'so-boss', // Usually your GitHub org/user name.
   projectName: 'Design-Commons', // Usually your repo name.
   themeConfig: {
+    disableDarkMode: true,
     navbar: {
       // title: 'Design Commons',
       logo: {
