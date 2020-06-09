@@ -1,0 +1,14 @@
+/*!
+ * TinyGradient 0.4.3
+ * Copyright 2014-2018 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
+
+/*! https://mths.be/punycode v1.4.1 by @mathias */
+
+/**
+ * values.js - Get the tints and shades of a color
+ * @version v1.1.1
+ * @link http://noeldelgado.github.io/values.js/
+ * @license MIT
+ */
