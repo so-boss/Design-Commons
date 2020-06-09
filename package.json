@@ -1,6 +1,6 @@
 {
   "name": "dev-csaa-design",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "docusaurus start",
@@ -9,15 +9,10 @@
     "deploy": "docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.56",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.56",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.39",
     "antd": "^4.3.0",
-    "catalog": "^3.6.0",
     "classnames": "^2.2.6",
     "docusaurus-plugin-sass": "^0.1.8",
     "react": "^16.8.4",
-    "react-color-tools": "^1.0.0",
     "react-dom": "^16.8.4",
     "react-sticky": "^6.0.3",
     "webpack": "^4.43.0"
@@ -37,6 +32,10 @@
   "devDependencies": {
     "remark-admonitions": "^1.2.1",
     "sass": "^1.26.7",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "@docusaurus/core": "^2.0.0-alpha.56",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.56",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.39",
+    "react-color-tools": "^1.0.0"
   }
 }
