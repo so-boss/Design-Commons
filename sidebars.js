@@ -3,7 +3,10 @@ module.exports = {
     {
       type: 'category',
       label: 'Guidelines',
-      items: ['guidelines/color', 'guidelines/icons', 'typography'],
+      items: [
+        'guidelines/color',
+        'guidelines/typography'
+      ],
     },
     // {
     //   type: 'category',

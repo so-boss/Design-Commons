@@ -10,150 +10,19 @@ keywords:
   - styleguide
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 import {
-  ColorTable,
   AntPage
 } from '@site/docs/guidelines/components';
 
 import {
-  brands,
-  products
-} from '@site/docs/guidelines/palettes'
+  Brands
+} from '@site/docs/guidelines/color/index';
 
 import '@site/docs/guidelines.scss';
 
-export const CSAA = () => (
-  <div layout="panel">
-    <h2>| Products</h2>
-    <Tabs
-      defaultValue="mypolicy"
-      values={[
-        {
-          label: 'MyPolicy Portal',
-          icon: "b2c",
-          value: 'mypolicy',
-          description: "Customer Tools"
-        },
-        {
-          label: 'Quote',
-          icon: "b2c",
-          value: 'quote',
-          description: "New Customers"
-        },
-        {
-          label: 'Insurance Portal',
-          icon: "b2b",
-          value: 'insurance_portal',
-          description: "Agent Tools"
-        }
-      ]}>
-      <TabItem value="mypolicy">
-        <h3>Functional Colors</h3>
-        <p>CSAA's components use a set of colors to convey certain functions and meanings. These colors have been vetted and tested to meet the accessibility standard for low vision.</p>
-        <ColorTable colors={products.mypolicy.colors} tier="mypolicy" />
-        <h3>Neutral Colors</h3>
-        <p>Mainly used in a large part of the text interface, in addition to the background, borders, dividing lines, and other scenes are also very common. Neutral color definition needs to consider the difference between dark background and light background, while incorporating the WCAG 2.0 standard.</p>
-        <ColorTable colors={products.mypolicy.neutrals} tier="mypolicy" />
-        <h3>Deprecated Colors</h3>
-        <p>Migrated to a nearest neighbor. We want these gone.</p>
-        <ColorTable colors={products.mypolicy.oldies} tier="mypolicy" />
-      </TabItem>
-      <TabItem value="quote">
-        <ColorTable colors={products.quote.colors} tier="quote" />
-        <ColorTable colors={products.quote.neutrals} tier="quote" />
-      </TabItem>
-      <TabItem value="insurance_portal">
-        <ColorTable colors={products.insurance_portal.colors} tier="ip" />
-        <ColorTable colors={products.insurance_portal.neutrals} tier="ip" />
-      </TabItem>
-    </Tabs>
-  </div>
-);
-
-export const Mobilitas = () => (
-  <div layout="panel">
-    <h2>| Products</h2>
-    <Tabs
-      defaultValue="rideshare"
-      values={[
-        {
-          label: 'Rideshare',
-          icon: "b2c",
-          value: 'rideshare',
-          description: "Gig Workers"
-        }
-      ]}>
-      <TabItem value="rideshare">
-        <h3>Mobilitas Black</h3>
-        <p>As the foundation of our palate, the bold yet subdued Mobilitas Black – and subsequent shades – is more than just a neutral color. It represents the dependability and trust customers have in our product. As an important visual aspect of the Mobilitas environment, this is actually the color of the Power Bar; an essential resource that doesn't distract from the brands within.</p>
-        <p>Mainly used in a large part of the text interface, in addition to the background, borders, dividing lines, and other scenes are also very common. Neutral color definition needs to consider the difference between dark background and light background, while incorporating the WCAG 2.0 standard.</p>
-        <ColorTable colors={products.rideshare.blacks} tier="mobilitas" />
-        <p>Mobilitas Black and White are the first choice; all derived grey tones are used when there isn't enough contrast or clarity.</p>
-        <h3>Mobilitas Blues</h3>
-        <p>Blues often stand for reliability and business. In our case, the Mobilitas Blues represent our professionalism and the quality of our product, only less stuffy and more approachable.</p>
-        <ColorTable colors={products.rideshare.blues} tier="mobilitas" />
-        <p>Mobilitas Blue is the first choice; the three derived tones (Mobilitas Blue 1, 2, and 3) are used when there isn't enough contrast or clarity.</p>
-        <h3>Mobilitas Cyans</h3>
-        <p>The cyan tones are used as supportive colors, when all blues are insufficient in expressing something.</p>
-        <ColorTable colors={products.rideshare.cyans} tier="mobilitas" />
-      </TabItem>
-    </Tabs>
-  </div>
-);
-
-<AntPage title="Color">
+<AntPage title="Color" icon="/icons/sprite/color_palette1.svg">
   <div type="section">
     <p>Browse our brand's comprehensive spectrum's of bold hues and accessible neutrals to meet most design needs.</p>
   </div>
-  <h2>| Brands</h2>
-  <Tabs
-    defaultValue="csaa"
-    values={[
-      {
-        label: 'CSAA',
-        value: 'csaa',
-        description: "Core CSAA Brand Color Scheme"
-      },
-      {
-        label: 'Mobilitas',
-        value: 'mobilitas',
-        description: "Unique Colors for Mobilitas Brand"
-      }
-    ]}>
-    <TabItem value="csaa">
-      <h3>CSAA Brand</h3>
-      <p>The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA. Text colors displayed in light or dark tints represent CSAA's recommended accessible pairing with the color.</p>
-      <ColorTable colors={brands.csaa.colors} tier="csaa" />
-      <p>These color swatches represent primary colors, recommended for use as the main color for your design. The remaining colors are considered secondary. They may be used for charts, graphs, illustrations and other areas that call for color accent.</p>
-      <CSAA />
-    </TabItem>
-    <TabItem value="mobilitas">
-      <h3>Mobilitas Brand</h3>
-      <p>The Mobilitas color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for Mobilitas. Text colors displayed in light or dark tints represent Mobilitas’ recommended accessible pairing with the color.</p>
-      <ColorTable colors={brands.mobilitas.colors} tier="mobilitas" />
-      <p>Derived from a base palette of thirty-six colors, including primary, secondary, and neutral color spectrums.</p>
-      <Mobilitas />
-    </TabItem>
-  </Tabs>
-
-## Color Usage
-#### Base Colors
-Colors used in CSAA's components and design recommendations.
-1. Neutral colors are for text and backgrounds.
-2. Action colors are for clickable items, such as buttons and links. Action Blue is reserved for buttons and links.
-3. Stoplight colors are for indicating error conditions, warnings, and successes. Significant colors include: Stoplight Green for positive actions; Stoplight Red for warnings and errors.
-
-## Choosing Colors
-#### Text Contrast
-Each color swatch in the palette is labeled with a black or white letter A to indicate its accessibility on the background color. Other text colors should be tested for contrast using an online contrast checker to make sure it passes the WCAG AA requirement for accessibility.
-
-#### Charting Colors
-The large secondary palette allows for distinguishable markers in charts and graphs. With charts, it’s important to choose colors that have clear contrast for easy readability. The more colors that are used, the harder it is to distinguish each marker. For this reason, we recommend a maximum of six colors per chart.
-
-#### Colorblind Accessibility
-It’s a good idea to test the color scheme you plan to use with a colorblind simulation app, such as Color Oracle. Alternatively, Adobe Photoshop and Illustrator come with a colorblind proofing view. You can use the simulation to adjust your color combinations to be accessible. In the example below, the image on right simulates how a person with colorblindness (Deuteranopia) would see the image on the left.
-
+  <Brands />
 </AntPage>

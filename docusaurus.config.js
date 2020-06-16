@@ -1,7 +1,7 @@
 
 module.exports = {
   title: 'csaa design docs',
-  tagline: 'The tagline of my site',
+  tagline: '',
   url: 'https://github.com/so-boss',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -17,21 +17,21 @@ module.exports = {
       },
       links: [
         {
-          to: 'design/visual-language',
+          to: 'docs/guidelines/color',
           activeBasePath: 'docs',
-          label: 'Visual Language',
+          label: 'Styleguide',
           position: 'left',
         },
-        {
-          to: 'blog',
-          label: 'Web UI',
-          position: 'left'
-        },
-        {
-          to: 'blog',
-          label: 'Pixel',
-          position: 'left'
-        },
+        // {
+        //   to: 'blog',
+        //   label: 'Web UI',
+        //   position: 'left'
+        // },
+        // {
+        //   to: 'blog',
+        //   label: 'Pixel',
+        //   position: 'left'
+        // },
         {
           href: 'https://github.com/so-boss/Design-Commons',
           label: 'GitHub',
@@ -50,36 +50,32 @@ module.exports = {
               to: 'docs/guidelines/color',
             },
             {
-              label: 'Icons',
-              to: 'docs/icons',
-            },
-            {
               label: 'Typography',
-              to: 'docs/typography',
+              to: 'docs/guidelines/typography',
             },
           ],
         },
-        {
-          title: 'Brands & Products',
-          items: [
-            {
-              label: 'MyPolicy',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Quote',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Insurance Portal',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Mobilitas',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-          ],
-        },
+        // {
+        //   title: 'Brands & Products',
+        //   items: [
+        //     {
+        //       label: 'MyPolicy',
+        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+        //     },
+        //     {
+        //       label: 'Quote',
+        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+        //     },
+        //     {
+        //       label: 'Insurance Portal',
+        //       href: 'https://discordapp.com/invite/docusaurus',
+        //     },
+        //     {
+        //       label: 'Mobilitas',
+        //       href: 'https://discordapp.com/invite/docusaurus',
+        //     },
+        //   ],
+        // },
         // {
         //   title: 'More',
         //   items: [

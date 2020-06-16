@@ -15,7 +15,7 @@ import './AntPage.scss';
 const { Paragraph, Title } = Typography;
 const { Meta } = Card;
 
-const routes = [
+let routes = [
   {
     path: 'index',
     breadcrumbName: 'Design Guidelines',
@@ -57,14 +57,15 @@ const contents = (
 
 export const Content = ({ children, extraContent, summary }) => {
   return (
-    <Row>
+
       <div style={{ flex: 1 }}>{children}</div>
-    </Row>
+
   )
 }
 
 
-export default function AntPage ({title, summary, children}) {
+export default function AntPage ({title, icon, summary, children}) {
+  routes[1].breadcrumbName = title;
   return (
     <div layout="page">
       <PageHeader

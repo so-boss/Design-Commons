@@ -6,8 +6,12 @@
  */
 
 /* You can override the default Infima variables here. */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+
 :root {
-  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary: #0096D6;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
@@ -24,3 +28,13 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
+[class*="docItemWrapper_node_modules"] {
+  padding-top:5px !important;
+}
+
+h5{
+  text-transform: UPPERCASE;
+  font-weight: 600;
+  color: #5F6062;
+  font-size: 12px;
+}

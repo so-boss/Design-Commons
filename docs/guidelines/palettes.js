@@ -2,7 +2,7 @@ export const brands = {
   csaa: {
     colors: [
       {
-        name: 'blue 1',
+        name: 'blue',
         hex: '#00338d',
       },
       {
@@ -22,6 +22,28 @@ export const brands = {
         hex: '#D52B1E',
       },
     ],
+    neutrals:[
+      {
+        name: 'black',
+        hex: '#000000',
+      },
+      {
+        name: 'grey 1',
+        hex: '#333333',
+      },
+      {
+        name: 'grey 2',
+        hex: '#767676',
+      },
+      {
+        name: 'grey 3',
+        hex: '#CCCCCC',
+      },
+      {
+        name: 'white',
+        hex: '#ffffff',
+      },
+    ]
   },
   mobilitas: {
     colors: [
@@ -33,19 +55,21 @@ export const brands = {
         name: 'cyan',
         hex: '#047E8E',
       },
+    ],
+    neutrals: [
       {
-        name: 'white',
-        hex: '#f7f8fa',
+        name: 'black',
+        hex: '#0c1014',
       },
       {
         name: 'grey',
         hex: '#3b4956',
       },
       {
-        name: 'black',
-        hex: '#0c1014',
+        name: 'white',
+        hex: '#f7f8fa',
       },
-    ],
+    ]
   },
 }
 
@@ -53,39 +77,15 @@ export const products = {
   mypolicy: {
     colors: [
       {
-        name: 'R2D2',
-        hex: '#00338D',
-      },
-      {
-        name: 'Red Leader',
-        hex: '#D52B1E',
-      },
-      {
-        name: 'Red Leader Hover',
-        hex: '#A61207',
-      },
-      {
-        name: 'C3PO',
-        hex: '#FFC425',
-      },
-      {
-        name: 'C3PO Hover',
-        hex: '#f2b719',
-      },
-      {
-        name: 'Saber',
+        name: 'Blue 4',
         hex: '#1778d3',
       },
       {
-        name: 'Saber Hover',
-        hex: '#2685de',
-      },
-      {
-        name: 'Yoda',
+        name: 'Green',
         hex: '#00844D',
       },
       {
-        name: 'BB8',
+        name: 'Orange',
         hex: '#CF4900',
       },
     ],
@@ -95,20 +95,8 @@ export const products = {
         hex: '#0c1014',
       },
       {
-        name: 'grey 1',
-        hex: '#333333',
-      },
-      {
-        name: 'grey 2',
-        hex: '#5F6062',
-      },
-      {
-        name: 'grey 3',
-        hex: '#767676',
-      },
-      {
         name: 'grey 4',
-        hex: '#CCCCCC',
+        hex: '#5F6062',
       },
       {
         name: 'grey 5',
@@ -118,18 +106,28 @@ export const products = {
         name: 'grey 6',
         hex: '#F7F7F7',
       },
+    ],
+    hovers: [
       {
-        name: 'white',
-        hex: '#ffffff',
+        name: 'Blue 4',
+        hex: '#2685de',
+      },
+      {
+        name: 'Yellow',
+        hex: '#f2b719',
+      },
+      {
+        name: 'Red',
+        hex: '#A61207',
       },
     ],
     oldies: [
       {
-        name: 'blue 4',
+        name: 'blue 5',
         hex: '#015EB6',
       },
       {
-        name: 'blue 5',
+        name: 'blue 6',
         hex: '#107BA8',
       },
       {
@@ -145,100 +143,103 @@ export const products = {
   quote: {
     colors: [
       {
-        name: 'AAA Red',
-        hex: '#D52B1E',
+        name: 'Blue 4',
+        hex: '#012565',
       },
       {
-        name: 'light blue grey',
-        hex: '#F6F8FB',
-      },
-      {
-        name: 'Rollover Blue',
-        hex: '#E9F2FB',
-      },
-      {
-        name: 'AAA_light_blue',
-        hex: '#88CBDF',
-      },
-      {
-        name: 'highlight_blue',
+        name: 'Blue 5',
         hex: '#1778D3',
       },
       {
-        name: 'AAA_blue',
-        hex: '#00338D',
+        name: 'Blue 6',
+        hex: '#F6F8FB',
       },
+    ],
+    hovers: [
       {
-        name: 'Dark Blue',
-        hex: '#012565',
+        name: 'Blue',
+        hex: '#E9F2FB',
       },
     ],
     neutrals: [
       {
-        name: 'black',
-        hex: '#000000',
-      },
-      {
-        name: 'Dark Grey',
-        hex: '#333333',
-      },
-      {
-        name: 'Medium Grey',
+        name: 'Grey 4',
         hex: '#636363',
       },
       {
-        name: 'Light Grey',
+        name: 'Grey 5',
         hex: '#E4E5E6',
       },
       {
-        name: 'Fog Grey',
+        name: 'Grey 6',
         hex: '#F2F2F2',
-      },
-      {
-        name: 'white',
-        hex: '#ffffff',
       },
     ],
   },
   insurance_portal: {
     colors: [
       {
-        name: 'blue 1',
-        hex: '#00338D',
+        name: 'blue 4',
+        hex: '#C1DFEC',
       },
       {
-        name: 'blue 2',
-        hex: '#0096D6',
+        name: 'blue 5',
+        hex: '#EDF0F6',
       },
       {
-        name: 'red',
-        hex: '#D52B1E',
+        name: 'Green',
+        hex: '#059D4E',
+      },
+      {
+        name: 'Orange',
+        hex: '#D33F00',
       },
     ],
     neutrals: [
       {
-        name: 'black',
-        hex: '#000000',
+        name: 'grey 5',
+        hex: '#636363',
       },
       {
-        name: 'grey 1',
-        hex: '#333333',
+        name: 'grey 7',
+        hex: '#95989A',
       },
+
       {
-        name: 'grey 2',
+        name: 'grey 10',
+        hex: '#E6E6E6',
+      },
+
+      {
+        name: 'grey 12',
+        hex: '#F5F5F5',
+      },
+
+    ],
+    oldies: [
+      {
+        name: 'grey 4',
         hex: '#5F6062',
       },
       {
-        name: 'grey 3',
-        hex: '#CCCCCC',
+        name: 'grey 8',
+        hex: '#C1C1C1',
       },
       {
-        name: 'grey 4',
+        name: 'grey 9',
         hex: '#E4E5E6',
       },
       {
-        name: 'white',
-        hex: '#ffffff',
+        name: 'grey 11',
+        hex: '#EBEBEB',
+      },
+      {
+        name: 'grey 13',
+        hex: '#F9F9F9',
+      },
+      {
+        name: 'grey 14',
+        hex: '#F8F9FB',
       },
     ],
   },
