@@ -1,4 +1,3 @@
-
 module.exports = {
   title: 'csaa design docs',
   tagline: '',
@@ -19,19 +18,21 @@ module.exports = {
         {
           to: 'docs/guidelines/color',
           activeBasePath: 'docs',
-          label: 'Styleguide',
+          label: 'Guidelines',
           position: 'left',
         },
-        // {
-        //   to: 'blog',
-        //   label: 'Web UI',
-        //   position: 'left'
-        // },
-        // {
-        //   to: 'blog',
-        //   label: 'Pixel',
-        //   position: 'left'
-        // },
+        {
+          to: 'docs/pixel',
+          activeBasePath: 'docs',
+          label: 'Pixel',
+          position: 'left',
+        },
+        {
+          to: 'docs/pixel',
+          activeBasePath: 'docs',
+          label: 'Web UI',
+          position: 'left',
+        },
         {
           href: 'https://github.com/so-boss/Design-Commons',
           label: 'GitHub',
@@ -43,7 +44,7 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Style Guidelines',
+          title: 'Design Guidelines',
           items: [
             {
               label: 'Color',
@@ -104,11 +105,7 @@ module.exports = {
           //path: 'design',
         },
         blog: {
-
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
