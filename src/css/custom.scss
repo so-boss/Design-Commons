@@ -8,7 +8,7 @@
 /* You can override the default Infima variables here. */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
+@import url('./pixel/module.css');
 
 :root {
   --ifm-color-primary: #0096D6;
@@ -37,4 +37,42 @@ h5{
   font-weight: 600;
   color: #5F6062;
   font-size: 12px;
+}
+button[type][class*=copyButton] {
+  position:absolute;
+}
+
+[react=worksheet] {
+  //flex-basis: calc(50% - 10px);
+  //max-width: calc(50% - 10px);
+//  margin: 24px 10px 0px 0px;
+  position:relative;
+  display:flex;
+  > div {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
+    border: none;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: block;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+[class*=mdxCodeBlock] {
+  [class*=playgroundPreviewHeader], [class*=playgroundEditorHeader] {
+    display: none;
+  }
+}
+[class*=playgroundPreview] {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  display: block;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }

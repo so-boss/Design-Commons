@@ -34,7 +34,7 @@ module.exports = {
         'pixel/elements/thing',
         'pixel/elements/title'
       ],
-    },
+    }, 
     {
       type: 'category',
       label: 'Wrappers',

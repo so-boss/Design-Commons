@@ -9,9 +9,13 @@
     "deploy": "docusaurus deploy"
   },
   "dependencies": {
+    "@docusaurus/core": "^2.0.0-alpha.58",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.58",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.39",
+    "@so-boss/pixel": "^0.1.8",
     "antd": "^4.3.0",
     "classnames": "^2.2.6",
-    "docusaurus-plugin-sass": "^0.1.8",
+    "docusaurus-plugin-sass": "^0.1.9",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-sticky": "^6.0.3",
@@ -30,12 +34,9 @@
     ]
   },
   "devDependencies": {
+    "react-color-tools": "^1.0.0",
     "remark-admonitions": "^1.2.1",
     "sass": "^1.26.7",
-    "sass-loader": "^8.0.2",
-    "@docusaurus/core": "^2.0.0-alpha.56",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.56",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.39",
-    "react-color-tools": "^1.0.0"
+    "sass-loader": "^8.0.2"
   }
 }

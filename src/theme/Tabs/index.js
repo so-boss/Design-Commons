@@ -6,9 +6,9 @@
  */
 
 import React, {useState, Children} from 'react';
-import useTabGroupChoiceContext from '@theme/hooks/useTabGroupChoiceContext';
+import useUserPreferencesContext from '@theme/hooks/useUserPreferencesContext';
 
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import {
   Avatar,
@@ -16,10 +16,10 @@ import {
   Row,
   Col
 } from 'antd'
+const { Meta } = Card
 
 import styles from './styles.module.css';
 
-const { Meta } = Card
 const keys = {
   left: 37,
   right: 39,
@@ -37,14 +37,15 @@ const TabCard = ({icon, label, description}) => (
 
 function Tabs(props) {
   const {block, children, defaultValue, values, groupId} = props;
-  const {tabGroupChoices, setTabGroupChoices} = useTabGroupChoiceContext();
+  const {tabGroupChoices, setTabGroupChoices} = useUserPreferencesContext();
   const [selectedValue, setSelectedValue] = useState(defaultValue);
 
   if (groupId != null) {
     const relevantTabGroupChoice = tabGroupChoices[groupId];
     if (
       relevantTabGroupChoice != null &&
-      relevantTabGroupChoice !== selectedValue
+      relevantTabGroupChoice !== selectedValue &&
+      values.some((value) => value.value === relevantTabGroupChoice)
     ) {
       setSelectedValue(relevantTabGroupChoice);
     }
@@ -98,7 +99,7 @@ function Tabs(props) {
         gutter={[8, 24]}
         role="tablist"
         aria-orientation="horizontal"
-        className={classnames('tabs', {
+        className={clsx('tabs', {
           'px-tabs--block': block,
         })}>
         {values.map(({value, label, icon, description}) => (
@@ -107,11 +108,9 @@ function Tabs(props) {
             role="tab"
             tabIndex="0"
             aria-selected={selectedValue === value}
-            className={
-              classnames('px-tabs__item', styles.tabItem, {
-                'px-tabs__item--active': selectedValue === value,
-              })
-            }
+            className={clsx('px-tabs__item', styles.tabItem, {
+              'px-tabs__item--active': selectedValue === value,
+            })}
             key={value}
             ref={(tabControl) => tabRefs.push(tabControl)}
             onKeyDown={(event) => handleKeydown(tabRefs, event.target, event)}
