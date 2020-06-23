@@ -16,6 +16,7 @@
     "antd": "^4.3.0",
     "classnames": "^2.2.6",
     "docusaurus-plugin-sass": "^0.1.9",
+    "parcel": "^1.12.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-sticky": "^6.0.3",
@@ -34,6 +35,7 @@
     ]
   },
   "devDependencies": {
+    "parcel-bundler": "^1.12.4",
     "react-color-tools": "^1.0.0",
     "remark-admonitions": "^1.2.1",
     "sass": "^1.26.7",
