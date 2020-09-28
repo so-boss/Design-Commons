@@ -7,14 +7,14 @@ module.exports = {
   organizationName: 'so-boss', // Usually your GitHub org/user name.
   projectName: 'Design-Commons', // Usually your repo name.
   themeConfig: {
-    disableDarkMode: true,
+    //disableDarkMode: true,
     navbar: {
       // title: 'Design Commons',
       logo: {
         alt: 'My Site Logo',
         src: 'img/aaa-logo.svg',
       },
-      links: [
+      items: [
         {
           to: 'docs/guidelines/color',
           activeBasePath: 'docs',
@@ -56,43 +56,12 @@ module.exports = {
             },
           ],
         },
-        // {
-        //   title: 'Brands & Products',
-        //   items: [
-        //     {
-        //       label: 'MyPolicy',
-        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //     },
-        //     {
-        //       label: 'Quote',
-        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //     },
-        //     {
-        //       label: 'Insurance Portal',
-        //       href: 'https://discordapp.com/invite/docusaurus',
-        //     },
-        //     {
-        //       label: 'Mobilitas',
-        //       href: 'https://discordapp.com/invite/docusaurus',
-        //     },
-        //   ],
-        // },
-        // {
-        //   title: 'More',
-        //   items: [
-        //     {
-        //       label: 'Blog',
-        //       to: 'blog',
-        //     },
-        //     {
-        //       label: 'GitHub',
-        //       href: 'https://github.com/facebook/docusaurus',
-        //     },
-        //   ],
-        // },
       ],
       //copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
+    colorMode:{
+      disableSwitch: true
+    }
   },
   presets: [
     [
@@ -100,9 +69,11 @@ module.exports = {
       {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
-          homePageId: 'color',
+          //homePageId: '/',
+          // slug: "/",
           sidebarPath: require.resolve('./sidebars.js'),
           //path: 'design',
+          admonitions: {},
         },
         blog: {
           showReadingTime: true,
@@ -113,6 +84,6 @@ module.exports = {
       },
     ],
   ],
-  plugins: [require.resolve('docusaurus-plugin-sass')],
+  plugins: ['docusaurus-plugin-sass'],
   themes: [require.resolve('@docusaurus/theme-live-codeblock')]
 };

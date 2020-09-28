@@ -8,12 +8,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import {
-  ColorTable
+  ColorTable,
+  ColorToken
 } from '@site/docs/guidelines/components';
 
 import {
   brands,
 } from '@site/docs/guidelines/palettes'
+
+
 
 import {
   CSAA,
@@ -42,6 +45,7 @@ export default function Brands () {
       ]}>
       <TabItem value="csaa">
         <Paragraph>The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA. Text colors displayed in light or dark tints represent CSAA's recommended accessible pairing with the color.</Paragraph>
+        <ColorToken def_id="blue" type="brand"/>
         <ColorTable colors={brands.csaa.colors} tier="csaa" />
         <Title level={4}>Neutrals</Title>
         <ColorTable colors={brands.csaa.neutrals} tier="csaa" />

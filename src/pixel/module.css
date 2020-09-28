@@ -66,7 +66,7 @@ title {
   padding: 30px 15px;
 }
 
-wrapper, thing {
+wrapper, [px=thing] {
     position:relative;
     display:block;
 }
@@ -164,29 +164,29 @@ block > wrapper > wrapper:nth-child(2) {
     flex:1 1;
 }
 
-block > wrapper > wrapper:nth-child(2) > thing:nth-child(1) {
+block > wrapper > wrapper:nth-child(2) > [px=thing]:nth-child(1) {
                     font-size:20px;
                     font-weight:700;
                     text-transform:uppercase;
                 }
 
-block > wrapper > wrapper:nth-child(2) > thing {
+block > wrapper > wrapper:nth-child(2) > [px=thing] {
     width:100%;
     font-size:14px;
     margin:0 0 8px 0;
 }
 
-block > wrapper > wrapper:nth-child(2) > thing > thing:nth-child(1) {
+block > wrapper > wrapper:nth-child(2) > [px=thing] > [px=thing]:nth-child(1) {
                     font-size:20px;
                     font-weight:700;
                     text-transform:uppercase;
                 }
 
-block > wrapper > wrapper:nth-child(2) > thing:empty {
+block > wrapper > wrapper:nth-child(2) > [px=thing]:empty {
     display:none;
 }
 
-block > wrapper > wrapper:nth-child(2) > thing:last-child {
+block > wrapper > wrapper:nth-child(2) > [px=thing]:last-child {
     margin-bottom:0px;
 }
 
@@ -216,19 +216,19 @@ block > wrapper > wrapper:nth-child(3):empty {
     display:none;
 }
 
-block > wrapper > wrapper > thing:nth-child(1) {
+block > wrapper > wrapper > [px=thing]:nth-child(1) {
                         margin-top:0px;
                     font-size:20px;
                     font-weight:700;
                     text-transform:uppercase
                 }
 
-block > wrapper > wrapper > thing:nth-child(1)[currency=true] {
+block > wrapper > wrapper > [px=thing]:nth-child(1)[currency=true] {
                         font-size:24px;
                         font-weight: normal;
                     }
 
-block > wrapper > wrapper > thing:nth-child(1)[currency=true] > b {
+block > wrapper > wrapper > [px=thing]:nth-child(1)[currency=true] > b {
                             font-size:16px;
                             display: block;
                             float: left;
@@ -236,24 +236,24 @@ block > wrapper > wrapper > thing:nth-child(1)[currency=true] > b {
                             width: 10px;
                         }
 
-block > wrapper > wrapper > thing:nth-child(1)[uppercase=false] {
+block > wrapper > wrapper > [px=thing]:nth-child(1)[uppercase=false] {
                         text-transform:none;
                         text-transform:initial;
                     }
 
-block > wrapper > wrapper > thing:nth-child(2) ~ thing:nth-child(4) {
+block > wrapper > wrapper > [px=thing]:nth-child(2) ~ [px=thing]:nth-child(4) {
                         margin-top:22px;
                     }
 
-block > wrapper > wrapper > thing:nth-child(2):empty ~ thing:nth-child(4) {
+block > wrapper > wrapper > [px=thing]:nth-child(2):empty ~ [px=thing]:nth-child(4) {
                             margin-top:8px;
                         }
 
-block > wrapper > wrapper > thing:nth-child(3) {
+block > wrapper > wrapper > [px=thing]:nth-child(3) {
                     display:flex;
                 }
 
-block > wrapper > wrapper > thing:nth-child(3):empty {
+block > wrapper > wrapper > [px=thing]:nth-child(3):empty {
     display:none;
 }
 
@@ -314,7 +314,7 @@ svg[hugeness=l] {
   width: 56px;
 }
 
-thing {
+[px=thing] {
   position:relative;
   display:block;
 }
@@ -478,13 +478,13 @@ action {
   action> block {
       cursor: pointer;
     }
-  action block > wrapper > wrapper > thing:nth-child(1) {
+  action block > wrapper > wrapper > [px=thing]:nth-child(1) {
     font-weight: 700;
     color: #1778d3;
     cursor: pointer;
     text-transform: uppercase;
   }
-action[arrow] block > wrapper > wrapper > thing:nth-child(1), action[drawer] block > wrapper > wrapper > thing:nth-child(1), action[indicator] block > wrapper > wrapper > thing:nth-child(1) {
+action[arrow] block > wrapper > wrapper > [px=thing]:nth-child(1), action[drawer] block > wrapper > wrapper > [px=thing]:nth-child(1), action[indicator] block > wrapper > wrapper > [px=thing]:nth-child(1) {
       color: #333333;
     }
 action[drawer] {
@@ -623,27 +623,27 @@ flag {
                         flex-direction:column;
                         flex:1 1;
 }
-    flag block > wrapper > wrapper:nth-child(2) > thing:nth-child(1) {
+    flag block > wrapper > wrapper:nth-child(2) > [px=thing]:nth-child(1) {
                         font-size:14px;
                         font-weight:500;
                         text-transform:capitalize;
                         text-align:center;
                     }
-    flag block > wrapper > wrapper:nth-child(2) > thing {
+    flag block > wrapper > wrapper:nth-child(2) > [px=thing] {
                         width:100%;
                         font-size:14px;
                         margin:0 0 8px 0;
 }
-    flag block > wrapper > wrapper:nth-child(2) > thing > thing:nth-child(1) {
+    flag block > wrapper > wrapper:nth-child(2) > [px=thing] > [px=thing]:nth-child(1) {
                         font-size:14px;
                         font-weight:500;
                         text-transform:capitalize;
                         text-align:center;
                     }
-    flag block > wrapper > wrapper:nth-child(2) > thing:empty {
+    flag block > wrapper > wrapper:nth-child(2) > [px=thing]:empty {
                         display:none;
 }
-    flag block > wrapper > wrapper:nth-child(2) > thing:last-child {
+    flag block > wrapper > wrapper:nth-child(2) > [px=thing]:last-child {
                         margin-bottom:0px;
 }
     flag > block {
@@ -682,26 +682,26 @@ tag {
             flex-direction: column;
             flex: 1 1;
 }
-    tag block > wrapper > wrapper:nth-child(2) > thing:nth-child(1) {
+    tag block > wrapper > wrapper:nth-child(2) > [px=thing]:nth-child(1) {
                         font-size: 14px;
                         font-weight: 500;
                         text-transform: capitalize;
                     }
-    tag block > wrapper > wrapper:nth-child(2) > thing {
+    tag block > wrapper > wrapper:nth-child(2) > [px=thing] {
                     justify-content: center;
             width: 100%;
             font-size: 14px;
             margin: 0 0 8px 0;
 }
-    tag block > wrapper > wrapper:nth-child(2) > thing > thing:nth-child(1) {
+    tag block > wrapper > wrapper:nth-child(2) > [px=thing] > [px=thing]:nth-child(1) {
                         font-size: 14px;
                         font-weight: 500;
                         text-transform: capitalize;
                     }
-    tag block > wrapper > wrapper:nth-child(2) > thing:empty {
+    tag block > wrapper > wrapper:nth-child(2) > [px=thing]:empty {
             display: none;
 }
-    tag block > wrapper > wrapper:nth-child(2) > thing:last-child {
+    tag block > wrapper > wrapper:nth-child(2) > [px=thing]:last-child {
             margin-bottom: 0px;
 }
     tag > block {
@@ -827,56 +827,56 @@ wrapper {
   wrapper[type=field] > wrapper[type=input]:after > [type=message]:empty {
         opacity:0;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label] {
         position:absolute;
         font-weight:500;
         font-size:16px;
         bottom:5px;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=empty] > [type=input] > [type=label] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=empty] > [type=input] > [type=label] {
         font-weight:500;
         font-size:16px;
         bottom:5px;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=focused] > [type=input] > [type=label] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=focused] > [type=input] > [type=label] {
           font-weight:700;
           font-size:12px;
           bottom:27px;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=focused][char_count="0"] > [type=input] > [type=label] {}
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=focused][char_count="0"] > [type=input]:after {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=focused][char_count="0"] > [type=input] > [type=label] {}
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=focused][char_count="0"] > [type=input]:after {
             opacity:1;
           }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=typing] > [type=input] > [type=label] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=typing] > [type=input] > [type=label] {
           font-weight:700;
           font-size:12px;
           bottom:27px;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=typing][char_count="0"] > [type=input] > [type=label] {}
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=typing][char_count="0"] > [type=input]:after {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=typing][char_count="0"] > [type=input] > [type=label] {}
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=typing][char_count="0"] > [type=input]:after {
             opacity:1;
           }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=idle] > [type=input] > [type=label] {}
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=idle][char_count] > [type=input] > [type=label] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=idle] > [type=input] > [type=label] {}
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=idle][char_count] > [type=input] > [type=label] {
             font-weight:700;
             font-size:12px;
             bottom:27px;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=idle][char_count="0"] > [type=input] > [type=label] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=idle][char_count="0"] > [type=input] > [type=label] {
             font-weight:500;
             font-size:16px;
             bottom:5px;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label][state=idle][char_count="0"] > [type=input] > [type=label] + input {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label][state=idle][char_count="0"] > [type=input] > [type=label] + input {
                 opacity:0;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label] > [type=message] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label] > [type=message] {
       min-height:24px;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label] > [type=message]:empty {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label] > [type=message]:empty {
         opacity:0;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label] + input {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label] + input {
         font-size:16px;
         color:#333333;
         width:100%;
@@ -891,12 +891,12 @@ wrapper {
         opacity:1;
         transition:.1s cubic-bezier(0.84,-0.01, 1, 1);
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label] + input[state=empty] > [type=input] > [type=label] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label] + input[state=empty] > [type=input] > [type=label] {
         font-weight:500;
         font-size:16px;
         bottom:5px;
 }
-  wrapper[type=field] > wrapper[type=input] > thing[type=label] + input[state=focused] > [type=input] > [type=label] {
+  wrapper[type=field] > wrapper[type=input] > [px=thing][type=label] + input[state=focused] > [type=input] > [type=label] {
           font-weight:700;
           font-size:12px;
           bottom:27px;

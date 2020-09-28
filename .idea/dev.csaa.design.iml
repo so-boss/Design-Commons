@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../csaa.design">
+      <excludeFolder url="file://$MODULE_DIR$/../csaa.design/node_modules" />
+    </content>
+    <content url="file://$MODULE_DIR$/../design-dictionary">
+      <excludeFolder url="file://$MODULE_DIR$/../design-dictionary/node_modules" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.docusaurus" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+    </content>
+    <content url="file://$MODULE_DIR$/../genesis" />
+    <content url="file://$MODULE_DIR$/../hello" />
+    <content url="file://$MODULE_DIR$/../icons">
+      <excludeFolder url="file://$MODULE_DIR$/../icons/node_modules" />
+    </content>
+    <content url="file://$MODULE_DIR$/../pixel">
+      <excludeFolder url="file://$MODULE_DIR$/../pixel/.cache" />
+      <excludeFolder url="file://$MODULE_DIR$/../pixel/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/../pixel/.storybook" />
+      <excludeFolder url="file://$MODULE_DIR$/../pixel/node_modules" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
