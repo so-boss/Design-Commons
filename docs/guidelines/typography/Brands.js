@@ -31,14 +31,9 @@ export default function Brands () {
       defaultValue="csaa"
       values={[
         {
-          label: 'CSAA',
+          label: 'AAA Insurance',
           value: 'csaa',
-          description: "Core CSAA Brand Typography"
-        },
-        {
-          label: 'Mobilitas',
-          value: 'mobilitas',
-          description: "Unique Type for Mobilitas Brand"
+          description: "Brand Typography"
         }
       ]}>
       <TabItem value="csaa">

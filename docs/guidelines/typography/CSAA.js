@@ -17,31 +17,29 @@ import {
 import {
   products
 } from '@site/docs/guidelines/palettes';
-
+//      <Title level={4}>Full Color Spectrum</Title>
 export default function CSAA () {
   return (
     <div layout="panel">
-      <Title level={2}>Products</Title>
       <Tabs
-        defaultValue="mypolicy"
+        defaultValue="typefaces"
         values={[
           {
-            label: 'MyPolicy Portal',
-            icon: "b2c",
-            value: 'mypolicy',
-            description: "Customer Tools"
+            label: 'Typefaces',
+            icon: 'typefaces',
+            value: 'typefaces',
+            description: 'Font Families'
           },
           {
-            label: 'Quote',
-            icon: "b2c",
-            value: 'quote',
-            description: "New Customers"
+            label: 'Text Styles',
+            icon: "text_styles",
+            value: 'text_styles',
+            description: 'Style Groupings'
           },
           {
-            label: 'Insurance Portal',
-            icon: "b2b",
-            value: 'insurance_portal',
-            description: "Agent Tools"
+            label: 'Accessibility',
+            value: 'accessibility',
+            description: 'Best Practices'
           }
         ]}>
         <TabItem value="mypolicy">

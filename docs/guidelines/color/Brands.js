@@ -33,31 +33,41 @@ export default function Brands () {
       defaultValue="csaa"
       values={[
         {
-          label: 'CSAA',
+          label: 'AAA Insurance',
           value: 'csaa',
-          description: "Core CSAA Brand Color Scheme"
+          description: "Brand Color Palette"
         },
-        {
-          label: 'Mobilitas',
-          value: 'mobilitas',
-          description: "Unique Colors for Mobilitas Brand"
-        }
       ]}>
       <TabItem value="csaa">
         <Paragraph>The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA. Text colors displayed in light or dark tints represent CSAA's recommended accessible pairing with the color.</Paragraph>
         <ColorToken def_id="blue" type="brand"/>
-        <ColorTable colors={brands.csaa.colors} tier="csaa" />
-        <Title level={4}>Neutrals</Title>
-        <ColorTable colors={brands.csaa.neutrals} tier="csaa" />
+
+        <ColorToken def_id="black" type="brand"/>
+        <ColorToken def_id="grey" type="brand"/>
+        <ColorToken def_id="white" type="brand"/>
+
+        <ColorToken def_id="red" type="brand"/>
         <CSAA />
-      </TabItem>
-      <TabItem value="mobilitas">
-        <Paragraph>The Mobilitas color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for Mobilitas. Text colors displayed in light or dark tints represent Mobilitas’ recommended accessible pairing with the color.</Paragraph>
-        <ColorTable colors={brands.mobilitas.colors} tier="mobilitas" />
-        <Title level={4}>Neutrals</Title>
-        <ColorTable colors={brands.mobilitas.neutrals} tier="mobilitas" />
-        <Mobilitas />
       </TabItem>
     </Tabs>
   );
 }
+
+/*
+
+<TabItem value="csaa">
+  <Paragraph>The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA. Text colors displayed in light or dark tints represent CSAA's recommended accessible pairing with the color.</Paragraph>
+  <ColorToken def_id="blue" type="brand"/>
+  <ColorTable colors={brands.csaa.colors} tier="csaa" />
+  <Title level={4}>Neutrals</Title>
+  <ColorTable colors={brands.csaa.neutrals} tier="csaa" />
+  <CSAA />
+</TabItem>
+<TabItem value="mobilitas">
+  <Paragraph>The Mobilitas color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for Mobilitas. Text colors displayed in light or dark tints represent Mobilitas’ recommended accessible pairing with the color.</Paragraph>
+  <ColorTable colors={brands.mobilitas.colors} tier="mobilitas" />
+  <Title level={4}>Neutrals</Title>
+  <ColorTable colors={brands.mobilitas.neutrals} tier="mobilitas" />
+  <Mobilitas />
+</TabItem>
+ */
