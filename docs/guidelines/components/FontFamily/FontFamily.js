@@ -27,7 +27,7 @@ const Rows = ({children}) => (
 
 const Character = ({style}) => (
   <Col type="character">
-    <span style={{fontFamily: 'Helvetica', fontWeight: 400, fontStyle: "normal"}}> Aa </span>
+    <span style={style}> Aa </span>
   </Col>
 );
 
@@ -52,24 +52,31 @@ const Properties = ({name, weight, style}) => (
     <div font="name">{name}</div>
     <div font="weight">
       <label>Weight:</label>
-      <span>{weight}</span>
+      <span style={{fontWeight: weight}}>{weight}</span>
     </div>
     <div font="style">
       <label>Style:</label>
-      <span>{style}</span>
+      <span style={{fontWeight: weight}}>{style}</span>
     </div>
   </Col>
 )
 
-const Font = ({name, weight, style}) => {
-  let fontStyle = style;
+const Font = ({name, weight, style_name}) => {
+  let fontStyle = style_name;
   if(!fontStyle) {
     fontStyle = "normal";
   }
+
+  let style = {
+    fontFamily: name,
+    fontWeight: weight,
+    fontStyle: fontStyle
+  };
+
   return (
     <Row type="font">
-      <Character style={{fontFamily: name, fontWeight: weight, fontStyle: fontStyle}} />
-      <Preview style={{fontFamily: name, fontWeight: weight, fontStyle: fontStyle}} />
+      <Character style={style} />
+      <Preview style={style} />
       <Properties
         name={name}
         weight={weight}
@@ -79,15 +86,19 @@ const Font = ({name, weight, style}) => {
   )
 }
 
-
-
-export default function FontFamily () {
+export default function FontFamily ({family, weight, style_name}) {
+  if(!family) {
+    family = {
+      name:"Raleway"
+    };
+  }
   return (
     <div font="family" type="section">
       <Rows>
         <Font
-          name="Helvetica"
-          weight="400"
+          name={family.name}
+          weight={weight}
+          style_name={style_name}
         />
       </Rows>
     </div>

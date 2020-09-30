@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Typography,
 } from 'antd';
@@ -9,12 +8,14 @@ import TabItem from '@theme/TabItem';
 
 import {
   FontFamily,
-  FontSize
+  FontSize,
+  Token
 } from '@site/docs/guidelines/components';
 
-import {
-  brands,
-} from '@site/docs/guidelines/palettes'
+import { typography } from '@site/static/genesis';
+// import {
+//   brands,
+// } from '@site/docs/guidelines/palettes'
 
 import {
   CSAA,
@@ -40,7 +41,7 @@ export default function Brands () {
         <Title level={4}>Family</Title>
         <Paragraph>AAA’s standard web font is Helvetica Bold and Regular faces. Large bold type should be used to establish clear information hierarchy. Substantial body copy should not use a size smaller than 14px.</Paragraph>
 
-        <FontFamily />
+        <Token type="typography" typefaces={typography.typefaces} />
         <Title level={4}>Sizes</Title>
         <Paragraph>Our base font size is 14px to ensure the best user reading efficiency on most common monitors based on display screen reading distance (50 cm) and optimal reading angle (0.3).</Paragraph>
         <FontSize sizes={[

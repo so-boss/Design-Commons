@@ -18,19 +18,19 @@ module.exports = {
         {
           to: 'docs/guidelines/color',
           activeBasePath: 'docs',
-          label: 'Guidelines',
+          label: 'Design',
+          position: 'left',
+        },
+        {
+          to: 'docs/guidelines/content',
+          activeBasePath: 'docs',
+          label: 'Content',
           position: 'left',
         },
         {
           to: 'docs/pixel',
           activeBasePath: 'docs',
-          label: 'Pixel',
-          position: 'left',
-        },
-        {
-          to: 'docs/pixel',
-          activeBasePath: 'docs',
-          label: 'Web UI',
+          label: 'Components',
           position: 'left',
         },
         {
@@ -53,6 +53,14 @@ module.exports = {
             {
               label: 'Typography',
               to: 'docs/guidelines/typography',
+            },
+            {
+              label: 'Icons',
+              to: 'docs/guidelines/icons',
+            },
+            {
+              label: 'Spacing',
+              to: 'docs/guidelines/spacing',
             },
           ],
         },
@@ -84,6 +92,8 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: [
+    'docusaurus-plugin-sass',
+  ],
   themes: [require.resolve('@docusaurus/theme-live-codeblock')]
 };

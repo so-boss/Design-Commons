@@ -14,9 +14,7 @@ import {
   FontSize
 } from '@site/docs/guidelines/components';
 
-import {
-  products
-} from '@site/docs/guidelines/palettes';
+
 //      <Title level={4}>Full Color Spectrum</Title>
 export default function CSAA () {
   return (

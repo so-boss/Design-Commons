@@ -8,7 +8,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import {
-  ColorTable,
   ColorToken
 } from '@site/docs/guidelines/components';
 
@@ -16,11 +15,8 @@ import {
   brands,
 } from '@site/docs/guidelines/palettes'
 
-
-
 import {
   CSAA,
-  Mobilitas
 } from '@site/docs/guidelines/color/index';
 
 const { Paragraph, Title } = Typography;

@@ -72,7 +72,6 @@ const ColorTokens = ({def_id, type}) => {
   let sorted = sort_spectrum(results);
 
   let filtered = [];
-  console.log(type)
   if(type==="brand") {
     filtered = sorted.filter(function (color) {
       return /AAA \|/.test(color.name);
@@ -82,18 +81,20 @@ const ColorTokens = ({def_id, type}) => {
       return /[\d-]+$/.test(color.name);
     });
   }
-  console.log(filtered)
+
   return (
     <ColorTable colors={filtered} tier="mypolicy"/>
   );
 };
 
 
-
+/*
+    <ColorToken def_id="white" type="brand"/>
+ */
 export default function ColorToken ({def_id, type}) {
   return (
     <ApolloProvider client={ToolabsApiClient}>
       <ColorTokens def_id={def_id} type={type}/>
     </ApolloProvider>
   );
-}
+};

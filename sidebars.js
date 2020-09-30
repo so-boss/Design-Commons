@@ -1,16 +1,24 @@
 module.exports = {
   guidelines: [
-    {
-      type: 'doc',
-      id:'guidelines/accessibility',
-    },
+    // {
+    //   type: 'doc',
+    //   id:'guidelines/accessibility',
+    // },
     {
       type: 'doc',
       id:'guidelines/color',
     },
     {
       type: 'doc',
-      id:'guidelines/layout',
+      id:'guidelines/icons',
+    },
+    {
+      type: 'doc',
+      id:'guidelines/illustration',
+    },
+    {
+      type: 'doc',
+      id:'guidelines/spacing',
     },
     {
       type: 'doc',
@@ -34,7 +42,7 @@ module.exports = {
         'pixel/elements/thing',
         'pixel/elements/title'
       ],
-    }, 
+    },
     {
       type: 'category',
       label: 'Wrappers',
