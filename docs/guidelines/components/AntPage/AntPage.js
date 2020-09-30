@@ -12,10 +12,12 @@ import {
 import '@site/static/ant/antd.css';
 import './AntPage.scss';
 
+import '@site/docs/guidelines.scss';
+
 const { Paragraph, Title } = Typography;
 const { Meta } = Card;
 
-const routes = [
+let routes = [
   {
     path: 'index',
     breadcrumbName: 'Design Guidelines',
@@ -26,45 +28,15 @@ const routes = [
   }
 ];
 
-const Paragraphs = ({paragraphs}) => (
-  <>
-    {paragraphs.map(paragraph => {
-      return (
-        <Paragraph>
-          {paragraph}
-        </Paragraph>
-      );
-    })}
-  </>
-);
-
-const contents = (
-  <div>
-    <Paragraph component={Typography.Paragraph}>
-      Our color system complies with four tier inheritance; starting
-      with brand level, colors overiding those of the brand, must belong to to
-      one of the three remaining tiers (business, product, project).
-    </Paragraph>
-    <Paragraph>
-      We prefer to design with the HEX & RGBA color model, as our core
-      deliverables are web based.
-    </Paragraph>
-    <div>
-      <Title className="footer-title" level={4}>Brands</Title>
-    </div>
-  </div>
-)
-
-export const Content = ({ children, extraContent, summary }) => {
+export const Content = ({ children }) => {
   return (
-    <Row>
-      <div style={{ flex: 1 }}>{children}</div>
-    </Row>
+    <div style={{ flex: 1 }}>{children}</div>
   )
 }
 
 
-export default function AntPage ({title, summary, children}) {
+export default function AntPage ({title, icon, summary, children}) {
+  routes[1].breadcrumbName = title;
   return (
     <div layout="page">
       <PageHeader
@@ -72,7 +44,7 @@ export default function AntPage ({title, summary, children}) {
         className="site-page-header"
         tags={<Tag color="blue">Under Development</Tag>}
         avatar={{
-          src: '/icons/sprite/color_palette1.svg',
+          src: `/icons/sprite/${icon}.svg`,
           shape: 'square',
         }}
         breadcrumb={{routes}}
