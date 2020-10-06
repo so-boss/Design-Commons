@@ -46,52 +46,53 @@ const ToolabsApiClient = new ApolloClient({
   }
 ]
 */
-const QUERY_TYPEFACES = gql`
-  {
-    typefaces {
-      name
-      value
+const queries = {
+  TEXTSTYLES: gql`
+    {
+      textstyles {
+        name
+        fontSize
+        lineHeight
+        fontFamily {
+          name
+          value
+        }
+      }
+    }   
+  `,
+  TYPEFACES: gql`
+    {
+      typefaces {
+        name
+        value
+      }
     }
-  }
-`;
-/*
-const schema_typeface = gql`
-  {
-    typeface(id: ID) {
-      name
-      value
-    }
-  }
-`;
+  `
+};
 
-const QUERY_TEXTSTYLES = gql`
-  {
-    textstyles {
-      name
-      fontSize
-    }
-  }
-`;
-*/
 const Tokens = ({def_id, type}) => {
-  const { loading, error, data } = useQuery(QUERY_TYPEFACES);
+  const { loading, error, data } = useQuery(queries[type.toUpperCase()]);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error {JSON.stringify(error, null, 2)}</p>;
 
+  const tokens = {
+    typefaces:<Typefaces typefaces={data[type]}/>,
+    textstyles:<TextStyles textstyles={data[type]}/>
+  };
+
   return (
-    <FontFamily typefaces={data}/>
+      tokens[type]
   );
 };
 
-const TokenTypography = ({typefaces}) => {
-  return (
-    <Typefaces typefaces={typefaces}/>
-  )
-}
+// const TokenTypography = ({typefaces}) => {
+//   return (
+//     <Typefaces typefaces={typefaces}/>
+//   )
+// }
 const Typefaces = ({typefaces}) => (
   <>
     {typefaces.map(typeface => {
-      console.log(typeface.family.name)
       return (
         <Typeface typeface={typeface} />
       );
@@ -107,9 +108,35 @@ const Typeface = ({typeface}) => {
   let style = split_name[2].replace(/\(|\)/g, "");
   return (
     <FontFamily
-      family={typeface.family}
+      family={typeface.value}
       weight={weight}
-      style_name={style}/>
+      style_name={style}
+    />
+  )
+};
+const TextStyles = ({textstyles}) => (
+    <>
+      {textstyles.map(textstyle => {
+        return (
+            <TextStyle textstyle={textstyle} />
+        );
+      })}
+    </>
+);
+const TextStyle = ({textstyle}) => {
+  const split_name = textstyle.name.split("-");
+  let size = parseInt(split_name[1]);
+  if (isNaN(size)) {
+    size = "m"; //def size
+  }
+  //let style = split_name[2].replace(/\(|\)/g, "");
+  return (
+      <div>
+        {textstyle.name}
+        <div>family: {textstyle.fontFamily.value}</div>
+        <div>size: {textstyle.fontSize}</div>
+        <div>line height: {textstyle.lineHeight}</div>
+      </div>
   )
 };
 
@@ -118,11 +145,7 @@ const Typeface = ({typeface}) => {
  */
 export default function Token ({def_id, type, typefaces}) {
   let tokenType;
-  if(type=="typography") {
-    tokenType = <TokenTypography typefaces={typefaces}/>
-  } else {
     tokenType = <Tokens def_id={def_id} type={type}/>
-  }
 
   return (
     <ApolloProvider client={ToolabsApiClient}>
