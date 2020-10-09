@@ -4,7 +4,7 @@ module.exports = {
   url: 'http://dev.csaa.design',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'soboss', // Usually your GitHub org/user name.
+  organizationName: 'so-boss', // Usually your GitHub org/user name.
   projectName: 'Design-Commons', // Usually your repo name.
   themeConfig: {
     //disableDarkMode: true,
