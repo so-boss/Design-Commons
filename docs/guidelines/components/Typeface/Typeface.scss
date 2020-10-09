@@ -1,0 +1,168 @@
+div[font=typeface] {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom:16px;
+  color:rgb(51, 51, 51);
+
+  [face=label] {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    span {
+      font-weight: 400;
+      font-family: 'Roboto', sans-serif;
+    }
+  }
+
+  > div {
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    align-items: center;
+
+    > span:first-child {
+        font-size: 64px;
+        line-height: 100px;
+
+        & + div {
+
+          > div {
+            display:flex;
+          }
+          span {
+            flex:1;
+            &[face=style] {
+              text-transform: uppercase;
+            }
+            &[face=weight] {
+              margin:0 0 0 8px;
+            }
+          }
+          [face=family] {
+            font-family: monospace;
+            max-width: 400px;
+            font-size: 12px;
+            text-align:center;
+          }
+
+          [face=name] {
+
+          }
+        }
+    }
+  }
+}
+
+/*
+[font=family][type="section"] {
+  [type="rows"] {
+    [row] {
+      height: 90px;
+      display: flex;
+
+      [col] {
+        span {
+
+        }
+
+        label {
+          font-size: 13px;
+          color: #999;
+          margin-right: 4px;
+        }
+      }
+
+      [col=character] {
+        width: 136px;
+        flex: initial;
+        display: flex;
+        align-items: center;
+
+        span {
+          display: block;
+          font-size: 90px;
+          color: #565454;
+          line-height: 84px;
+          height: 67px;
+        }
+      }
+
+      [col=preview] {
+        flex: 1;
+
+        > div {
+          display: block;
+          font-size: 18px;
+          margin-right: 16px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          margin-top: -5px;
+
+          > div {
+            flex: 1;
+            display: flex;
+            align-items: center;
+
+            > div {
+              line-height: 40px;
+              height: 24px;
+            }
+          }
+        }
+      }
+
+      [col=properties] {
+        width: 120px;
+        flex: initial;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        > * {
+          display: block;
+          color: #565454;
+          line-height: 1.5;
+          font-size: .9rem;
+
+          flex: 1;
+          display: flex;
+          align-items: center;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: -16px;
+          top: 8px;
+          border-left: 2px solid #eee;
+          height: calc(100% - 16px);
+        }
+
+        [font] {
+
+        }
+
+        [font=name] {
+
+        }
+
+        [font=weight] {
+          span {
+
+          }
+
+        }
+
+        [font=style] {
+          span {
+
+          }
+        }
+      }
+    }
+  }
+}
+*/

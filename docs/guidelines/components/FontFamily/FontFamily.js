@@ -61,7 +61,7 @@ const Properties = ({name, weight, style}) => (
   </Col>
 )
 
-const Font = ({name, weight, style_name}) => {
+const Font = ({name, weight, style_name, preview}) => {
   let fontStyle = style_name;
   if(!fontStyle) {
     fontStyle = "normal";
@@ -76,7 +76,10 @@ const Font = ({name, weight, style_name}) => {
   return (
     <Row type="font">
       <Character style={style} />
-      <Preview style={style} />
+        {
+            preview &&
+                <Preview style={style} />
+        }
       <Properties
         name={name}
         weight={weight}
@@ -86,7 +89,7 @@ const Font = ({name, weight, style_name}) => {
   )
 }
 
-export default function FontFamily ({family, weight, style_name}) {
+export default function FontFamily ({family, weight, style_name, preview}) {
   if(!family) {
     family = {
       name:"Raleway"
@@ -96,9 +99,10 @@ export default function FontFamily ({family, weight, style_name}) {
     <div font="family" type="section">
       <Rows>
         <Font
-          name={family.name}
+          name={family}
           weight={weight}
           style_name={style_name}
+          preview={preview}
         />
       </Rows>
     </div>
