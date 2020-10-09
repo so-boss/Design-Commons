@@ -13,11 +13,6 @@ import {
   Typeface
 } from '@site/docs/guidelines/components';
 
-import { typography } from '@site/static/genesis';
-// import {
-//   brands,
-// } from '@site/docs/guidelines/palettes'
-
 import {
   CSAA,
   Mobilitas

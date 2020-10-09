@@ -12,10 +12,6 @@ import {
 } from '@site/docs/guidelines/components';
 
 import {
-  brands,
-} from '@site/docs/guidelines/palettes'
-
-import {
   CSAA,
 } from '@site/docs/guidelines/color/index';
 

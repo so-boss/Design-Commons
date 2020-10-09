@@ -3,10 +3,8 @@ import React from "react";
 import {
   Tag,
   PageHeader,
-  Avatar,
   Card,
   Typography,
-  Row
 } from 'antd';
 
 import '@site/static/ant/antd.css';
@@ -14,29 +12,28 @@ import './AntPage.scss';
 
 import '@site/docs/guidelines.scss';
 
-const { Paragraph, Title } = Typography;
-const { Meta } = Card;
-
-let routes = [
-  {
-    path: 'index',
-    breadcrumbName: 'Design Guidelines',
-  },
-  {
-    path: 'first',
-    breadcrumbName: 'Color',
-  }
-];
-
-export const Content = ({ children }) => {
-  return (
-    <div style={{ flex: 1 }}>{children}</div>
-  )
-}
-
-
 export default function AntPage ({title, icon, summary, children}) {
-  routes[1].breadcrumbName = title;
+  const Content = ({ children }) => {
+    return (
+      <div style={{ flex: 1 }}>{children}</div>
+    )
+  }
+
+
+  let routes = [
+    {
+      path: 'index',
+      breadcrumbName: 'Design Guidelines',
+    }
+  ];
+
+  if(title) {
+    routes.push({
+      path: 'first',
+      breadcrumbName: title,
+    })
+  }
+
   return (
     <div layout="page">
       <PageHeader

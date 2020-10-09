@@ -4,7 +4,7 @@ module.exports = {
   url: 'http://dev.csaa.design',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'so-boss', // Usually your GitHub org/user name.
+  organizationName: 'soboss', // Usually your GitHub org/user name.
   projectName: 'Design-Commons', // Usually your repo name.
   themeConfig: {
     //disableDarkMode: true,
@@ -20,24 +20,7 @@ module.exports = {
           activeBasePath: 'docs',
           label: 'Design',
           position: 'left',
-        },
-        {
-          to: 'docs/guidelines/content',
-          activeBasePath: 'docs',
-          label: 'Content',
-          position: 'left',
-        },
-        {
-          to: 'docs/pixel',
-          activeBasePath: 'docs',
-          label: 'Components',
-          position: 'left',
-        },
-        {
-          href: 'https://github.com/so-boss/Design-Commons',
-          label: 'GitHub',
-          position: 'right',
-        },
+        }
       ],
     },
     footer: {
@@ -53,15 +36,7 @@ module.exports = {
             {
               label: 'Typography',
               to: 'docs/guidelines/typography',
-            },
-            {
-              label: 'Icons',
-              to: 'docs/guidelines/icons',
-            },
-            {
-              label: 'Spacing',
-              to: 'docs/guidelines/spacing',
-            },
+            }
           ],
         },
       ],
@@ -95,5 +70,5 @@ module.exports = {
   plugins: [
     'docusaurus-plugin-sass',
   ],
-  themes: [require.resolve('@docusaurus/theme-live-codeblock')]
+  themes: []
 };
