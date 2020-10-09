@@ -1,7 +1,7 @@
 module.exports = {
   title: 'csaa design docs',
   tagline: '',
-  url: 'https://github.com/so-boss',
+  url: 'http://dev.csaa.design',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'so-boss', // Usually your GitHub org/user name.
