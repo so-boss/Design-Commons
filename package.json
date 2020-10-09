@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.1",
-    "@docusaurus/core": "2.0.0-alpha.65",
     "@docusaurus/plugin-client-redirects": "2.0.0-alpha.65",
     "@docusaurus/plugin-content-docs": "^2.0.0-alpha.65",
     "@docusaurus/plugin-content-pages": "^2.0.0-alpha.65",
@@ -26,8 +25,10 @@
     "docusaurus-plugin-sass": "^0.1.11",
     "graphql": "15.3.0",
     "jsonpath": "^1.0.2",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "sass-loader": "^10.0.3"
   },
   "browserslist": {
     "production": [
@@ -44,5 +45,8 @@
   "devDependencies": {
     "react-color-tools": "^1.0.0",
     "webpack": "^4.44.2"
+  },
+  "peerDependencies": {
+    "@docusaurus/core": "2.0.0-alpha.65"
   }
 }
