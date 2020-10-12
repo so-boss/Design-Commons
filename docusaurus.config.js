@@ -5,7 +5,7 @@ module.exports = {
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'so-boss', // Usually your GitHub org/user name.
-  projectName: 'Design-Commons', // Usually your repo name.
+  projectName: 'Design-Commons-D', // Usually your repo name.
   themeConfig: {
     //disableDarkMode: true,
     navbar: {
@@ -54,6 +54,7 @@ module.exports = {
           // It is recommended to set document id as docs home page (`docs/` path).
           //homePageId: '/',
           // slug: "/",
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           //path: 'design',
           admonitions: {},

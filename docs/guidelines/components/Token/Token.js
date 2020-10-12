@@ -1,35 +1,15 @@
 import React from "react";
 import {
-  ApolloProvider,
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
+  ApolloConsumer,
   gql,
   useQuery
 } from '@apollo/client';
 
-
-
-import jp from 'jsonpath';
-
 import {
-  ColorTable,
   FontFamily,
-  FontSize
 } from '@site/docs/guidelines/components';
 
 import './Token.scss';
-
-const ToolabsApiClient = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: "https://xdapi.toolabs.com/graphql",
-    headers: {
-      "x-toolabs-token": "0781d947-72ac-464f-b46d-aa37c7e4ebb3"
-    }
-  })
-});
-
 /*
 [
   {
@@ -148,8 +128,8 @@ export default function Token ({def_id, type, typefaces}) {
     tokenType = <Tokens def_id={def_id} type={type}/>
 
   return (
-    <ApolloProvider client={ToolabsApiClient}>
-      {tokenType}
-    </ApolloProvider>
+    <ApolloConsumer>
+      {client => tokenType}
+    </ApolloConsumer>
   );
 }

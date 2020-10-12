@@ -14,8 +14,7 @@ import {
 } from '@site/docs/guidelines/components';
 
 import {
-  CSAA,
-  Mobilitas
+  CSAA
 } from '@site/docs/guidelines/typography/index';
 
 const { Paragraph, Title } = Typography;
@@ -47,51 +46,6 @@ export default function Brands () {
         <Token type="textstyles" />
         <Title level={4}>Sizes</Title>
         <Paragraph>Our base font size is 14px to ensure the best user reading efficiency on most common monitors based on display screen reading distance (50 cm) and optimal reading angle (0.3).</Paragraph>
-        <FontSize sizes={[
-          {
-            label:"L / LARGEST (24px)",
-            size:"24px"
-          },
-          {
-            label:"M / MEDIUM (16px)",
-            size:"16px"
-          },
-          {
-            label:"S / SMALL (14px)",
-            size:"14px"
-          },
-          {
-            label:"XS / SMALLEST (12px)",
-            size:"12px"
-          }
-        ]}/>
-        <CSAA />
-      </TabItem>
-      <TabItem value="mobilitas">
-        <FontFamily />
-        <FontSize sizes={[
-          {
-            label:"XXL / LARGEST (48px)",
-            size:"48px"
-          },
-          {
-            label:"XL / EXTRA LARGE (28px)",
-            size:"28px"
-          },
-          {
-            label:"L / LARGE (18px)",
-            size:"18px"
-          },
-          {
-            label:"S / SMALL (16px)",
-            size:"16px"
-          },
-          {
-            label:"XS / SMALLEST (14px)",
-            size:"14px"
-          }
-        ]}/>
-        <Mobilitas />
       </TabItem>
     </Tabs>
   );

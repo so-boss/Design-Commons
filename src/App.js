@@ -1,6 +1,8 @@
 // src/App.js
 import React from 'react'
+
 import {MDXProvider} from '@mdx-js/react'
+
 const components = {
   wrapper: props => (
     <div style={{padding: '20px', backgroundColor: 'tomato'}}>
@@ -9,7 +11,7 @@ const components = {
   )
 }
 export default props => (
-  <MDXProvider components={components}>
-    <main {...props} />
-  </MDXProvider>
+    <MDXProvider components={components}>
+        <main {...props} />
+    </MDXProvider>
 )

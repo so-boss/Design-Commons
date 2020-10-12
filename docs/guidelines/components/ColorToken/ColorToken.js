@@ -1,11 +1,8 @@
 import React from "react";
 import {
-  ApolloProvider,
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
   gql,
-  useQuery
+  useQuery,
+  ApolloConsumer
 } from '@apollo/client';
 
 import jp from 'jsonpath';
@@ -15,16 +12,6 @@ import {
 } from '@site/docs/guidelines/components';
 
 import './ColorToken.scss';
-
-const ToolabsApiClient = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: "https://xdapi.toolabs.com/graphql",
-    headers: {
-      "x-toolabs-token": "0781d947-72ac-464f-b46d-aa37c7e4ebb3"
-    }
-  })
-});
 
 const QUERY_COLORS = gql`
   {
@@ -87,14 +74,16 @@ const ColorTokens = ({def_id, type}) => {
   );
 };
 
-
 /*
     <ColorToken def_id="white" type="brand"/>
  */
 export default function ColorToken ({def_id, type}) {
   return (
-    <ApolloProvider client={ToolabsApiClient}>
-      <ColorTokens def_id={def_id} type={type}/>
-    </ApolloProvider>
+    <ApolloConsumer>
+      {client => (
+        <ColorTokens def_id={def_id} type={type}/>
+        )
+      }
+    </ApolloConsumer>
   );
 };

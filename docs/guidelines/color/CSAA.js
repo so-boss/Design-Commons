@@ -56,15 +56,3 @@ export default function CSAA () {
       </div>
   );
 }
-
-/**
- *             <Title level={4}>Additional Product Colors</Title>
- <ColorTable colors={products.mypolicy.colors} tier="mypolicy" />
- <Title level={4}>Hover States</Title>
- <ColorTable colors={products.mypolicy.hovers} tier="mypolicy" />
- <Title level={4}>Neutrals</Title>
- <ColorTable colors={products.mypolicy.neutrals} tier="mypolicy" />
- <Title level={3}>Deprecated Colors</Title>
- <p>Migrated to a nearest neighbor. We want these gone.</p>
- <ColorTable colors={products.mypolicy.oldies} tier="mypolicy" />
- */
