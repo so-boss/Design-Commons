@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 import {
   ColorToken
-} from '@site/docs/guidelines/components';
+} from '@site/src/components';
 
 import {
   CSAA,

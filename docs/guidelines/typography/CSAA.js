@@ -10,9 +10,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import {
-  FontFamily,
   FontSize
-} from '@site/docs/guidelines/components';
+} from '@site/src/components';;
 
 
 //      <Title level={4}>Full Color Spectrum</Title>
@@ -40,13 +39,13 @@ export default function CSAA () {
             description: 'Best Practices'
           }
         ]}>
-        <TabItem value="mypolicy">
+        <TabItem value="typefaces">
           <Title level={4}>Additional Product Typography</Title>
         </TabItem>
-        <TabItem value="quote">
+        <TabItem value="text_styles">
           <Title level={4}>Additional Product Typography</Title>
         </TabItem>
-        <TabItem value="insurance_portal">
+        <TabItem value="accessibility">
           <Title level={4}>Additional Product Typography</Title>
           <Paragraph>IP's base font size is <b>14px</b> to ensure the best user reading efficiency on most common monitors based on display screen reading distance (50 cm) and optimal reading angle (0.3).</Paragraph>
           <FontSize sizes={[

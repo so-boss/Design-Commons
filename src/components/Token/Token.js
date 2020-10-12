@@ -3,12 +3,11 @@ import {
   ApolloConsumer,
   gql,
   useQuery,
-  useLazyQuery,
 } from '@apollo/client';
 
 import {
   FontFamily,
-} from '@site/docs/guidelines/components';
+} from '../';
 
 import './Token.scss';
 /*
@@ -29,7 +28,7 @@ import './Token.scss';
 */
 const queries = {
   TEXTSTYLES: gql`
-    {
+    query GET_TEXTSTYLES {
       textstyles {
         name
         fontSize
@@ -42,7 +41,7 @@ const queries = {
     }   
   `,
   TYPEFACES: gql`
-    {
+    query GET_TYPEFACES {
       typefaces {
         name
         value
@@ -52,7 +51,7 @@ const queries = {
 };
 
 const Tokens = ({def_id, type}) => {
-  const { loading, error, data } = useLazyQuery(queries[type.toUpperCase()]);
+  const { loading, error, data } = useQuery(queries[type.toUpperCase()]);
   if (loading) return <p>Loading...</p>;
   //if (error) return <p>Error {JSON.stringify(error, null, 2)}</p>;
 

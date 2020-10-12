@@ -16,8 +16,7 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/guidelines/color',
-          activeBasePath: 'docs',
+          to: '/',
           label: 'Design',
           position: 'left',
         }
@@ -25,21 +24,21 @@ module.exports = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: 'Design Guidelines',
-          items: [
-            {
-              label: 'Color',
-              to: 'docs/guidelines/color',
-            },
-            {
-              label: 'Typography',
-              to: 'docs/guidelines/typography',
-            }
-          ],
-        },
-      ],
+      // links: [
+      //   {
+      //     title: 'Design Guidelines',
+      //     items: [
+      //       {
+      //         label: 'Color',
+      //         to: 'docs/guidelines/color',
+      //       },
+      //       {
+      //         label: 'Typography',
+      //         to: 'docs/guidelines/typography',
+      //       }
+      //     ],
+      //   },
+      // ],
       //copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     colorMode:{
@@ -54,7 +53,6 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           //path: 'design',
-          admonitions: {},
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),

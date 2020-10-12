@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 import {
   Typeface
-} from '@site/docs/guidelines/components';
+} from '@site/src/components';;
 
 // import {
 //   CSAA

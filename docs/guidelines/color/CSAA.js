@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 import {
   ColorToken
-} from '@site/docs/guidelines/components';
+} from '@site/src/components';
 
 // import {
 //   products
@@ -26,19 +26,19 @@ export default function CSAA () {
           values={[
             {
               label: 'Blues',
-              icon: "blues",
+              // icon: "blues",
               value: 'blues',
               description: "Actionable"
             },
             {
               label: 'Greys',
-              icon: "greys",
+              // icon: "greys",
               value: 'greys',
               description: "Readable"
             },
             {
               label: 'Accents',
-              icon: "accents",
+              // icon: "accents",
               value: 'accents',
               description: "Noticeable"
             },

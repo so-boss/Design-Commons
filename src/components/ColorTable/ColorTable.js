@@ -5,7 +5,7 @@ import { utils } from 'react-color-tools'
 import {
   ColorSquare,
   ColorProperty
-} from '@site/docs/guidelines/components'
+} from '../';
 
 import './ColorTable.scss';
 

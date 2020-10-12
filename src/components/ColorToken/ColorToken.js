@@ -2,20 +2,20 @@ import React from "react";
 import {
   gql,
   useQuery,
-  useLazyQuery,
   ApolloConsumer
 } from '@apollo/client';
 
-import jp from 'jsonpath';
+//`var jp = require('jsonpath');
+import {JSONPath} from 'jsonpath-plus';
 
 import {
   ColorTable
-} from '@site/docs/guidelines/components';
+} from '../';;
 
 import './ColorToken.scss';
 
 const QUERY_COLORS = gql`
-  {
+  query GET_COLORS {
     colors {
       name
       hex
@@ -25,6 +25,7 @@ const QUERY_COLORS = gql`
 `;
 
 const sort_spectrum = (spectrum) => {
+  console.log(spectrum.length)
   let i;
 
   function comparator(a, b){
@@ -44,20 +45,30 @@ const sort_spectrum = (spectrum) => {
       return 0;
     }
   }
-
+  if (spectrum.length<2) {
+    console.log("dont sort", spectrum)
+    return spectrum;
+  }
+  console.log("sort", spectrum)
   return spectrum.sort(comparator);
 }
 
 const ColorTokens = ({def_id, type}) => {
-  const { loading, error, data } = useLazyQuery(QUERY_COLORS);
+  const { loading, error, data } = useQuery(QUERY_COLORS);
   if (loading) return <p>Loading...</p>;
 
+  console.log("COLOR TOKENS", def_id, type, data.colors)
   //let def_id = "blue";
   let regex = new RegExp(`\\b${def_id}\\b`, 'i');
 
-  let results = jp.query(data, '$..[?('+regex+'.test(@.name))]');
-  let sorted = sort_spectrum(results);
+  //let results = jp.query(data.colors, '$..[?('+regex+'.test(@.name))]');
+  let results = JSONPath({
+    path:'$..[?('+regex+'.test(@.name))]',
+    json: data.colors
+  });
 
+  let sorted = sort_spectrum(results);
+  console.log("SORTED RESULTS", results)
   let filtered = [];
   if(type==="brand") {
     filtered = sorted.filter(function (color) {
