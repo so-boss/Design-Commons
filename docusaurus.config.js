@@ -1,7 +1,7 @@
 module.exports = {
   title: 'csaa design docs',
   tagline: '',
-  url: 'https://design-commons.onrender.com',
+  url: 'https://design-commons-d.onrender.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'so-boss', // Usually your GitHub org/user name.
