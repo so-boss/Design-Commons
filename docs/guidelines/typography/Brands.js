@@ -7,15 +7,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import {
-  FontFamily,
-  FontSize,
-  Token,
   Typeface
 } from '@site/docs/guidelines/components';
 
-import {
-  CSAA
-} from '@site/docs/guidelines/typography/index';
+// import {
+//   CSAA
+// } from '@site/docs/guidelines/typography/index';
 
 const { Paragraph, Title } = Typography;
 
@@ -42,10 +39,6 @@ export default function Brands () {
         <Title level={4}>RT Raleway</Title>
         <Typeface family="cabin" style="Regular" weight="400"/>
         <Typeface family="cabin" style="Bold" weight="700"/>
-        <Token type="typefaces" />
-        <Token type="textstyles" />
-        <Title level={4}>Sizes</Title>
-        <Paragraph>Our base font size is 14px to ensure the best user reading efficiency on most common monitors based on display screen reading distance (50 cm) and optimal reading angle (0.3).</Paragraph>
       </TabItem>
     </Tabs>
   );

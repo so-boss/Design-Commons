@@ -3,9 +3,7 @@ import {
   ApolloProvider,
   ApolloClient,
   HttpLink,
-  InMemoryCache,
-  gql,
-  useQuery
+  InMemoryCache
 } from '@apollo/client';
 
 import OriginalLayout from '@theme-original/Layout';

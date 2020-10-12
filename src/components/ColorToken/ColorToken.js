@@ -2,6 +2,7 @@ import React from "react";
 import {
   gql,
   useQuery,
+  useLazyQuery,
   ApolloConsumer
 } from '@apollo/client';
 
@@ -48,7 +49,7 @@ const sort_spectrum = (spectrum) => {
 }
 
 const ColorTokens = ({def_id, type}) => {
-  const { loading, error, data } = useQuery(QUERY_COLORS);
+  const { loading, error, data } = useLazyQuery(QUERY_COLORS);
   if (loading) return <p>Loading...</p>;
 
   //let def_id = "blue";
