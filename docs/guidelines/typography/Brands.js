@@ -39,6 +39,8 @@ export default function Brands () {
         <Title level={4}>RT Raleway</Title>
         <Typeface family="rtraleway" style="Regular" weight="400"/>
         <Typeface family="rtraleway" style="Bold" weight="700"/>
+
+        <Title level={4}>RT Raleway</Title>
         <Typeface family="cabin" style="Regular" weight="400"/>
         <Typeface family="cabin" style="Bold" weight="700"/>
         <Token type="typefaces" />
