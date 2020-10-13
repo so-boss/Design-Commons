@@ -11,6 +11,10 @@ const TableOfContents = () => {
     }
   `)
 
+  if(result.mdx===null) {
+    return (<></>);
+  }
+
   const toc = result.mdx.tableOfContents.items[0].items[2].items || false
 
   return (
