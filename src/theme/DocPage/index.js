@@ -5,15 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 import React from 'react';
-import {
-  ApolloProvider,
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
-  ApolloLink,
-  concat
-} from '@apollo/client';
-
 import {MDXProvider} from '@mdx-js/react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import renderRoutes from '@docusaurus/renderRoutes';
@@ -25,34 +16,18 @@ import {matchPath} from '@docusaurus/router';
 import Head from '@docusaurus/Head';
 import styles from './styles.module.css';
 
-const httpLink = new HttpLink({
-  uri: "https://xdapi.toolabs.com/graphql"
-});
-const authMiddleware = new ApolloLink((operation, forward) => {
-  // add the authorization to the headers
-  operation.setContext({
-    headers: {
-      "x-toolabs-token":"0781d947-72ac-464f-b46d-aa37c7e4ebb3"
-    }
-  });
 
-  return forward(operation);
-});
+import {
+  ApolloProvider
+} from '@apollo/client';
 
-const ToolabsApiClient = new ApolloClient({
-  cache: new InMemoryCache(),
-  link:concat(authMiddleware, httpLink)
-})
-
-// const ToolabsApiClient = new ApolloClient({
-//   cache: new InMemoryCache(),
-//   uri: "https://xdapi.toolabs.com/graphql",
-//   headers: {
-//     "x-toolabs-token":"0781d947-72ac-464f-b46d-aa37c7e4ebb3"
-//   }
-//     // fetch: fetch
-// });
-
+import {
+  network,
+  environment,
+  client,
+  store,
+  source
+} from './../../client'
 // This theme is not coupled to Algolia, but can we do something else?
 // Note the last version is also indexed with "last", to avoid breaking search on new releases
 // See https://github.com/facebook/docusaurus/issues/3391
@@ -121,11 +96,11 @@ function DocPage(props) {
   }
 
   return (
-    <ApolloProvider client={ToolabsApiClient}>
+    <ApolloProvider client={client}>
       <DocPageContent
         currentDocRoute={currentDocRoute}
         versionMetadata={versionMetadata}>
-        {renderRoutes(docRoutes)}
+          {renderRoutes(docRoutes)}
       </DocPageContent>
     </ApolloProvider>
   );

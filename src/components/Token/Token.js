@@ -10,22 +10,6 @@ import {
 } from '../';
 
 import './Token.scss';
-/*
-[
-  {
-    name: "Default Font",
-    value: "Raleway"
-  },
-  {
-    name: "Raleway 700",
-    value: "Raleway"
-  },
-  {
-    name: "Cabin regular",
-    value: "Cabin"
-  }
-]
-*/
 const queries = {
   TEXTSTYLES: gql`
     query GET_TEXTSTYLES {

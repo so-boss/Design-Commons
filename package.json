@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start --port 80",
+    "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "serve": "docusaurus serve --build --port 80 --host 0.0.0.0",
-    "version": "docusaurus doc:version"
+    "serve": "docusaurus serve --build --port 8080",
+    "version": "docusaurus doc:version",
+    "relay": "relay-compiler",
+    "relay-jsx": "relay-compiler --src ./src --schema ./schema.graphql --extensions js jsx"
   },
   "dependencies": {
     "@apollo/client": "^3.2.3",
@@ -23,16 +25,20 @@
     "@docusaurus/preset-classic": "2.0.0-alpha.65",
     "@docusaurus/theme-live-codeblock": "2.0.0-alpha.65",
     "antd": "^4.3.0",
+    "apollo-link": "^1.2.14",
+    "apollo-link-http": "^1.5.17",
     "classnames": "^2.2.6",
     "docusaurus-plugin-sass": "^0.1.11",
     "file-loader": "^6.1.1",
+    "graphiql": "^1.0.5",
+    "graphql": "^15.3.0",
     "jsonpath": "^1.0.2",
     "jsonpath-plus": "^4.0.0",
     "node-fetch": "^2.6.1",
     "node-sass": "^4.14.1",
-    "offix-client": "^0.15.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "relay-runtime": "^10.0.1",
     "typescript": "^4.0.3"
   },
   "browserslist": {
@@ -48,13 +54,10 @@
     ]
   },
   "devDependencies": {
-    "graphql": "^15.3.0",
     "react-color-tools": "^1.0.0",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.3",
-    "ts-loader": "^8.0.4",
-    "webpack": "^4.44.2",
-    "webpack-graphql-loader": "^1.0.2"
+    "webpack": "^4.44.2"
   },
   "peerDependencies": {
     "@docusaurus/core": "2.0.0-alpha.65"

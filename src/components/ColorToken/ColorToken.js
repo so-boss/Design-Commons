@@ -54,7 +54,7 @@ const sort_spectrum = (spectrum) => {
 }
 
 const ColorTokens = ({def_id, type}) => {
-  const { loading, error, data } = useQuery(QUERY_COLORS);
+  const { loading, data } = useQuery(QUERY_COLORS);
   if (loading) return <p>Loading...</p>;
 
   console.log("COLOR TOKENS", def_id, type, data.colors)
@@ -68,7 +68,7 @@ const ColorTokens = ({def_id, type}) => {
   });
 
   let sorted = sort_spectrum(results);
-  console.log("SORTED RESULTS", results)
+  console.log("SORTED")
   let filtered = [];
   if(type==="brand") {
     filtered = sorted.filter(function (color) {
