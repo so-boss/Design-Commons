@@ -82,12 +82,12 @@ module.exports = {
         cachePublic: true
       }
     },
-    {
-      resolve: 'gatsby-plugin-netlify-identity-widget',
-      options: {
-        container: '#netlify-modal'
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-netlify-identity-widget',
+    //   options: {
+    //     container: '#netlify-modal'
+    //   }
+    // },
     shouldAnalyseBundle && {
       resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
       options: {
