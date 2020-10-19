@@ -20,7 +20,7 @@ import {
 } from "@lekoarts/gatsby-theme-specimens"
 
 import FontSize from "./../../src/components/FontSize"
-import TypeFace from "./../../src/components/TypeFace/index"
+import Typeface from "./../../src/components/Typeface/index"
 
 import { useTypography } from './../../src/hooks/use-typography.js';
 import './../../src/css/custom.scss'
@@ -28,12 +28,12 @@ import './../../src/css/custom.scss'
 export default function Home() {
   //const { sortedColors } = useSortedColors("blue","color");
   const typefaces = useTypography().typefaces;
-  console.log("comp", typefaces)
+
   return (
     <>
       {
         typefaces.map((typeface) => (
-          <TypeFace
+          <Typeface
             family={typeface.family}
             style={typeface.style_name}
             weight={typeface.weight}

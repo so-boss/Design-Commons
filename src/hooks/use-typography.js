@@ -33,7 +33,6 @@ const getTypefaces = (typefaces) => {
   //const mappedTypefaces = _.map(typefaces, 'value');
   let a = [];
   _.forEach(typefaces, function(typeface) {
-    console.log(getTypeface(typeface))
     a.push(getTypeface(typeface))
   })
 
