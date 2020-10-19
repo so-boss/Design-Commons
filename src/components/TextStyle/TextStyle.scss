@@ -1,10 +1,15 @@
 div[font=textstyle] {
   display:flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 0px;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 15px;
+  max-width: 700px;
+  padding:8px 8px;
 
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
   [suffix] {
     &:after {
       content:attr(suffix);
