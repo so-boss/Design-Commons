@@ -37,8 +37,18 @@ export default function Home() {
 
   return (
     <AntPage title="Typography" icon="typography">
-      <Paragraph>The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA. Text colors displayed in light or dark tints represent CSAA's recommended accessible pairing with the color.</Paragraph>
-      <Title level={4}>Font: Cabin</Title>
+      {/*<Paragraph>The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA. Text colors displayed in light or dark tints represent CSAA's recommended accessible pairing with the color.</Paragraph>*/}
+      <Title level={2}>Font: RT Raleway</Title>
+      <Typeface typefaces={useTypography("rtraleway").typefaces} />
+      <Title level={4}>Sizes</Title>
+      <FontSize
+        family="Cabin"
+        sizes={typography.fontsizes.rtraleway}
+      />
+      <Title level={4}>Text Styles</Title>
+      <TextStyle textstyles={typography.textstyles.rtraleway}/>
+
+      <Title level={2}>Font: Cabin</Title>
       <Typeface typefaces={useTypography("cabin").typefaces} />
       <Title level={4}>Sizes</Title>
       <FontSize
