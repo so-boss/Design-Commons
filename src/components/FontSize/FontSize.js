@@ -5,8 +5,11 @@ const Size = ({name, token, size}) => {
   console.log(name)
   return (
     <div token={token}>
-      <span>{size}</span>
-      <span>{name.short||name.long}</span>
+      <div>
+        <span style={{fontSize: size}}>a</span>
+        <label>{parseInt(size)}</label>
+      </div>
+      <label>{name.short||name.long}</label>
     </div>
   )
 };
@@ -29,9 +32,9 @@ const Sizes = ({sizes}) => {
 
 const FontSize = ({family, sizes}) => {
   return (
-    <div>
+    <div font="size">
       <Sizes sizes={sizes} />
-      <span>{family}</span>
+      {/*<span>{family}</span>*/}
     </div>
   )
 }

@@ -1,3 +1,33 @@
-div[font=size] {
+[font=size] {
+  > div {
+    display:flex;
+    div[token] {
+      flex:1;
+      > div {
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        span {
+           + label {
 
+           }
+        }
+      }
+      span {
+        //&:after {
+        //  content:attr(fontsize);
+        //  font-size:12px;
+        //}
+        font-size:12px;
+        + label {
+
+        }
+      }
+
+      + label {
+        text-transform:uppercase;
+      }
+    }
+  }
 }
