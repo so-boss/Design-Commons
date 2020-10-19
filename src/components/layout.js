@@ -56,6 +56,9 @@ const Layout = ({ children }) => {
             border: 0;
             margin: 0;
             padding: 0;
+            font-family:sans-serif;
+            color:black;
+            font-weight:500;
           }
           h1,
           h2,
