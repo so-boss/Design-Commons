@@ -1,17 +1,17 @@
 import { useStaticQuery, graphql } from "gatsby"
 import _ from "lodash";
-import {sorter} from './../../src/components/color_utils';
-import React from "react";
+// import {sorter} from './../../src/components/color_utils';
+import maps from "./../../src/components/data/maps";
 
-const rename = (obj, key, newKey) => {
-  if(_.includes(_.keys(obj), key)) {
-    obj[newKey] = _.clone(obj[key], true);
-
-    delete obj[key];
-  }
-
-  return obj;
-};
+// const rename = (obj, key, newKey) => {
+//   if(_.includes(_.keys(obj), key)) {
+//     obj[newKey] = _.clone(obj[key], true);
+//
+//     delete obj[key];
+//   }
+//
+//   return obj;
+// };
 
 
 const getTypeface = (typeface) => {
@@ -29,27 +29,47 @@ const getTypeface = (typeface) => {
   };
 };
 
-const getTypefaces = (typefaces) => {
-  //const mappedTypefaces = _.map(typefaces, 'value');
+const getTypefaces = (typefaces, filterFor) => {
   let a = [];
   _.forEach(typefaces, function(typeface) {
-    a.push(getTypeface(typeface))
+    if(filterFor) {
+      if(typeface.value.toLowerCase()===filterFor.toLowerCase()) {
+        a.push(getTypeface(typeface))
+      }
+    } else {
+      a.push(getTypeface(typeface))
+    }
   })
 
   return a;
 }
 
 
-const getFontSizes = (textstyles) => {
+const getTextStyles = (textstyles, type) => {
   let fontSizes = {};
   _.forEach(textstyles, function(textstyle) {
     let family = fontSizes[textstyle.fontFamily.value];
     if (!family) {
       family = fontSizes[textstyle.fontFamily.value] = [];
     }
+
+    let name;
+    if(type==="fontSizes") {
+      name = textstyle.name.split("-")[1]||textstyle.name;
+    } else {
+      name = {};
+      let short = name.short = textstyle.name.split("-")[1]||textstyle.name;
+
+      if(maps.sizes[short]) {
+        name.long = maps.sizes[short];
+      }
+    }
+
     family.push({
+      ...getTypeface(textstyle.fontFamily),
       size:textstyle.fontSize,
-      name:textstyle.name.split("-")[1],
+      lineHeight:textstyle.lineHeight,
+      name:name,
       token:textstyle.name
     });
   });
@@ -57,8 +77,7 @@ const getFontSizes = (textstyles) => {
   return fontSizes;
 }
 
-
-export const useTypography = (def_id, type) => {
+export const useTypography = (filterFor) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -92,7 +111,8 @@ export const useTypography = (def_id, type) => {
 
 
   return {
-    typefaces: getTypefaces(data.toollabs.typefaces),
-    fontSizes: getFontSizes(data.toollabs.textstyles)
+    typefaces: getTypefaces(data.toollabs.typefaces, filterFor),
+    fontsizes: getTextStyles(data.toollabs.textstyles, "FontSizes"),
+    textstyles: getTextStyles(data.toollabs.textstyles)
   };
 }

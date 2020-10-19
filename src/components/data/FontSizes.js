@@ -15,7 +15,6 @@ export const useFontSizes = () => {
     `
   )
 
-  console.log(toollabs)
   const textStyles = toollabs.textstyles;
   const sizes = _.map(textStyles, 'fontSize');
 
