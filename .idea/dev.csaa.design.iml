@@ -14,8 +14,7 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
-    <content url="file://$MODULE_DIR$/../gatsby/csaa.design" />
-    <content url="file://$MODULE_DIR$/../gatsby/dev.csaa.design" />
+    <content url="file://$MODULE_DIR$/../gatsby/Design-Commons" />
     <content url="file://$MODULE_DIR$/../genesis" />
     <content url="file://$MODULE_DIR$/../hello" />
     <content url="file://$MODULE_DIR$/../icons">

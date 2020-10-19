@@ -4,6 +4,7 @@ date: "2019-05-04"
 title: "Color Components"
 ---
 
+import { graphql } from "gatsby";
 import { theme } from "../../theme";
 import {
   normalizeThemeUIColors,
@@ -11,6 +12,21 @@ import {
 } from "@lekoarts/gatsby-theme-specimens";
 
 import { useFontSizes } from './../../src/hooks/use-font-sizes';
+import {sorter} from './../../src/components/color_utils';
+
+
+export const query = graphql`
+  query {
+    toollabs {
+      colors {
+        name
+        hex
+        rgb
+      }
+    }
+  }
+`;
+
 
 
 ## Color Row
