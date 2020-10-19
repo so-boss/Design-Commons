@@ -7,7 +7,7 @@ import {
   // BorderRadius,
   // ColorFamilies,
   // ColorRow,
-  ColorSwatch,
+  //ColorSwatch,
   // Download,
   // FontFamily,
   // FontSize,
@@ -19,13 +19,25 @@ import {
   // Table,
   // Video,
 } from "@lekoarts/gatsby-theme-specimens"
-import {Typography} from "antd";
-import {AntPage} from "./../../src/components/"
+import {Typography, Tabs, Card, Avatar} from "antd";
+import {AntPage} from "./../../src/components/";
 
 import { useSortedColors } from './../../src/hooks/use-sorted-colors';
 import './../../src/css/custom.scss'
 
 const { Paragraph, Title } = Typography;
+const { TabPane } = Tabs;
+const { Meta } = Card;
+
+const TabCard = ({icon, label, description}) => (
+  <Card bordered={true} hoverable={true}>
+    <Meta
+      avatar={<Avatar src={`/icons/${icon||label}.png`} />}
+      title={label}
+      description={description}
+    />
+  </Card>
+)
 
 export default function Home() {
   //const { sortedColors } = useSortedColors("blue","color");
@@ -52,19 +64,53 @@ export default function Home() {
         colors={useSortedColors("red","brand")}
         mode="swatch"
       />
-      <Title level={2}>Spectrum</Title>
-      <Title level={3}>Blues</Title>
-      <Palette
-        colors={useSortedColors("blue","color")}
-      />
-      <Title level={3}>Greys</Title>
-      <Palette
-        colors={useSortedColors("grey","color")}
-      />
-      <Title level={3}>Reds</Title>
-      <Palette
-        colors={useSortedColors("red","color")}
-      />
+
+      <div layout="panel">
+        <Title level={2}>Full Color Spectrum</Title>
+        <Tabs defaultActiveKey="1">
+          <TabPane
+            tab={
+              <TabCard
+                label="Blues"
+                icon="blues"
+                value="blues"
+                description="Actionable"
+              />
+            }
+            key="1"
+          >
+            <Palette colors={useSortedColors("blue","color")}/>
+          </TabPane>
+
+          <TabPane
+            tab={
+              <TabCard
+                label="Greys"
+                icon="greys"
+                value="greys"
+                description="Readable"
+              />
+            }
+            key="2"
+          >
+            <Palette colors={useSortedColors("grey","color")}/>
+          </TabPane>
+
+          <TabPane
+            tab={
+              <TabCard
+                label="Accents"
+                icon="accents"
+                value="accents"
+                description="Noticeable"
+              />
+            }
+            key="3"
+          >
+            <Palette colors={useSortedColors("red","color")}/>
+          </TabPane>
+        </Tabs>
+      </div>
     </AntPage>
   )
 }
