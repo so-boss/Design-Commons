@@ -19,6 +19,7 @@ import {
   Video,
 } from "@lekoarts/gatsby-theme-specimens"
 import { useSortedColors } from './../../src/hooks/use-sorted-colors';
+import './../../src/css/custom.scss'
 
 export default function Home() {
   //const { sortedColors } = useSortedColors("blue","color");

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* TODO: Mixins don't belong here nor does the font importing but docusaurus and their sass plugin where breaking things*/
+@mixin font($font-family, $font-weight, $font-path, $font-weight-int) {
+  @font-face {
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: $font-weight-int;
+    src: url($font-path + '/' + $font-family + '-' + $font-weight + '.eot');
+    src: url($font-path + '/' + $font-family + '-' + $font-weight + '.eot?#iefix') format('embedded-opentype'),
+    url($font-path + '/' + $font-family + '-' + $font-weight + '.woff') format('woff'),
+    url($font-path + '/' + $font-family + '-' + $font-weight + '.ttf') format('truetype'),
+    url($font-path + '/' + $font-family + '-' + $font-weight + '.svg#' + $font-family) format('svg');
+  }
+}
+
+@include font('rtraleway', 'regular', '/fonts/RTRaleway-Regular', 400);
+@include font('rtraleway', 'bold', '/fonts/RTRaleway-Bold', 700);
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700');

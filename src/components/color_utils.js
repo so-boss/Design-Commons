@@ -35,14 +35,13 @@ export const sorter = (def_id, type, data) => {
   //let def_id = "blue";
   let regex = new RegExp(`\\b${def_id}\\b`, 'i');
 
-  console.log("color_utils", data)
   //let results = jp.query(data.colors, '$..[?('+regex+'.test(@.name))]');
   let results = JSONPath({
     path:'$..[?('+regex+'.test(@.name))]',
     json: data
   });
 
-  console.log("results", results)
+  // console.log("results", results)
   let sorted = sort_spectrum(results);
   let filtered = [];
   if(type==="brand") {

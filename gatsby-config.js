@@ -25,6 +25,7 @@ module.exports = {
         path: `${__dirname}/src/markdown-pages/`,
       },
     },
+    `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-remark`,
