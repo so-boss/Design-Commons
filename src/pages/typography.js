@@ -20,7 +20,7 @@ import {
 } from "@lekoarts/gatsby-theme-specimens"
 
 import FontSize from "./../../src/components/FontSize"
-import TypeFace from "./../../src/components/TypeFace/"
+import TypeFace from "./../../src/components/TypeFace/index"
 
 import { useTypography } from './../../src/hooks/use-typography.js';
 import './../../src/css/custom.scss'
