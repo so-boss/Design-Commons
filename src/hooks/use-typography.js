@@ -3,17 +3,6 @@ import _ from "lodash";
 // import {sorter} from './../../src/components/color_utils';
 import maps from "./../../src/components/data/maps";
 
-// const rename = (obj, key, newKey) => {
-//   if(_.includes(_.keys(obj), key)) {
-//     obj[newKey] = _.clone(obj[key], true);
-//
-//     delete obj[key];
-//   }
-//
-//   return obj;
-// };
-
-
 const getTypeface = (typeface) => {
   const split_name = typeface.name.split(" ");
   let weight = parseInt(split_name[1]);

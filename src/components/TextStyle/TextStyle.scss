@@ -14,6 +14,7 @@ div[font=textstyle] {
     &:after {
       content:attr(suffix);
       font-size:10px;
+      color:dimgrey;
     }
   }
 
@@ -32,6 +33,7 @@ div[font=textstyle] {
 
       svg {
         fill:dimgrey;
+        transform: scale(1);
       }
       + span {
         text-transform: uppercase;
@@ -55,6 +57,7 @@ div[font=textstyle] {
   }
   [textstyle=label] {
     text-transform: uppercase;
+    color:black;
     span {
 
       &[suffix]:after {

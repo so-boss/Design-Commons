@@ -1,20 +1,26 @@
 import React from 'react';
+
 import './FontSize.scss';
 
-const Size = ({name, token, size}) => {
-  console.log(name)
+const Size = ({family, name, token, size}) => {
   return (
-    <div token={token}>
-      <div>
-        <span style={{fontSize: size}}>a</span>
-        <label>{parseInt(size)}</label>
+    <a href={"#"+family+"_"+name.short}>
+      <div token={token}>
+        <div font="letter">
+          <span style={{fontSize: size}}>a</span>
+        </div>
+        <div>
+          <div>
+            <label>{parseInt(size)}</label>
+            <label>{name.short||name.long}</label>
+          </div>
+        </div>
       </div>
-      <label>{name.short||name.long}</label>
-    </div>
+    </a>
   )
 };
 
-const Sizes = ({sizes}) => {
+const Sizes = ({family, sizes}) => {
   return (
     <div>
       {
@@ -23,6 +29,7 @@ const Sizes = ({sizes}) => {
             name={size.name}
             token={size.token}
             size={size.size}
+            family={family.toLowerCase()}
           />
         ))
       }
@@ -33,7 +40,7 @@ const Sizes = ({sizes}) => {
 const FontSize = ({family, sizes}) => {
   return (
     <div font="size">
-      <Sizes sizes={sizes} />
+      <Sizes sizes={sizes} family={family}/>
       {/*<span>{family}</span>*/}
     </div>
   )

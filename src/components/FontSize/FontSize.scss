@@ -1,3 +1,6 @@
+$rtraleway-baseline: 0.158203;
+$gh: 10px;
+
 [font=size] {
   max-width:700px;
   background-color: rgba(0, 0, 0, 0.05);
@@ -6,6 +9,11 @@
   border-radius: 4px;
   margin-bottom:16px;
   color:rgb(51, 51, 51);
+
+  > a {
+    color:initial;
+    flex:1;
+  }
   > div {
     display:flex;
     padding: 16px;
@@ -13,20 +21,45 @@
       flex:1;
       display:flex;
       flex-direction: column;
-      > div {
+      height:100%;
+      [font=letter] {
         flex:1;
         display:flex;
         flex-direction: column;
         justify-content: flex-end;
         height: 100%;
         span {
-           + label {
+           line-height: calc(100% - 4px);
+        }
 
-           }
-        }
-        + label {
-          text-transform:uppercase;
-        }
+        + div {
+            display:flex;
+            justify-content: center;
+            flex: initial;
+            padding: 0px 0px 8px 0;
+            margin-top:8px;
+
+            &:hover {
+              background-color: rgba(255,255,255,1);
+              color:black;
+            }
+            > div {
+              width: 48px;
+              display: flex;
+              flex-direction: column;
+              text-align: center;
+              background-color: rgba(0, 0, 0, 0);
+              label {
+                font-size:18px;
+                &:last-child {
+                  text-transform:uppercase;
+                  font-size:10px;
+                  font-weight:900;
+                  color:#1890ff;
+                }
+              }
+            }
+         }
       }
       span {
         //&:after {

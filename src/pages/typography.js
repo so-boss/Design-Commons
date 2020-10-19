@@ -38,23 +38,23 @@ export default function Home() {
   return (
     <AntPage title="Typography" icon="typography">
       <Title level={2}>Font: RT Raleway</Title>
-      <Typeface typefaces={useTypography("rtraleway").typefaces} />
-      <Title level={4}>Sizes</Title>
+      <div row="typefaces">
+        <Typeface typefaces={useTypography("rtraleway").typefaces} />
+      </div>
       <FontSize
-        family="Cabin"
+        family="RTRaleway"
         sizes={typography.fontsizes.rtraleway}
       />
-      <Title level={4}>Text Styles</Title>
       <TextStyle textstyles={typography.textstyles.rtraleway}/>
 
       <Title level={2}>Font: Cabin</Title>
-      <Typeface typefaces={useTypography("cabin").typefaces} />
-      <Title level={4}>Sizes</Title>
+      <div row="typefaces">
+        <Typeface typefaces={useTypography("cabin").typefaces} />
+      </div>
       <FontSize
         family="Cabin"
         sizes={typography.fontsizes.Cabin}
       />
-      <Title level={4}>Text Styles</Title>
       <TextStyle textstyles={typography.textstyles.Cabin}/>
     </AntPage>
   )

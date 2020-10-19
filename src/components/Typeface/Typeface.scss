@@ -1,3 +1,11 @@
+[row] {
+  max-width: 700px;
+  display:flex;
+  >div {
+    display:flex;
+    flex:1;
+  }
+}
 div[font=typeface] {
   background-color: rgba(0, 0, 0, 0.05);
   padding: 16px;
@@ -5,6 +13,11 @@ div[font=typeface] {
   margin-bottom:16px;
   color:rgb(51, 51, 51);
   max-width:700px;
+  flex:1;
+
+  &:nth-child(1n+2) {
+    margin-left:16px;
+  }
 
   [face=label] {
     display:flex;
