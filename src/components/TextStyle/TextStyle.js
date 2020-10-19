@@ -94,7 +94,7 @@ const Styles = ({textstyles}) => {
   return (
     <div>
       {
-        textstyles.map((textstyle) => (
+        textstyles.reverse().map((textstyle) => (
           <Style
             name={textstyle.name}
             family={textstyle.family}
