@@ -18,7 +18,7 @@ const Sizes = ({sizes}) => {
   return (
     <div>
       {
-        sizes.map((size) => (
+        sizes.reverse().map((size) => (
           <Size
             name={size.name}
             token={size.token}
