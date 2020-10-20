@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { ArrowRight } from '@so.boss/genesis-icon-library';
 import './TextStyle.scss';
 
 function LineHeightIcon(props) {
@@ -61,6 +61,7 @@ const Style = ({name, size, lineHeight, weight, family, text}) => {
   return (
     <div font="textstyle" id={family+"_"+name.short}>
       <div textstyle="label">
+        <ArrowRight color="#0035cc" size={16}/>
         <span suffix={name.short}>{name.long.replace(/-/g," ")}</span>
       </div>
       <div textstyle="props">
