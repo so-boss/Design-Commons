@@ -137,13 +137,13 @@ const CardFooter = ({children}) => {
 const Limit = ({labels, amounts}) => {
   return (
     <div card="limit">
-      <Typography variant="body2" component="p">
+      <Typography variant="body2" component="div">
         <div>
           <span>{labels.person + " / "}</span>
           <span>{labels.max}</span>
         </div>
       </Typography>
-      <Typography variant="h6" component="p">
+      <Typography variant="h6" component="div">
         <div>
           <span>{amounts.person + " / "}</span>
           <span>{amounts.max}</span>
@@ -153,6 +153,23 @@ const Limit = ({labels, amounts}) => {
   );
 }
 export default function Coverages() {
+  const [value, setValue] = React.useState(30);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const handleInputChange = (event) => {
+    setValue(event.target.value === '' ? '' : Number(event.target.value));
+  };
+
+  const handleBlur = () => {
+    if (value < 0) {
+      setValue(0);
+    } else if (value > 100) {
+      setValue(100);
+    }
+  };
 
   return (
     <AntPage title="Coverage Experiments" icon="">
@@ -179,14 +196,18 @@ export default function Coverages() {
         <CardFooter>
           <div wrapper="slider">
             <Slider
-              track={false}
-              aria-labelledby="track-false-range-slider"
-              getAriaValueText={valuetext}
-              defaultValue={[20]}
-              step={10}
+              value={value}
+              onChange={handleChange}
+              aria-labelledby="continuous-slider"
+              // getAriaValueText={valuetext}
+              defaultValue={[100]}
+              min={25}
+              max={500}
+              step={25}
               labelBefore="$25,000 / $50,000K"
               labelAfter="$500,000 / $500,000K"
               // marks={marks}
+              valueLabelDisplay="auto"
             />
           </div>
         </CardFooter>
