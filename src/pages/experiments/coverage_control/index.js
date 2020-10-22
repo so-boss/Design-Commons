@@ -49,22 +49,46 @@ const theme = createMuiTheme({
     root: {
       fontFamily: 'rtraleway'
     },
-    // Style sheet name ⚛️
+    MuiCard: {
+      root: {
+        padding: "24px"
+      }
+    },
+    MuiCardHeader: {
+      root:{
+        padding:"initial"
+      }
+    },
+    MuiCardContent: {
+      root:{
+        padding:"initial"
+      }
+    },
     MuiSlider: {
-      color:"inherit",
-      // Name of the rule
-      markLabel: {
-        // Some CSS
-
+      root:{
+        height:"initial",
+        position:"initial"
       },
+      color:"inherit",
+      markLabel: {},
     },
     MuiTypography: {
       body1:{
         fontFamily: 'Cabin',
         fontWeight:400,
         fontSize:"18px",
-        lineHeight:"25px"
-
+        fontStyle:"normal",
+        lineHeight:"25.2px",
+        color:"#4D5160"
+      },
+      body2:{
+        fontFamily: 'rtraleway',
+        fontWeight:700,
+        fontSize:"14px",
+        fontStyle:"normal",
+        lineHeight:"19.6px",
+        textAlign:"center",
+        color:"#4D5160"
       },
       h5:{
         fontFamily: 'inherit',
@@ -72,56 +96,100 @@ const theme = createMuiTheme({
         fontSize:"23px",
         lineHeight:"34px",
         marginTop:"0 !important"
+      },
+      h6:{
+        fontFamily: 'rtraleway',
+        fontWeight:700,
+        fontSize:"18px",
+        lineHeight:"25.2px",
+        textAlign:"center",
+        color:"#0B1421"
       }
-
     }
   },
 });
 
+const CardBody = ({children, description}) => {
+  return (
+    <div container="body">
+      <CardContent>
+        {description && (
+          <Typography>
+            {description}
+          </Typography>
+        )}
+        {children}
+      </CardContent>
+    </div>
+  )
+}
+
+const CardFooter = ({children}) => {
+  return (
+    <div container="footer">
+      <div>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+const Limit = ({labels, amounts}) => {
+  return (
+    <div card="limit">
+      <Typography variant="body2" component="p">
+        <div>
+          <span>{labels.person + " / "}</span>
+          <span>{labels.max}</span>
+        </div>
+      </Typography>
+      <Typography variant="h6" component="p">
+        <div>
+          <span>{amounts.person + " / "}</span>
+          <span>{amounts.max}</span>
+        </div>
+      </Typography>
+    </div>
+  );
+}
 export default function Coverages() {
-  const bull = <span>•</span>;
+
   return (
     <AntPage title="Coverage Experiments" icon="">
       <ThemeProvider theme={theme}>
 
-      <Card type="coverage" raised={true}>
-        <CardHeader title="Bodily Injury" />
-        <CardContent>
-          {/*<Typography color="textSecondary" gutterBottom>*/}
-          {/*  Bodily Injury*/}
-          {/*</Typography>*/}
-          <Typography color="textSecondary">
-            AAA covers your damages and legal defense if you injure someone.
-          </Typography>
+      <Card container="coverage" raised={true}>
+        <CardHeader title="Bodily Injury" container="header" />
+        <CardBody
+          description="AAA covers your damages and legal defense if you injure someone."
+        >
           <div layout="center">
-            <div>
-              <Typography variant="body2" component="p">
-                Limit per person / per accident
-              </Typography>
-              <Typography variant="h6" component="p">
-                $100,000 / $300,000
-              </Typography>
-            </div>
+            <Limit
+              labels={{
+                person:"Limit per person",
+                max:"per accident"
+              }}
+              amounts={{
+                person:"$100,000",
+                max:"$300,000"
+              }}
+            />
           </div>
-          {/*<Slider*/}
-          {/*  ValueLabelComponent={ValueLabelComponent}*/}
-          {/*  aria-label="custom thumb label"*/}
-          {/*  defaultValue={20}*/}
-          {/*/>*/}
-          <Slider
-            track={false}
-            aria-labelledby="track-false-range-slider"
-            getAriaValueText={valuetext}
-            defaultValue={[20]}
-            step={10}
-            labelBefore="$25,000 / $50,000K"
-            labelAfter="$500,000 / $500,000K"
-            // marks={marks}
-          />
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
+        </CardBody>
+        <CardFooter>
+          <div wrapper="slider">
+            <Slider
+              track={false}
+              aria-labelledby="track-false-range-slider"
+              getAriaValueText={valuetext}
+              defaultValue={[20]}
+              step={10}
+              labelBefore="$25,000 / $50,000K"
+              labelAfter="$500,000 / $500,000K"
+              // marks={marks}
+            />
+          </div>
+        </CardFooter>
       </Card>
       </ThemeProvider>
     </AntPage>
