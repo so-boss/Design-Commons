@@ -51,6 +51,8 @@ const getTextStyles = (textstyles, type) => {
 
       if(maps.sizes[short]) {
         name.long = maps.sizes[short];
+      } else {
+        name.long = short;
       }
     }
 

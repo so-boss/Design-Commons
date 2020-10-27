@@ -10,6 +10,19 @@ body {
   ul {
     list-style-type: none;
   }
+  > [class*='-page-header']:before {
+    content: "Digital Commons";
+    width: 100%;
+    height: 200px;
+    background: rgb(0, 82, 154);
+    position: absolute;
+    top: -200px;
+    display: flex;
+    align-items: flex-end;
+    color:transparent;
+    text-transform: capitalize;
+    font-size: 20px;
+  }
 }
 
 
@@ -64,6 +77,8 @@ body {
 
     [class*='-heading-title'] {
       font-size:32px;
+      overflow:initial;
+      line-height: initial;
     }
   }
   [class*='-card-meta'] {
@@ -105,6 +120,26 @@ body {
       }
     }
   }
+
+  [class*='-page-header'] {
+    [class*='-heading-tags'] {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 100%;
+      > span {
+        margin-bottom:8px;
+      }
+    }
+
+    [class*='-avatar-image'] {
+      height:22px;
+      width:22px;
+
+    }
+
+  }
+
 
   h4 {
     &.ant-typography {

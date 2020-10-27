@@ -34,16 +34,21 @@ export default function AntPage ({title, icon, summary, children}) {
     })
   }
 
+  let avatar = {
+    src: `/icons/sprite/${icon}.svg`,
+    shape: 'square',
+  };
+  if(!icon) {
+    avatar.src = `/icons/sprite/circle.svg`
+  }
+
   return (
     <div layout="page">
       <PageHeader
         title={title}
         className="site-page-header"
         tags={<Tag color="blue">Under Development</Tag>}
-        avatar={{
-          src: `/icons/sprite/${icon}.svg`,
-          shape: 'square',
-        }}
+        avatar={avatar}
         breadcrumb={{routes}}
       >
         <Content summary={summary}>{children}</Content>

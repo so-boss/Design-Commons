@@ -3,7 +3,7 @@ import { Card, CardHeader, CardContent, Slider, Typography, Tooltip } from '@mat
 import {limits} from "./data.js";
 
 import './../../../../src/css/custom.scss'
-import './styles.scss'
+import './CoverageCard.scss'
 
 // function ValueLabelComponent(props) {
 //   const { children, open, value } = props;

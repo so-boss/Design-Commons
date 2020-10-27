@@ -1,9 +1,9 @@
 import React from "react"
 import {AntPage} from "./../../../../src/components/";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import CoverageCard from "./CoverageCard";
+import CoverageCard from "./../../../../src/components/experiements/coverage_control/CoverageCard";
 import './../../../../src/css/custom.scss'
-import './styles.scss'
+import './../../../../src/css/experiments/coverage_control/styles.scss'
 
 const theme = createMuiTheme({
   overrides: {
