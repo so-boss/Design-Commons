@@ -1,0 +1,34 @@
+export const limits = [
+  {
+    person:25,
+    max:50
+  },
+  {
+    person:30,
+    max:60
+  },
+  {
+    person:50,
+    max:100
+  },
+  {
+    person:100,
+    max:200
+  },
+  {
+    person:100,
+    max:300
+  },
+  {
+    person:300,
+    max:300
+  },
+  {
+    person:300,
+    max:500
+  },
+  {
+    person:500,
+    max:500
+  },
+];

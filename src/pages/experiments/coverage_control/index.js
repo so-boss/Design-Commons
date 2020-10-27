@@ -1,48 +1,9 @@
 import React from "react"
-import PropTypes from 'prop-types';
-// import {Typography, Tabs, Card, Avatar} from "antd";
 import {AntPage} from "./../../../../src/components/";
-// import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
-// import Slider from '@material-ui/core/Slider';
-// import CardContent from '@material-ui/core/CardContent';
-// import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
-// import Tooltip from '@material-ui/core/Tooltip';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Card, CardHeader, CardActions, CardContent, Slider, Button, Typography, Tooltip } from '@material-ui/core';
+import CoverageCard from "./CoverageCard";
 import './../../../../src/css/custom.scss'
 import './styles.scss'
-
-function ValueLabelComponent(props) {
-  const { children, open, value } = props;
-
-  return (
-    <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
-      {children}
-    </Tooltip>
-  );
-}
-
-ValueLabelComponent.propTypes = {
-  children: PropTypes.element.isRequired,
-  open: PropTypes.bool.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-const marks = [
-  {
-    value: 0,
-    label: '$25K / 50K',
-  },
-  {
-    value: 100,
-    label: '$500,000 / $500,000',
-  },
-];
-function valuetext(value) {
-  return `${value}`;
-}
 
 const theme = createMuiTheme({
   overrides: {
@@ -109,110 +70,14 @@ const theme = createMuiTheme({
   },
 });
 
-const CardBody = ({children, description}) => {
-  return (
-    <div container="body">
-      <CardContent>
-        {description && (
-          <Typography>
-            {description}
-          </Typography>
-        )}
-        {children}
-      </CardContent>
-    </div>
-  )
-}
-
-const CardFooter = ({children}) => {
-  return (
-    <div container="footer">
-      <div>
-        {children}
-      </div>
-    </div>
-  )
-}
-
-const Limit = ({labels, amounts}) => {
-  return (
-    <div card="limit">
-      <Typography variant="body2" component="div">
-        <div>
-          <span>{labels.person + " / "}</span>
-          <span>{labels.max}</span>
-        </div>
-      </Typography>
-      <Typography variant="h6" component="div">
-        <div>
-          <span>{amounts.person + " / "}</span>
-          <span>{amounts.max}</span>
-        </div>
-      </Typography>
-    </div>
-  );
-}
-export default function Coverages() {
-  const [value, setValue] = React.useState(30);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleInputChange = (event) => {
-    setValue(event.target.value === '' ? '' : Number(event.target.value));
-  };
-
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 100) {
-      setValue(100);
-    }
-  };
-
+const Coverages = ({ }) => {
   return (
     <AntPage title="Coverage Experiments" icon="">
       <ThemeProvider theme={theme}>
-
-      <Card container="coverage" raised={true}>
-        <CardHeader title="Bodily Injury" container="header" />
-        <CardBody
-          description="AAA covers your damages and legal defense if you injure someone."
-        >
-          <div layout="center">
-            <Limit
-              labels={{
-                person:"Limit per person",
-                max:"per accident"
-              }}
-              amounts={{
-                person:"$100,000",
-                max:"$300,000"
-              }}
-            />
-          </div>
-        </CardBody>
-        <CardFooter>
-          <div wrapper="slider">
-            <Slider
-              value={value}
-              onChange={handleChange}
-              aria-labelledby="continuous-slider"
-              // getAriaValueText={valuetext}
-              defaultValue={[100]}
-              min={25}
-              max={500}
-              step={25}
-              labelBefore="$25,000 / $50,000K"
-              labelAfter="$500,000 / $500,000K"
-              // marks={marks}
-              valueLabelDisplay="auto"
-            />
-          </div>
-        </CardFooter>
-      </Card>
+        <CoverageCard />
       </ThemeProvider>
     </AntPage>
-  )
+  );
 }
+
+export default Coverages;
