@@ -88,13 +88,13 @@ const getLimits = (limitList) => {
 
 
 function valuetext(value) {
-  return `${value}°C`;
+  return `$${value}K`;
 }
 
 function valueLabelFormat(value) {
   console.log(value);
-
-  return getLimits(limits).findIndex((mark) => mark.person === value) + 1;
+  return `$${value}K`;
+  //return getLimits(limits).findIndex((mark) => mark.person === value) + 1;
 }
 
 export default class CoverageCard extends React.Component {
@@ -149,7 +149,7 @@ export default class CoverageCard extends React.Component {
                 max: "per accident"
               }}
               amounts={{
-                person: this.state.coverage,
+                person: "$"+this.state.coverage+",000",
                 max: "$300,000"
               }}
             />
@@ -164,7 +164,7 @@ export default class CoverageCard extends React.Component {
               valueLabelFormat={valueLabelFormat}
               getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-restrict"
-              defaultValue={[30]}
+              defaultValue={[100]}
               min={25}
               max={500}
               step={null}
