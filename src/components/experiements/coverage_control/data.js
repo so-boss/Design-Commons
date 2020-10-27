@@ -32,3 +32,26 @@ export const limits = [
     max:500
   },
 ];
+
+export const maps = {
+  limits: {
+    25:{
+      max:[50]
+    },
+    30:{
+      max:[60]
+    },
+    50:{
+      max:[100]
+    },
+    100:{
+      max:[200,300]
+    },
+    300:{
+      max:[300,500]
+    },
+    500:{
+      max:[500]
+    }
+  }
+}

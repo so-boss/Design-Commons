@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, CardHeader, CardContent, Slider, Typography, Tooltip } from '@material-ui/core';
-import {limits} from "./data.js";
+import {limits, maps} from "./data.js";
 
 import './../../../../src/css/custom.scss'
 import './CoverageCard.scss'
@@ -92,9 +92,17 @@ function valuetext(value) {
 }
 
 function valueLabelFormat(value) {
-  console.log(value);
   return `$${value}K`;
   //return getLimits(limits).findIndex((mark) => mark.person === value) + 1;
+}
+
+function getLimitMaps(person) {
+  let maxes = maps.limits[person];
+  if(!maxes) {
+    let maxes = {max:["??"]}
+  }
+
+  return maxes.max;
 }
 
 export default class CoverageCard extends React.Component {
@@ -106,7 +114,6 @@ export default class CoverageCard extends React.Component {
     //const [value, setValue] = React.useState(30);
 
     this.handleChange = (event, newValue) => {
-      console.log(newValue)
       //setValue(newValue);
       this.setState(state => ({
         coverage:newValue
@@ -114,26 +121,6 @@ export default class CoverageCard extends React.Component {
     };
   }
 
-
-//export default function Coverages() {
-  // const [value, setValue] = React.useState(30);
-  //
-  // const handleChange = (event, newValue) => {
-  //   console.log(newValue)
-  //   setValue(newValue);
-  // };
-
-  // const handleInputChange = (event) => {
-  //   setValue(event.target.value === '' ? '' : Number(event.target.value));
-  // };
-
-  // const handleBlur = () => {
-  //   if (value < 0) {
-  //     setValue(0);
-  //   } else if (value > 100) {
-  //     setValue(100);
-  //   }
-  // };
   render() {
     const marks = getLimits(limits);
     return (
@@ -150,7 +137,7 @@ export default class CoverageCard extends React.Component {
               }}
               amounts={{
                 person: "$"+this.state.coverage+",000",
-                max: "$300,000"
+                max: getLimitMaps(this.state.coverage).join(",000 ")+",000"
               }}
             />
           </div>
