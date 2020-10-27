@@ -3,3 +3,26 @@
     width:100%;
   }
 }
+[wrapper=iconbuttons] {
+  height:50px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  > * {
+    flex:initial;
+    width:50px;
+    height:100%;
+  }
+  > [type=spacer] {
+    flex:1;
+    color: #0B1421;
+    font-size: 18px;
+    text-align: center;
+    font-family: rtraleway;
+    font-weight: 700;
+    line-height: 25.2px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+}

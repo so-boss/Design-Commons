@@ -1,5 +1,7 @@
 import React from "react"
-import { Card, CardHeader, CardContent, Slider, Typography, FormControl, InputLabel, NativeSelect, InputBase, Select } from '@material-ui/core';
+import { IconButton, Card, CardHeader, CardContent, Slider, Typography, FormControl, InputLabel, NativeSelect, InputBase, Select } from '@material-ui/core';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import {limits, maps} from "./data.js";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import './../../../../src/css/custom.scss'
@@ -219,6 +221,7 @@ export default class CoverageCard extends React.Component {
             </div>
           </CardFooter>
         </Card>
+
         <br /><br />
         <Card container="coverage" raised={true}>
           <CardHeader title="Bodily Injury" container="header"/>
@@ -259,6 +262,40 @@ export default class CoverageCard extends React.Component {
                   <option value={50099500}>$500,000 / $500,000</option>
                 </NativeSelect>
               </FormControl>
+            </div>
+          </CardFooter>
+        </Card>
+
+        <br /><br />
+        <Card container="coverage" raised={true}>
+          <CardHeader title="Bodily Injury" container="header"/>
+          <CardBody
+            description="AAA covers your damages and legal defense if you injure someone."
+          >
+            <div layout="center">
+              <Limit
+                labels={{
+                  person: "Limit per person",
+                  max: "per accident"
+                }}
+                amounts={{
+                  person: "$"+this.state.coverage+",000",
+                  max: getLimitMaps(this.state.coverage).join(",000 ")+",000"
+                }}
+              />
+            </div>
+          </CardBody>
+          <CardFooter>
+            <div wrapper="iconbuttons">
+              <IconButton color="primary" aria-label="reduce">
+                <RemoveCircleOutlineIcon />
+              </IconButton>
+              <div type="spacer">
+                {"$"+this.state.coverage+",000"}
+              </div>
+              <IconButton color="primary" aria-label="reduce">
+                <AddCircleOutlineIcon />
+              </IconButton>
             </div>
           </CardFooter>
         </Card>
