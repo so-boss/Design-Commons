@@ -70,7 +70,7 @@ const theme = createMuiTheme({
   },
 });
 
-const Coverages = ({ }) => {
+export default function Home() {
   return (
     <AntPage title="Coverage Experiments" icon="">
       <ThemeProvider theme={theme}>
@@ -79,5 +79,3 @@ const Coverages = ({ }) => {
     </AntPage>
   );
 }
-
-export default Coverages;
