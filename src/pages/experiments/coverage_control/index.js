@@ -31,6 +31,10 @@ const theme = createMuiTheme({
         position:"initial"
       },
       color:"inherit",
+      mark:{
+        height:"6px",
+        transform: "translateY(-2px)"
+      },
       markLabel: {},
     },
     MuiTypography: {

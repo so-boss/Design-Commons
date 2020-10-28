@@ -1,35 +1,35 @@
 export const limits = [
   {
-    person:25,
-    max:50
+    person:25000,
+    max:50000
   },
   {
-    person:30,
-    max:60
+    person:30000,
+    max:60000
   },
   {
-    person:50,
-    max:100
+    person:50000,
+    max:100000
   },
   {
-    person:100,
-    max:200
+    person:100000,
+    max:200000
   },
   {
-    person:100,
-    max:300
+    person:100000,
+    max:300000
   },
   {
-    person:300,
-    max:300
+    person:300000,
+    max:300000
   },
   {
-    person:300,
-    max:500
+    person:300000,
+    max:500000
   },
   {
-    person:500,
-    max:500
+    person:500000,
+    max:500000
   },
 ];
 
