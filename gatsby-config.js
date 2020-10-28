@@ -5,8 +5,8 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitle: `Specimens for Design Systems - @lekoarts/gatsby-theme-specimens`,
-    siteDescription: `Leverage the wide variety of powerful React components to build your design system. Display your colors, typography or any other design tokens with ease and focus on the design system itself, not how to showcase it. Works seamlessly with MDX.`,
+    siteTitle: `Specimens for the CSAA Design System`,
+    siteDescription: `Leverage the wide variety of powerful React components to build your insurance ideas.`,
     banner: ``,
     siteUrl: `https://dev.csaa.design`,
   },
