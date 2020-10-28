@@ -23,7 +23,35 @@ body {
     text-transform: capitalize;
     font-size: 20px;
   }
+
+  > div {
+    display:flex;
+    [type=sidebar] {
+      border-right: 1px solid #00000021;
+      box-shadow: -2px -1px 8px 4px #0000001c;
+      z-index: 10;
+      width: 200px;
+      margin-right: 24px;
+      > div {
+        padding:16px;
+      }
+      [sidebar=header] {
+        img {
+          width:100%;
+        }
+      }
+      [sidebar=body] {
+        [type=menu] {
+          margin-top:48px;
+        }
+      }
+      [sidebar=footer] {
+
+      }
+    }
+  }
 }
+
 
 
 
@@ -133,9 +161,8 @@ body {
     }
 
     [class*='-avatar-image'] {
-      height:22px;
-      width:22px;
-
+      height:32px;
+      width:32px;
     }
 
   }
@@ -166,6 +193,32 @@ body {
   [type=table] {
     + [layout=panel] {
       margin-top:42px;
+    }
+  }
+}
+
+[type=experiments] {
+  display:flex;
+  padding:0;
+  padding-top:16px;
+  li {
+    margin-right:24px;
+    text-transform:uppercase;
+    font-weight:500;
+    color:white;
+    height:50px;
+    width:100px;
+    background:#1890ff;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:6px;
+
+    &:hover {
+      background: #096dd9;
+    }
+    a{
+      color:inherit;
     }
   }
 }

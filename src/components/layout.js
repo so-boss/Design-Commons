@@ -103,8 +103,8 @@ const Layout = ({ children }) => {
       <main
         css={css`
           max-width: 1200px;
-          margin: 2rem auto;
-          padding: 1.5rem;
+          //margin: 2rem auto;
+          //padding: 1.5rem;
         `}
       >
         {children}

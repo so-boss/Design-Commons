@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "specimens",
-  "description": "Leverage the wide variety of powerful React components to build your design system. Display your colors, typography or any other design tokens with ease and focus on the design system itself, not on how to showcase it. Works seamlessly with MDX.",
+  "name": "design_commons",
+  "description": "Leverage the wide variety of powerful React components to build your insurance ideas.",
   "version": "0.3.6",
-  "author": "LekoArts <hello@lekoarts.de>",
+  "author": "thoughtleader",
   "license": "0BSD",
   "starter-name": "gatsby-starter-specimens",
   "scripts": {
@@ -21,6 +21,7 @@
     "@loadable/component": "5.13.1",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@mdx-js/mdx": "^1.5.9",
     "@so.boss/genesis-icon-library": "^0.0.3",
     "@theme-ui/presets": "^0.3.0",
