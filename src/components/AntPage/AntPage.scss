@@ -221,6 +221,12 @@ body {
       background: #096dd9;
     }
     a{
+      height:100%;
+      width:100%;
+      text-align: center;
+      display:flex;
+      align-items: center;
+      justify-content:center;
       color:inherit;
     }
   }
