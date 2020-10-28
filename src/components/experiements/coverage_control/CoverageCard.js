@@ -125,8 +125,14 @@ export default class CoverageCard extends React.Component {
     }
 
     this.handleControlChange = (event, newValue) => {
+      let val = newValue;
+      if(!val) {
+        val = event.target.value;
+      }
+
+      console.log("control change", val)
       this.setState(state => ({
-        coverage:newValue
+        coverage:val
       }))
     };
 
@@ -205,22 +211,21 @@ export default class CoverageCard extends React.Component {
               (
                 <div wrapper="select">
                   <FormControl className={classes.margin}>
-                    <InputLabel htmlFor="demo-customized-select-native">Coverage Limits</InputLabel>
+                    <InputLabel htmlFor="demo-customized-select-native">Limit per person / per accident</InputLabel>
                     <NativeSelect
                       id="demo-customized-select-native"
-                      value={309960}
-                      //onChange={this.handleChange}
+                      value={this.state.coverage}
+                      onChange={this.handleControlChange}
                       input={<BootstrapInput />}
                     >
-                      <option aria-label="None" value="" />
-                      <option value={259950}>$25,000 / $50,000</option>
-                      <option value={309960}>$30,000 / $60,000</option>
-                      <option value={5099100}>$50,000 / $100,000</option>
-                      <option value={10099200}>$100,000 / $200,000</option>
-                      <option value={10099300}>$100,000 / $300,000</option>
-                      <option value={30099300}>$300,000 / $300,000</option>
-                      <option value={30099500}>$300,000 / $500,000</option>
-                      <option value={50099500}>$500,000 / $500,000</option>
+                      <option value="0">$25,000 / $50,000</option>
+                      <option value="1">$30,000 / $60,000</option>
+                      <option value="2">$50,000 / $100,000</option>
+                      <option value="3">$100,000 / $200,000</option>
+                      <option value="4">$100,000 / $300,000</option>
+                      <option value="5">$300,000 / $300,000</option>
+                      <option value="6">$300,000 / $500,000</option>
+                      <option value="7">$500,000 / $500,000</option>
                     </NativeSelect>
                   </FormControl>
                 </div>
