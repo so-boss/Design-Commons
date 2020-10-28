@@ -120,17 +120,25 @@ const Sidebar = ({}) => {
 }
 
 
-export default function AntPage ({title, icon, summary, children}) {
+export default function AntPage ({baseRoute, title, icon, summary, children}) {
   const Content = ({ children }) => {
     return (
       <div style={{ flex: 1 }}>{children}</div>
     )
   }
+
+  let route1 = {
+    path: 'index',
+    breadcrumbName: 'Design Guidelines',
+  };
+  if(baseRoute) {
+    route1 = baseRoute;
+  }
+
+
+
   let routes = [
-    {
-      path: 'index',
-      breadcrumbName: 'Design Guidelines',
-    }
+    route1
   ];
 
   if(title) {
