@@ -82,9 +82,7 @@ export default function Home() {
   return (
     <AntPage title="Coverage Experiments" icon="">
       <ThemeProvider theme={theme}>
-        <a href="task1">Task 1</a>
-        <a href="task2">Task 2</a>
-        <a href="task3">Task 3</a>
+        <CoverageCard controlType="minusplus"/>
       </ThemeProvider>
     </AntPage>
   );

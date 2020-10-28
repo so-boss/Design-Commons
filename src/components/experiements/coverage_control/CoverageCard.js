@@ -1,41 +1,13 @@
 import React from "react"
 import { IconButton, Card, CardHeader, CardContent, Slider, Typography, FormControl, InputLabel, NativeSelect, InputBase, Select } from '@material-ui/core';
 import NumberFormat from 'react-number-format';
-import CountUp from 'react-countup';
 
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import {limits, maps} from "./data.js";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import './../../../../src/css/custom.scss'
-import './CoverageCard.scss'
-
-// function ValueLabelComponent(props) {
-//   const { children, open, value } = props;
-//
-//   return (
-//     <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
-//       {children}
-//     </Tooltip>
-//   );
-// }
-
-// ValueLabelComponent.propTypes = {
-//   children: PropTypes.element.isRequired,
-//   open: PropTypes.bool.isRequired,
-//   value: PropTypes.number.isRequired,
-// };
-//
-// const limits = [
-//   {
-//     value: 0,
-//     label: '$25K / 50K',
-//   },
-//   {
-//     value: 100,
-//     label: '$500,000 / $500,000',
-//   },
-// ];
+import './../../../../src/css/custom.scss';
+import './CoverageCard.scss';
 
 const CardBody = ({children, description}) => {
   return (
@@ -151,10 +123,8 @@ export default class CoverageCard extends React.Component {
     this.state = {
       coverage:Math.floor(limits.length/2)
     }
-    //const [value, setValue] = React.useState(30);
 
-    this.handleChange = (event, newValue) => {
-      //setValue(newValue);
+    this.handleControlChange = (event, newValue) => {
       this.setState(state => ({
         coverage:newValue
       }))
@@ -168,8 +138,9 @@ export default class CoverageCard extends React.Component {
       },
     }));
 
+
+
     return (
-      <>
         <Card container="coverage" raised={true}>
           <CardHeader title="Bodily Injury" container="header"/>
           <CardBody
@@ -189,25 +160,70 @@ export default class CoverageCard extends React.Component {
             </div>
           </CardBody>
           <CardFooter>
-            <div wrapper="slider">
-              <Slider
-                value={this.state.coverage}
-                onChange={this.handleChange}
-                aria-labelledby="discrete-slider"
-                defaultValue={3}
-                min={0}
-                max={limits.length-1}
-                step={1}
-                valueLabelDisplay="off"
-                labelBefore="$25,000 / $50,000"
-                labelAfter="$500,000 / $500,000"
-                marks
-                //valueLabelDisplay="auto"
-              />
-            </div>
+            {
+              this.props.controlType==="slider" &&
+              (
+                <div wrapper="slider">
+                  <Slider
+                    value={this.state.coverage}
+                    onChange={this.handleControlChange}
+                    aria-labelledby="discrete-slider"
+                    defaultValue={3}
+                    min={0}
+                    max={limits.length - 1}
+                    step={1}
+                    valueLabelDisplay="off"
+                    labelBefore="$25,000 / $50,000"
+                    labelAfter="$500,000 / $500,000"
+                    marks
+                  />
+                </div>
+              )
+            }
+            {
+              this.props.controlType==="select" &&
+              (
+                <div wrapper="select">
+                  <FormControl className={classes.margin}>
+                    <InputLabel htmlFor="demo-customized-select-native">Coverage Limits</InputLabel>
+                    <NativeSelect
+                      id="demo-customized-select-native"
+                      value={309960}
+                      //onChange={this.handleChange}
+                      input={<BootstrapInput />}
+                    >
+                      <option aria-label="None" value="" />
+                      <option value={259950}>$25,000 / $50,000</option>
+                      <option value={309960}>$30,000 / $60,000</option>
+                      <option value={5099100}>$50,000 / $100,000</option>
+                      <option value={10099200}>$100,000 / $200,000</option>
+                      <option value={10099300}>$100,000 / $300,000</option>
+                      <option value={30099300}>$300,000 / $300,000</option>
+                      <option value={30099500}>$300,000 / $500,000</option>
+                      <option value={50099500}>$500,000 / $500,000</option>
+                    </NativeSelect>
+                  </FormControl>
+                </div>
+              )
+            }
+            {
+              this.props.controlType==="minusplus" &&
+              (
+                <div wrapper="iconbuttons">
+                  <IconButton color="primary" aria-label="reduce">
+                    <RemoveCircleOutlineIcon />
+                  </IconButton>
+                  <div type="spacer">
+                    {"$"+this.state.coverage+",000"}
+                  </div>
+                  <IconButton color="primary" aria-label="reduce">
+                    <AddCircleOutlineIcon />
+                  </IconButton>
+                </div>
+              )
+            }
           </CardFooter>
         </Card>
-      </>
     );
   }
 }
