@@ -130,7 +130,6 @@ export default class CoverageCard extends React.Component {
         val = event.target.value;
       }
 
-      console.log("control change", val)
       this.setState(state => ({
         coverage:val
       }))

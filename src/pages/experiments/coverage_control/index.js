@@ -1,6 +1,8 @@
 import React from "react"
 import {AntPage} from "./../../../../src/components/";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
+
 import CoverageCard from "./../../../../src/components/experiements/coverage_control/CoverageCard";
 import './../../../../src/css/custom.scss'
 import './../../../../src/css/experiments/coverage_control/styles.scss'
@@ -85,9 +87,14 @@ export default function Home() {
   return (
     <AntPage title="Coverage Experiments" icon="">
       <ThemeProvider theme={theme}>
-        <a href="task1">Task 1</a>
-        <a href="task2">Task 2</a>
-        <a href="task3">Task 3</a>
+        <Typography variant="h5" component="div">
+          Tasks
+        </Typography>
+        <ul>
+          <li><a href="task1">One</a></li>
+          <li><a href="task2">Two</a></li>
+          <li><a href="task3">Three</a></li>
+        </ul>
       </ThemeProvider>
     </AntPage>
   );
