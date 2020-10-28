@@ -129,6 +129,28 @@ export default class CoverageCard extends React.Component {
         coverage:newValue
       }))
     };
+
+    this.handleMinusClick = () => {
+      const activeIndex = this.state.coverage;
+      if(!limits[activeIndex-1]) {
+        return false;
+      }
+
+      this.setState(state => ({
+        coverage:activeIndex-1
+      }))
+    };
+
+    this.handlePlusClick = () => {
+      const activeIndex = this.state.coverage;
+      if(!limits[activeIndex+1]) {
+        return false;
+      }
+
+      this.setState(state => ({
+        coverage:activeIndex+1
+      }))
+    };
   }
 
   render() {
@@ -137,8 +159,6 @@ export default class CoverageCard extends React.Component {
         margin: theme.spacing(2),
       },
     }));
-
-
 
     return (
         <Card container="coverage" raised={true}>
@@ -210,13 +230,19 @@ export default class CoverageCard extends React.Component {
               this.props.controlType==="minusplus" &&
               (
                 <div wrapper="iconbuttons">
-                  <IconButton color="primary" aria-label="reduce">
+                  <IconButton
+                    aria-label="decrease"
+                    onClick={this.handleMinusClick}
+                  >
                     <RemoveCircleOutlineIcon />
                   </IconButton>
-                  <div type="spacer">
-                    {"$"+this.state.coverage+",000"}
-                  </div>
-                  <IconButton color="primary" aria-label="reduce">
+
+                  <div type="spacer" />
+
+                  <IconButton
+                    aria-label="increase"
+                    onClick={this.handlePlusClick}
+                  >
                     <AddCircleOutlineIcon />
                   </IconButton>
                 </div>

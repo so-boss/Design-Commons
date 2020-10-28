@@ -37,6 +37,9 @@ const theme = createMuiTheme({
       },
       markLabel: {},
     },
+    MuiButton: {
+      color:"#0B1421"
+    },
     MuiTypography: {
       body1:{
         fontFamily: 'Cabin',
