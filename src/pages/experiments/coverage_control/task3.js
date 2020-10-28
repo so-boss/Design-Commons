@@ -80,7 +80,14 @@ const theme = createMuiTheme({
 
 export default function Home() {
   return (
-    <AntPage title="Coverage Experiments" icon="">
+    <AntPage
+      title="Coverage Controls: Three"
+      icon="lab"
+      baseRoute = {{
+        path: '/',
+        breadcrumbName: 'Experiments',
+      }}
+    >
       <ThemeProvider theme={theme}>
         <CoverageCard controlType="minusplus"/>
       </ThemeProvider>

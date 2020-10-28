@@ -89,7 +89,7 @@ export default function Home() {
       title="Coverage Controls"
       icon="lab"
       baseRoute = {{
-        path: '/experiments/coverage_control/',
+        path: '/',
         breadcrumbName: 'Experiments',
       }}
     >
