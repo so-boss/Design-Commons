@@ -126,7 +126,7 @@ export default class CoverageCard extends React.Component {
 
     this.handleControlChange = (event, newValue) => {
       let val = newValue;
-      if(!val) {
+      if(val===undefined) {
         val = event.target.value;
       }
 
