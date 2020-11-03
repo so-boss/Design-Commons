@@ -127,10 +127,10 @@ const Nav = () => {
       <TreeItem nodeId="5" label="Resources">
         <TreeItem nodeId="10" label="Material UI" />
         <TreeItem nodeId="6" label="Figma">
-          <TreeItem nodeId="7" label="src">
-            <TreeItem nodeId="8" label="index.js" />
-            <TreeItem nodeId="9" label="tree-view.js" />
-          </TreeItem>
+          {/*<TreeItem nodeId="7" label="src">*/}
+          {/*  <TreeItem nodeId="8" label="index.js" />*/}
+          {/*  <TreeItem nodeId="9" label="tree-view.js" />*/}
+          {/*</TreeItem>*/}
         </TreeItem>
       </TreeItem>
     </TreeView>

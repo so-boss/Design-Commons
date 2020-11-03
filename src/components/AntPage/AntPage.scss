@@ -47,7 +47,7 @@ body {
         }
         [class*='TreeItem-root'] {
           &[class*='-selected'] {
-            [class*='TreeItem-label'] {
+            > div > [class*='TreeItem-label'] {
               color:#115dc4;
               background-color:rgba(255,255,255,0);
               font-weight:500;
