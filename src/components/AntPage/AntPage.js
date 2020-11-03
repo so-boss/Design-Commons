@@ -19,7 +19,7 @@ import TreeItem from '@material-ui/lab/TreeItem';
 // import DeleteIcon from '@material-ui/icons/Delete';
 // import Label from '@material-ui/icons/Label';
 // import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-// import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from '@material-ui/icons/Info';
 // import ForumIcon from '@material-ui/icons/Forum';
 // import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 // import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -110,28 +110,49 @@ const useNavStyles = makeStyles({
   }
 });
 
+const NavItem = ({labelText, labelIcon: LabelIcon, iconID, link, ...rest}) => {
+  return (
+    <TreeItem
+      label={
+        <div nav="item">
+          {/*<LabelIcon color="inherit" />*/}
+          <img src={"/icons/sprite/"+iconID+".svg"} />
+          <Typography variant="body2">
+            {labelText}
+          </Typography>
+        </div>
+      }
+      {...rest}
+    />
+  )
+}
+
 const Nav = () => {
   const classes = useNavStyles();
 
   return (
     <TreeView
       className={classes.root}
+      defaultExpanded={['1']}
       defaultCollapseIcon={<ExpandMoreIcon />}
       defaultExpandIcon={<ChevronRightIcon />}
     >
       <TreeItem nodeId="1" label="Guidelines">
-        <TreeItem nodeId="2" label="Color" />
-        <TreeItem nodeId="3" label="Typeography" />
-        <TreeItem nodeId="4" label="Icons" />
-      </TreeItem>
-      <TreeItem nodeId="5" label="Resources">
-        <TreeItem nodeId="10" label="Material UI" />
-        <TreeItem nodeId="6" label="Figma">
-          {/*<TreeItem nodeId="7" label="src">*/}
-          {/*  <TreeItem nodeId="8" label="index.js" />*/}
-          {/*  <TreeItem nodeId="9" label="tree-view.js" />*/}
-          {/*</TreeItem>*/}
-        </TreeItem>
+        <NavItem
+          nodeId="2"
+          labelText="Color"
+          iconID="color"
+        />
+        <NavItem
+          nodeId="3"
+          labelText="Typography"
+          iconID="typography"
+        />
+        <NavItem
+          nodeId="4"
+          labelText="Icons"
+          iconID="icon"
+        />
       </TreeItem>
     </TreeView>
   );

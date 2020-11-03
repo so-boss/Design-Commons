@@ -48,14 +48,35 @@ body {
         [class*='TreeItem-root'] {
           &[class*='-selected'] {
             > div > [class*='TreeItem-label'] {
-              color:#115dc4;
-              background-color:rgba(255,255,255,0);
-              font-weight:500;
+              background:rgba(255,255,255,0);
+              > [nav=item] {
+                p {
+                  color:#115dc4;
+                  background-color:rgba(255,255,255,0);
+                  font-weight:500;
+                }
+              }
+
             }
           }
         }
-        TreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label {
 
+        [nav=item] {
+          display:flex;
+          align-items:center;
+          > svg, img {
+            width:16px;
+            height:16px;
+
+            flex:initial;
+            + p {
+              flex:1;
+              margin-left:8px;
+            }
+          }
+        }
+        [class*='-iconContainer']:empty {
+          display:none;
         }
       }
       [sidebar=footer] {
