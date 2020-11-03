@@ -43,20 +43,20 @@ const NavItem = ({labelText, iconID, type, link, ...rest}) => {
         <div nav="item">
           <Button href={link}>
             {iconID &&
-              <img src={"/icons/"+iconID+".svg"} />
+            <img src={"/icons/"+iconID+".svg"} />
             }
             {
               type
-              ? (
-                <Typography variant="body1">
-                  {labelText}
-                </Typography>
-              )
-              : (
-                <Typography variant="body2">
-                  {labelText}
-                </Typography>
-              )
+                ? (
+                  <Typography variant="body1">
+                    {labelText}
+                  </Typography>
+                )
+                : (
+                  <Typography variant="body2">
+                    {labelText}
+                  </Typography>
+                )
             }
           </Button>
         </div>
@@ -123,7 +123,7 @@ const Sidebar = ({children}) => {
 }
 
 
-export default function AntPage ({baseRoute, title, icon, summary, children}) {
+export default function Sidebar ({baseRoute, title, icon, summary, children}) {
   const Content = ({ children }) => {
     return (
       <div style={{ flex: 1 }}>{children}</div>
@@ -160,6 +160,9 @@ export default function AntPage ({baseRoute, title, icon, summary, children}) {
   return (
     <div layout="page">
       <div>
+        <Sidebar>
+          <Nav />
+        </Sidebar>
         <div type="page">
           <PageHeader
             title={title}

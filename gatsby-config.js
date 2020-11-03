@@ -18,6 +18,7 @@ module.exports = {
         CMYK: true,
       },
     },
+    `gatsby-plugin-layout`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -43,7 +44,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Specimens for Design Systems - @lekoarts/gatsby-theme-specimens`,
+        name: `Specimens for Design Systems`,
         short_name: `Specimens`,
         description: `Leverage the wide variety of powerful React components to build your design system. Display your colors, typography or any other design tokens with ease and focus on the design system itself, not on how to showcase it. Works seamlessly with MDX.`,
         start_url: `/`,

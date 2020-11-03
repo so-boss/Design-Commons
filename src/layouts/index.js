@@ -1,4 +1,5 @@
 import React from "react";
+import { ContextProviderComponent } from "./Context"
 
 import {
   Tag,
@@ -14,8 +15,8 @@ import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
-import './../../../static/ant/antd.css';
-import './AntPage.scss';
+import './../../static/ant/antd.css';
+import './../../src/components/AntPage/AntPage.scss';
 
 //import '@site/docs/guidelines.scss';
 const useStyles = makeStyles((theme) => ({
@@ -43,20 +44,20 @@ const NavItem = ({labelText, iconID, type, link, ...rest}) => {
         <div nav="item">
           <Button href={link}>
             {iconID &&
-              <img src={"/icons/"+iconID+".svg"} />
+            <img src={"/icons/"+iconID+".svg"} />
             }
             {
               type
-              ? (
-                <Typography variant="body1">
-                  {labelText}
-                </Typography>
-              )
-              : (
-                <Typography variant="body2">
-                  {labelText}
-                </Typography>
-              )
+                ? (
+                  <Typography variant="body1">
+                    {labelText}
+                  </Typography>
+                )
+                : (
+                  <Typography variant="body2">
+                    {labelText}
+                  </Typography>
+                )
             }
           </Button>
         </div>
@@ -158,21 +159,15 @@ export default function AntPage ({baseRoute, title, icon, summary, children}) {
   }
 
   return (
+    <ContextProviderComponent>
     <div layout="page">
       <div>
-        <div type="page">
-          <PageHeader
-            title={title}
-            className="site-page-header"
-            tags={<Tag color="blue">Under Development</Tag>}
-            avatar={avatar}
-            breadcrumb={{routes}}
-            type="page"
-          >
-            <Content summary={summary}>{children}</Content>
-          </PageHeader>
-        </div>
+        <Sidebar>
+          <Nav />
+        </Sidebar>
+        {children}
       </div>
     </div>
+    </ContextProviderComponent>
   );
 }
