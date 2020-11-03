@@ -20,10 +20,10 @@ import {
   // Video,
 } from "@lekoarts/gatsby-theme-specimens"
 import {Typography, Tabs, Card, Avatar} from "antd";
-import {AntPage} from "./../../src/components/";
+import {AntPage} from "./../../../src/components/";
 
-import { useSortedColors } from './../../src/hooks/use-sorted-colors';
-import './../../src/css/custom.scss'
+import { useSortedColors } from './../../../src/hooks/use-sorted-colors';
+import './../../../src/css/custom.scss'
 
 const { Paragraph, Title } = Typography;
 const { TabPane } = Tabs;

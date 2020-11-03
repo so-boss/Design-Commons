@@ -31,6 +31,7 @@ body {
       box-shadow: -2px -1px 8px 4px #0000001c;
       z-index: 10;
       width: 225px;
+      height:100vh;
       > div {
         padding:16px;
       }
@@ -72,6 +73,15 @@ body {
             + p {
               flex:1;
               margin-left:8px;
+              text-align:left;
+            }
+          }
+
+          [class*='Button-root'] {
+            text-transform:initial;
+            width:100%;
+            [class*='Button-label'] {
+              justify-content:flex-start;
             }
           }
         }
@@ -81,6 +91,10 @@ body {
       }
       [sidebar=footer] {
 
+      }
+
+      [class*=Typography] {
+        font-family: 'Cabin', sans-serif;
       }
     }
 

@@ -6,24 +6,16 @@ import {
   Card,
 } from 'antd';
 import { makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
+// import Accordion from '@material-ui/core/Accordion';
+// import AccordionSummary from '@material-ui/core/AccordionSummary';
+// import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-
 import TreeView from '@material-ui/lab/TreeView';
 import TreeItem from '@material-ui/lab/TreeItem';
-// import MailIcon from '@material-ui/icons/Mail';
-// import DeleteIcon from '@material-ui/icons/Delete';
-// import Label from '@material-ui/icons/Label';
-// import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import InfoIcon from '@material-ui/icons/Info';
-// import ForumIcon from '@material-ui/icons/Forum';
-// import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-// import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-// import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import Button from '@material-ui/core/Button';
+
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import './../../../static/ant/antd.css';
 import './AntPage.scss';
@@ -41,66 +33,66 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Menu = ({classes}) => {
-  return (
-    <div type="menu">
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>Guidelines</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>Color</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}>Typography</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-          <Typography className={classes.heading}>Icons</Typography>
-        </AccordionSummary>
-      </Accordion>
-    </div>
-  )
-}
+// const Menu = ({classes}) => {
+//   return (
+//     <div type="menu">
+//       <Accordion>
+//         <AccordionSummary
+//           expandIcon={<ExpandMoreIcon />}
+//           aria-controls="panel1a-content"
+//           id="panel1a-header"
+//         >
+//           <Typography className={classes.heading}>Guidelines</Typography>
+//         </AccordionSummary>
+//         <AccordionDetails>
+//           <Typography>
+//             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+//             sit amet blandit leo lobortis eget.
+//           </Typography>
+//         </AccordionDetails>
+//       </Accordion>
+//       <Accordion>
+//         <AccordionSummary
+//           expandIcon={<ExpandMoreIcon />}
+//           aria-controls="panel1a-content"
+//           id="panel1a-header"
+//         >
+//           <Typography className={classes.heading}>Color</Typography>
+//         </AccordionSummary>
+//         <AccordionDetails>
+//           <Typography>
+//             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+//             sit amet blandit leo lobortis eget.
+//           </Typography>
+//         </AccordionDetails>
+//       </Accordion>
+//       <Accordion>
+//         <AccordionSummary
+//           expandIcon={<ExpandMoreIcon />}
+//           aria-controls="panel2a-content"
+//           id="panel2a-header"
+//         >
+//           <Typography className={classes.heading}>Typography</Typography>
+//         </AccordionSummary>
+//         <AccordionDetails>
+//           <Typography>
+//             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+//             sit amet blandit leo lobortis eget.
+//           </Typography>
+//         </AccordionDetails>
+//       </Accordion>
+//       <Accordion>
+//         <AccordionSummary
+//           expandIcon={<ExpandMoreIcon />}
+//           aria-controls="panel3a-content"
+//           id="panel3a-header"
+//         >
+//           <Typography className={classes.heading}>Icons</Typography>
+//         </AccordionSummary>
+//       </Accordion>
+//     </div>
+//   )
+// }
 
 const useNavStyles = makeStyles({
   root: {
@@ -110,16 +102,29 @@ const useNavStyles = makeStyles({
   }
 });
 
-const NavItem = ({labelText, labelIcon: LabelIcon, iconID, link, ...rest}) => {
+const NavItem = ({labelText, iconID, type, link, ...rest}) => {
   return (
     <TreeItem
       label={
         <div nav="item">
-          {/*<LabelIcon color="inherit" />*/}
-          <img src={"/icons/sprite/"+iconID+".svg"} />
-          <Typography variant="body2">
-            {labelText}
-          </Typography>
+          <Button href={link}>
+            {iconID &&
+              <img src={"/icons/"+iconID+".svg"} />
+            }
+            {
+              type
+              ? (
+                <Typography variant="body1">
+                  {labelText}
+                </Typography>
+              )
+              : (
+                <Typography variant="body2">
+                  {labelText}
+                </Typography>
+              )
+            }
+          </Button>
         </div>
       }
       {...rest}
@@ -137,23 +142,30 @@ const Nav = () => {
       defaultCollapseIcon={<ExpandMoreIcon />}
       defaultExpandIcon={<ChevronRightIcon />}
     >
-      <TreeItem nodeId="1" label="Guidelines">
+      <NavItem
+        nodeId="1"
+        labelText="Guidelines"
+        type="category"
+      >
         <NavItem
           nodeId="2"
           labelText="Color"
           iconID="color"
+          link="/guidelines/color/"
         />
         <NavItem
           nodeId="3"
           labelText="Typography"
-          iconID="typography"
+          iconID="typography2"
+          link="/guidelines/typography/"
         />
         <NavItem
           nodeId="4"
           labelText="Icons"
-          iconID="icon"
+          iconID="icons"
+          link="/guidelines/icons/"
         />
-      </TreeItem>
+      </NavItem>
     </TreeView>
   );
 };

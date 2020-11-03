@@ -3,9 +3,6 @@ import React from "react"
 import {
   Typography
 } from 'antd';
-
-
-
 //import {
   // Alert,
   // Audio,
@@ -25,10 +22,10 @@ import {
   // Video,
 //} from "@lekoarts/gatsby-theme-specimens"
 
-import {FontSize, TextStyle, Typeface, AntPage} from "./../../src/components/"
+import {FontSize, TextStyle, Typeface, AntPage} from "./../../../src/components/"
 
-import { useTypography } from './../../src/hooks/use-typography.js';
-import './../../src/css/custom.scss'
+import { useTypography } from './../../../src/hooks/use-typography.js';
+import './../../../src/css/custom.scss'
 
 const { Paragraph, Title } = Typography;
 
