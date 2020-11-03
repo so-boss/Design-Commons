@@ -11,6 +11,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import TreeView from '@material-ui/lab/TreeView';
 import TreeItem from '@material-ui/lab/TreeItem';
@@ -101,7 +102,42 @@ const Menu = ({classes}) => {
   )
 }
 
-const Sidebar = ({}) => {
+const useNavStyles = makeStyles({
+  root: {
+    height: 240,
+    flexGrow: 1,
+    maxWidth: 400
+  }
+});
+
+const Nav = () => {
+  const classes = useNavStyles();
+
+  return (
+    <TreeView
+      className={classes.root}
+      defaultCollapseIcon={<ExpandMoreIcon />}
+      defaultExpandIcon={<ChevronRightIcon />}
+    >
+      <TreeItem nodeId="1" label="Guidelines">
+        <TreeItem nodeId="2" label="Color" />
+        <TreeItem nodeId="3" label="Typeography" />
+        <TreeItem nodeId="4" label="Icons" />
+      </TreeItem>
+      <TreeItem nodeId="5" label="Resources">
+        <TreeItem nodeId="10" label="Material UI" />
+        <TreeItem nodeId="6" label="Figma">
+          <TreeItem nodeId="7" label="src">
+            <TreeItem nodeId="8" label="index.js" />
+            <TreeItem nodeId="9" label="tree-view.js" />
+          </TreeItem>
+        </TreeItem>
+      </TreeItem>
+    </TreeView>
+  );
+};
+
+const Sidebar = ({children}) => {
   const classes = useStyles();
 
   return (
@@ -111,7 +147,7 @@ const Sidebar = ({}) => {
           <img src="/img/aaa-logo.svg" />
         </div>
         <div sidebar="body">
-          <Menu classes={classes}/>
+          {children}
         </div>
         <div sidebar="footer"></div>
       </div>
@@ -135,8 +171,6 @@ export default function AntPage ({baseRoute, title, icon, summary, children}) {
     route1 = baseRoute;
   }
 
-
-
   let routes = [
     route1
   ];
@@ -159,16 +193,21 @@ export default function AntPage ({baseRoute, title, icon, summary, children}) {
   return (
     <div layout="page">
       <div>
-        <Sidebar></Sidebar>
-        <PageHeader
-          title={title}
-          className="site-page-header"
-          tags={<Tag color="blue">Under Development</Tag>}
-          avatar={avatar}
-          breadcrumb={{routes}}
-        >
-          <Content summary={summary}>{children}</Content>
-        </PageHeader>
+        <Sidebar>
+          <Nav />
+        </Sidebar>
+        <div type="page">
+          <PageHeader
+            title={title}
+            className="site-page-header"
+            tags={<Tag color="blue">Under Development</Tag>}
+            avatar={avatar}
+            breadcrumb={{routes}}
+            type="page"
+          >
+            <Content summary={summary}>{children}</Content>
+          </PageHeader>
+        </div>
       </div>
     </div>
   );
