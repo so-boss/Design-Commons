@@ -18,7 +18,7 @@ import {pages} from "./../nav";
 import './../../static/ant/antd.css';
 import './../../src/components/AntPage/AntPage.scss';
 
-
+//TODO: Fix this ugliness before I cry anymore (at least it performs decent)
 const Item = ({labelText, iconID, type, link}) => (
   <Button href={link}>
     {iconID &&
@@ -40,32 +40,17 @@ const Item = ({labelText, iconID, type, link}) => (
   </Button>
 )
 
-//TODO: Fix this ugliness before I cry anymore (at least it performs decent)
 const NavItem = ({labelText, iconID, type, link, ...rest}) => {
   return (
     <TreeItem
       label={
         <div nav="item">
-          {
-            link
-              ? (
-
-                  <Item
-                    labelText={labelText}
-                    iconID={iconID}
-                    type={type}
-                    link={link}
-                  />
-
-              )
-              : (
-                <Item
-                  labelText={labelText}
-                  iconID={iconID}
-                  type={type}
-                />
-              )
-          }
+          <Item
+            labelText={labelText}
+            iconID={iconID}
+            type={type}
+            link={link}
+          />
         </div>
       }
       {...rest}
@@ -120,22 +105,19 @@ const Nav = () => {
   );
 };
 
-const Sidebar = ({children}) => {
-
-  return (
-    <div type="sidebar">
-      <div>
-        <div sidebar="header">
-          <img src="/img/aaa-logo.svg" />
-        </div>
-        <div sidebar="body">
-          {children}
-        </div>
-        <div sidebar="footer"></div>
+const Sidebar = ({children}) => (
+  <div type="sidebar">
+    <div>
+      <div sidebar="header">
+        <img src="/img/aaa-logo.svg" />
       </div>
+      <div sidebar="body">
+        {children}
+      </div>
+      <div sidebar="footer"></div>
     </div>
-  );
-}
+  </div>
+);
 
 const Header = ({pages, pathname}) => {
   let page = pages[pathname];

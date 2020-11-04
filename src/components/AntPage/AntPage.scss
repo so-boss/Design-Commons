@@ -31,6 +31,8 @@ body {
       box-shadow: -2px -1px 8px 4px #0000001c;
       z-index: 10;
       width: 225px;
+      min-height: 100vh;
+      height: 100%;
       > div {
         padding:16px;
       }
@@ -56,7 +58,6 @@ body {
                   font-weight:500;
                 }
               }
-
             }
           }
         }
@@ -99,20 +100,17 @@ body {
 
     [type=page] {
       margin-left:24px;
+      display: flex;
+      flex-direction: column;
 
       [page=footer] {
         width:100%;
         height:200px;
         background:lightgrey;
-
-
       }
     }
   }
 }
-
-
-
 
 /* CSS Quickly Overwriting the Docusaurus css */
 .container {
