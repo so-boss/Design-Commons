@@ -120,9 +120,14 @@ const Sidebar = ({children}) => (
 );
 
 const Header = ({pages, pathname}) => {
-  let page = pages[pathname];
+  if(!pathname) {
+    pathname = "404";
+  }
+  let page;
   if(!page) {
-    let page = pages["404"];
+    page = pages["404"];
+  } else {
+    page = pages[pathname];
   }
 
   // let route1 = {
@@ -145,11 +150,12 @@ const Header = ({pages, pathname}) => {
   // }
 
   let avatar = {
-    src: `/icons/${page.icon}.svg`,
     shape: 'square',
   };
-  if(!page.icon) {
+  if(page && !page.icon) {
     avatar.src = `/icons/sprite/circle.svg`
+  } else {
+    avatar.src = "/icons/"+page.icon+".svg"
   }
 
   return (

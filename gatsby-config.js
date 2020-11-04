@@ -19,13 +19,13 @@ module.exports = {
       },
     },
     "gatsby-plugin-layout",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "pages",
-        path: `${__dirname}/src/markdown-pages/`,
-      },
-    },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "pages",
+    //     path: `${__dirname}/src/markdown-pages/`,
+    //   },
+    // },
     "gatsby-plugin-sass",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
