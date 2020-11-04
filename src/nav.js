@@ -26,7 +26,7 @@ export const pages = {
       label:"Under Development"
     }
   },
-  404: {
+  "404": {
     title:"404",
     summary:"",
     icon:"vector",

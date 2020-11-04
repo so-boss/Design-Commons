@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 
 import { Link } from "gatsby";
 
@@ -109,7 +110,9 @@ const Sidebar = ({children}) => (
   <div type="sidebar">
     <div>
       <div sidebar="header">
-        <img src="/img/aaa-logo.svg" />
+        <Link to="/">
+          <img src="/img/aaa-logo.svg" />
+        </Link>
       </div>
       <div sidebar="body">
         {children}
@@ -119,57 +122,55 @@ const Sidebar = ({children}) => (
   </div>
 );
 
-const Header = ({pages, pathname, location}) => {
-  if(!pathname) {
-    pathname = location.pathname;
+const Header = ({pageContext, pages, location}) => {
+  let cleanpath = location.pathname.replace(/\//g, "");
+  let page = pages[cleanpath];
+  if(!page) {
+    return false;
   }
-  let page;
-  if(!pathname) {
-    page = pages["404"];
-  } else {
-    let cleanpath = pathname.replace(/\//g, "");
-
-    page = pages[cleanpath];
-  }
-
-  console.log(pages, page, pathname)
-
-  // let route1 = {
-  //   path: 'index',
-  //   breadcrumbName: 'Design Guidelines',
-  // };
-  // if(page.baseRoute) {
-  //   route1 = page.baseRoute;
-  // }
-  //
-  // let routes = [
-  //   route1
-  // ];
-  //
-  // if(page.title) {
-  //   routes.push({
-  //     path: 'first',
-  //     breadcrumbName: page.title,
-  //   })
-  // }
 
   let avatar = {
     shape: 'square',
   };
-  if(page && !page.icon) {
-    avatar.src = `/icons/sprite/circle.svg`
+
+  if(!page) {
+    let page = {
+      title:"",
+      summary:"",
+      icon:"color",
+      tag:{
+        color:"blue",
+        label:"Under Development"
+      }
+    }
+  }
+
+  const {title, icon, tag} = page;
+
+  if(page) {
+    if(page.icon) {
+      avatar.src = "/icons/"+page.icon+".svg"
+    }
   } else {
-    avatar.src = "/icons/"+page.icon+".svg"
+    avatar.src = `/icons/sprite/circle.svg`
   }
 
   return (
-    <PageHeader
-      title={page.title}
-      className="site-page-header"
-      tags={<Tag color={page.tag.color}>{page.tag.label}</Tag>}
-      avatar={avatar}
-      type="page"
-    />
+    <>
+      <Breadcrumb
+        location={location}
+        crumbs={pageContext.breadcrumb.crumbs.slice(1)}
+        crumbSeparator=" / "
+        // title="Design Commons"
+      />
+      <PageHeader
+        title={title}
+        className="site-page-header"
+        tags={<Tag color={tag.color}>{tag.label}</Tag>}
+        avatar={avatar}
+        type="page"
+      />
+    </>
   )
 }
 
@@ -193,7 +194,7 @@ const Footer = ({pages, children}) => {
   )
 }
 
-export default function Layout ({location, children}) {
+export default function Layout ({pageContext, location, children}) {
 
   return (
     <div layout="page">
@@ -203,7 +204,11 @@ export default function Layout ({location, children}) {
         </Sidebar>
 
         <div type="page">
-          <Header pathname={location.pathname} pages={pages}/>
+          <Header
+            location={location}
+            pages={pages}
+            pageContext={pageContext}
+          />
           {children}
           <Footer pages={pages}/>
         </div>
@@ -211,3 +216,4 @@ export default function Layout ({location, children}) {
     </div>
   );
 }
+

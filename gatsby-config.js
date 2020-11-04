@@ -18,6 +18,23 @@ module.exports = {
         CMYK: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        // defaultCrumb: optional To create a default crumb
+        // see Click Tracking default crumb example below
+        // defaultCrumb: {
+        //   location: {
+        //     pathname: "/guidelines",
+        //   },
+        //   crumbLabel: "Design Commons",
+        //   crumbSeparator: " / ",
+        // },
+        // usePathPrefix: optional, if you are using pathPrefix above
+        //usePathPrefix: '/guidelines',
+          useAutoGen: true
+      }
+    },
     "gatsby-plugin-layout",
     // {
     //   resolve: "gatsby-source-filesystem",
