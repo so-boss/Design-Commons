@@ -97,7 +97,7 @@ const Nav = () => {
         <NavItem
           nodeId="4"
           labelText="Icons"
-          iconID="icons"
+          iconID="vector"
           link="/guidelines/icons"
         />
       </NavItem>
@@ -168,13 +168,15 @@ const Footer = ({pages, children}) => {
     <div page="footer">
       <div layout="columns">
         <div column="1">
-          <title>Guidelines</title>
+          <div type="title">Guidelines</div>
           <div type="links">
-            <Link>Color</Link>
-            <Link>Typography</Link>
-            <Link>Icons</Link>
+            <Link to="/guidelines/color">Color</Link>
+            <Link to="/guidelines/typography">Typography</Link>
+            <Link to="/guidelines/icons">Icons</Link>
           </div>
         </div>
+        <div column="2" />
+        <div column="3" />
       </div>
       {children}
     </div>

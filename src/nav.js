@@ -20,7 +20,7 @@ export const pages = {
   "/guidelines/icons": {
     title:"Icons",
     summary:"",
-    icon:"icons",
+    icon:"vector",
     tag:{
       color:"blue",
       label:"Under Development"
