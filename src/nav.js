@@ -1,14 +1,14 @@
 export const pages = {
-  "/guidelines/color": {
+  guidelinescolor: {
     title:"Color",
-    summary:"",
+    summary:"The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA.",
     icon:"color",
     tag:{
       color:"blue",
       label:"Under Development"
     }
   },
-  "/guidelines/typography": {
+  guidelinestypography: {
     title:"Typography",
     summary:"",
     icon:"typography2",
@@ -17,7 +17,7 @@ export const pages = {
       label:"Under Development"
     }
   },
-  "/guidelines/icons": {
+  guidelinesicons: {
     title:"Icons",
     summary:"",
     icon:"vector",
@@ -26,10 +26,10 @@ export const pages = {
       label:"Under Development"
     }
   },
-  "404": {
+  404: {
     title:"404",
     summary:"",
-    icon:"icons",
+    icon:"vector",
     tag:{
       color:"blue",
       label:"Under Development"

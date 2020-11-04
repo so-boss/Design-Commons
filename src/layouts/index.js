@@ -119,16 +119,20 @@ const Sidebar = ({children}) => (
   </div>
 );
 
-const Header = ({pages, pathname}) => {
+const Header = ({pages, pathname, location}) => {
   if(!pathname) {
-    pathname = "404";
+    pathname = location.pathname;
   }
   let page;
-  if(!page) {
+  if(!pathname) {
     page = pages["404"];
   } else {
-    page = pages[pathname];
+    let cleanpath = pathname.replace(/\//g, "");
+
+    page = pages[cleanpath];
   }
+
+  console.log(pages, page, pathname)
 
   // let route1 = {
   //   path: 'index',
