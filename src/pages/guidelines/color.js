@@ -114,15 +114,3 @@ export default function Home() {
     </AntPage>
   )
 }
-
-/*
-
-          <ColorSwatch
-            color={black.color}
-            name={black.name}
-          />
-      <Palette
-        colors={useSortedColors("blue","color")}
-        mode="swatch"
-      />
- */

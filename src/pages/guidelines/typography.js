@@ -3,24 +3,6 @@ import React from "react"
 import {
   Typography
 } from 'antd';
-//import {
-  // Alert,
-  // Audio,
-  // BorderRadius,
-  // ColorFamilies,
-  // ColorRow,
-  // ColorSwatch,
-  // Download,
-  //FontFamily,
-  //FontSize,
-  // FontWeight,
-  // Heading,
-  // Palette,
-  // Shadow,
-  // Space,
-  // Table,
-  // Video,
-//} from "@lekoarts/gatsby-theme-specimens"
 
 import {FontSize, TextStyle, Typeface, AntPage} from "./../../../src/components/"
 
@@ -33,7 +15,7 @@ export default function Home() {
   const typography = useTypography();
 
   return (
-    <AntPage title="Typography" icon="typography">
+    <AntPage>
       <Title level={2}>Font: RT Raleway</Title>
       <div row="typefaces">
         <Typeface typefaces={useTypography("rtraleway").typefaces} />
