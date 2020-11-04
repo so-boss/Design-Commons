@@ -48,7 +48,7 @@ export default function Home() {
 )
 
   return (
-    <AntPage title="Color" icon="color">
+    <AntPage>
       <Paragraph>The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA. Text colors displayed in light or dark tints represent CSAA's recommended accessible pairing with the color.</Paragraph>
       <Title level={2}>Brand Colors</Title>
       <Palette

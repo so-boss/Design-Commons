@@ -5,6 +5,10 @@ const defaultContextValue = {
   data: {
     // set your initial data shape here
     menuOpen: false,
+    tags: "",
+    title: "",
+    avatar: null,
+    breadcrumb: null
   },
   set: () => {},
 }

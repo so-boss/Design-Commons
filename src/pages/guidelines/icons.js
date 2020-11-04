@@ -18,10 +18,7 @@ import React from "react"
 //   // Table,
 //   // Video,
 // } from "@lekoarts/gatsby-theme-specimens"
-import {
-  Typography
-} from 'antd';
-
+import {Typography} from 'antd';
 import {AntPage} from "./../../../src/components/";
 
 import './../../../src/css/custom.scss'
