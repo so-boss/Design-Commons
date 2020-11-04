@@ -38,12 +38,15 @@ body {
         padding:16px;
       }
       [sidebar=header] {
+        display: flex;
+        justify-content: center;
+        padding-top: 16px;
         img {
-          width:100%;
+          width:60%;
         }
       }
       [sidebar=body] {
-        margin-top:48px;
+        margin-top:30px;
 
         [class*='TreeItem-content'] {
           padding:6px 0 6px 0px;
@@ -131,7 +134,7 @@ body {
             &:first-child {
               width:300px;
               flex:initial;
-              padding: 0 0 0 24px;
+              padding: 0 0 0 0px;
             }
 
             [type=title] {
@@ -194,8 +197,6 @@ body {
 
     }
   }
-
-
   [class*='-Page'] {
 
     [class*='-Page'] {
