@@ -9,6 +9,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'figma_id',
+      title: 'Figma ID',
+      type: 'string'
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'string'
