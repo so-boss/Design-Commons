@@ -20,41 +20,29 @@ import './../../../src/css/custom.scss'
 
 const {Paragraph, Title} = Typography;
 
-
 const buildIcon = (icon) => {
   return React.createElement(icon);
 }
 
-let iconList = null;
-const buildIcons = (list) => {
-  let a = [];
-  _.forEach(icons, function (value, key) {
-    let o = {
-      id: key
-    };
-    o.component = value;
-    a.push(o);
-  })
-
-  return a;
-}
-
-// function Thingy(props) {
-//   return (
-//     <CategoryIcons
-//       name={props.name}
-//       categoryIcons={props.categoryIcons}
-//       maps={props.maps}
-//     />
-//   )
+// let iconList = null;
+// const buildIcons = (list) => {
+//   let a = [];
+//   _.forEach(icons, function (value, key) {
+//     let o = {
+//       id: key
+//     };
+//     o.component = value;
+//     a.push(o);
+//   })
+//
+//   return a;
 // }
 
 const Categories = ({categories, maps}) => {
   const categoryItems = categories.map(category => {
-    const name = category.node.name;
+    const name = category.name;
 
     let categoryIcons = maps.by.category[name];
-    console.log(name, maps, categoryIcons)
     if(categoryIcons && categoryIcons.length>1) {
       return (
         <div categories="wrapper">
@@ -88,9 +76,9 @@ const Category = ({title, children}) => {
 
 
 const IconGrid = ({categoryIcons, maps}) => {
-  if (iconList === null) {
-    iconList = buildIcons(icons);
-  }
+  // if (iconList === null) {
+  //   iconList = buildIcons(icons);
+  // }
 
   const icon_map = maps.by.figma_id;
 

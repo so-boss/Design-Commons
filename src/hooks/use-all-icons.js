@@ -49,8 +49,7 @@ const mapIconsBy = (icons, what) => {
     // If icon.figma_id exists in the map
     if(map[icon[what]]) {
       // Hmm...we could just overwrite and ignore
-      console.log(icon[what], " already exists as a Figma id")
-
+      //console.log(icon[what], " already exists as a Figma id")
       return;
     }
 
@@ -67,7 +66,6 @@ const mapIconsBy = (icons, what) => {
         if(!thisCategory) {
           thisCategory = category_map[category.name] = [];
         }
-
         thisCategory.push(icon.figma_id);
       });
     } else {
@@ -94,19 +92,17 @@ export const useAllIcons = () => {
             }
           }
         }
-        allSanityIconCategory {
-          edges {
-            node {
-              name
+        allSanityIconCategory(sort: {order: ASC, fields: name}) {
+            nodes {
+                name
             }
-          }
         }
       }
     `
   )
 
   meta.icons = data.allSanityIcons.edges;
-  meta.categories = data.allSanityIconCategory.edges;
+  meta.categories = data.allSanityIconCategory.nodes;
 
   return {
     meta: mapIconsBy(meta.icons, "figma_id")
