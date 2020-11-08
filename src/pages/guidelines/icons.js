@@ -16,21 +16,15 @@ import _ from "lodash";
 import { useAllIcons } from './../../../src/hooks/use-all-icons';
 
 import './../../../src/css/custom.scss'
+//import {Category} from "@material-ui/icons";
 
 const {Paragraph, Title} = Typography;
 
-
-//let i = 0;
 
 const buildIcon = (icon) => {
   return React.createElement(icon);
 }
 
-
-// //key={++i+"icon"}
-// const allIcons = a.map((icon, key) =>
-//
-// );
 let iconList = null;
 const buildIcons = (list) => {
   let a = [];
@@ -45,29 +39,76 @@ const buildIcons = (list) => {
   return a;
 }
 
+// function Thingy(props) {
+//   return (
+//     <CategoryIcons
+//       name={props.name}
+//       categoryIcons={props.categoryIcons}
+//       maps={props.maps}
+//     />
+//   )
+// }
 
-const Category = ({title}) => {
+const Categories = ({categories, maps}) => {
+  const categoryItems = categories.map(category => {
+    const name = category.node.name;
+
+    let categoryIcons = maps.by.category[name];
+    console.log(name, maps, categoryIcons)
+    if(categoryIcons && categoryIcons.length>1) {
+      return (
+        <div categories="wrapper">
+          <Category title={name}>
+            <IconGrid
+              categoryIcons={categoryIcons}
+              maps={maps}
+            />
+          </Category>
+        </div>
+      )
+    }
+  })
+
   return (
-    <div grid="title">
-      <span>{title}</span>
+    <ul>
+      {categoryItems}
+    </ul>
+  );
+}
+const Category = ({title, children}) => {
+  return (
+    <div category="wrapper">
+      <div grid="title">
+        <span>{title}</span>
+      </div>
+      {children}
     </div>
   )
 }
 
-const IconGrid = ({}) => {
+
+const IconGrid = ({categoryIcons, maps}) => {
   if (iconList === null) {
     iconList = buildIcons(icons);
   }
+
+  const icon_map = maps.by.figma_id;
+
   return (
     <div layout="grid">
-      <Category title="Category Name"/>
-      <hr/>
+      {/*<Category title="Category Name"/>*/}
+      {/*<hr/>*/}
       <ul>
-        {iconList.map((icon) => (
-          <li key={icon.id}>
+        {categoryIcons.map((figma_id) => (
+          <li key={figma_id}>
             <div>
               <span>
-                {buildIcon(icon.component)}
+                {buildIcon(icons[figma_id])}
+                <span>{icon_map[figma_id].name}</span>
+                {
+                  icon_map[figma_id].description &&
+                    <span>{icon_map[figma_id].description}</span>
+                }
               </span>
             </div>
           </li>
@@ -81,10 +122,19 @@ const IconGrid = ({}) => {
 
 export default function Home() {
   const {meta} = useAllIcons();
-  console.log(meta)
+
+  console.log(meta.categories)
+
+  // 1. Iterate through the entire array of (alphabatized) categories,
+  // 2. IF a category has a category map
+  //      THEN build a category with each member icon
+  // console.log(meta)
   return (
     <AntPage>
-      <IconGrid iconList={iconList}/>
+      <Categories
+        categories={meta.categories}
+        maps={meta.maps}
+      />
     </AntPage>
   )
 }
