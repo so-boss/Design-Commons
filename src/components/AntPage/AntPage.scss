@@ -1,10 +1,14 @@
-//@import url('https://fonts.googleapis.com/css?family=Helvetica');
+$blue-dark: #00338d;
+$blue: #115dc4;
+$blue-light: #5196e5;
 
-body {
-  font-family:Roboto;
-  color:black;
-  font-weight:500;
-}
+$black: #0b1421;
+$grey-dark: #373b49;
+$grey: #676c7d;
+$grey-light: #abafbf;
+$white: #f7f8fc;
+
+
 
 
 [layout=page] {
@@ -125,6 +129,12 @@ body {
       position:relative;
       z-index:1;
 
+      > [class*="-page-header"] + div {
+        flex: 1 1 0%;
+        margin-top: 26px;
+        margin-bottom: 42px;
+      }
+
       > span:first-child {
         float:left;
 
@@ -212,74 +222,89 @@ body {
           }
         }
       }
-
-      [layout=grid] {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        margin:0;
-        flex-direction:column;
-
-        [category=title] {
-          font-size:18px;
-          font-weight:300;
-        }
-
-        > ul {
-          padding:0px;
-          margin:0px;
-
-          > li {
-            width: 112px;
-            padding: 8px;
-            cursor: pointer;
-            display: inline-block;
-            text-align: center;
-            user-select: none;
-            border-radius:3px;
-
-            &:hover {
-              background:lightgrey;
-
-              > div {
-                border: 1px solid rgba(255,255,255,.8);
-              }
-            }
-
-            > div {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              flex: 1;
-              height: 120px;
-              border: 1px solid rgba(255,255,255,0);
-              border-radius:3px;
-
-              > div {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex: 1;
-
-                svg {
-                  width:100%;
-                  height:40px;
-                }
-
-                + span {
-                  padding: 8px 0;
-                  width: 100%;
-                }
-              }
-            }
-          }
-        }
+      [category=wrapper] {
         hr {
           display: block;
           border-top: 1px solid rgba(0,0,0,.12);
           margin: 16px 0px 16px 0px;
           flex:initial;
+        }
+        [category=title] {
+          text-transform: capitalize;
+
+          // TODO: Introduce mixins or tokens soon so we can prevent rewriting tokenized styles
+          //styleName: CSAA / Subtitile / Large — R;
+          font-family: "RT Raleway", sans-serif;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 25px;
+          color: $black;
+        }
+
+        [layout=grid] {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          margin: 0;
+          flex-direction: column;
+
+          > ul {
+            padding: 0px;
+            margin: 0px;
+
+            > li {
+              width: 112px;
+              padding: 8px;
+              cursor: pointer;
+              display: inline-block;
+              text-align: center;
+              user-select: none;
+              border-radius: 3px;
+
+              &:hover {
+                background: lightgrey;
+
+                > div {
+                  border: 1px solid rgba(255, 255, 255, .8);
+                }
+              }
+
+              > div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex: 1;
+                height: 120px;
+                border: 1px solid rgba(255, 255, 255, 0);
+                border-radius: 3px;
+
+                > div {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex: 1;
+
+                  svg {
+                    width: 100%;
+                    height: 40px;
+                  }
+
+                  + span {
+                    padding: 8px 0;
+                    width: 100%;
+
+                    //styleName: CSAA / Caption - R;
+                    font-family: Cabin;
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 17px;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

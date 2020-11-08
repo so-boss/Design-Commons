@@ -7,7 +7,7 @@ export default function AntPage ({summary, children}) {
   const Content = ({children }) => {
 
     return (
-      <div style={{ flex: 1, marginBottom:"42px" }}>{children}</div>
+      <div>{children}</div>
     )
   }
 

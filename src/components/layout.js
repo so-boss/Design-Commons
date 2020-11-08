@@ -52,13 +52,15 @@ const Layout = ({ children }) => {
             font-size: 16px;
             -webkit-text-size-adjust: 100%;
           }
-          body {
-            border: 0;
-            margin: 0;
-            padding: 0;
-            //font-family:sans-serif;
-            //color:black;
-            //font-weight:500;
+         body {
+            //styleName: CSAA / Body / Large - R;
+            font-family: Cabin;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 25px;
+            color:#0b1421;
+            text-rendering: optimizeLegibility;
           }
           h1,
           h2,
