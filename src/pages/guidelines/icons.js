@@ -45,64 +45,60 @@ const Categories = ({categories, maps}) => {
     let categoryIcons = maps.by.category[name];
     if(categoryIcons && categoryIcons.length>1) {
       return (
-        <div categories="wrapper">
-          <Category title={name}>
-            <IconGrid
-              categoryIcons={categoryIcons}
-              maps={maps}
-            />
-          </Category>
-        </div>
+        <Category title={name}>
+          <IconGrid
+            categoryIcons={categoryIcons}
+            maps={maps}
+          />
+        </Category>
       )
     }
   })
 
   return (
-    <ul>
+    <div categories="wrapper">
       {categoryItems}
-    </ul>
+    </div>
   );
 }
 const Category = ({title, children}) => {
   return (
     <div category="wrapper">
-      <div grid="title">
+      <div category="title">
         <span>{title}</span>
       </div>
       {children}
+      <hr/>
     </div>
   )
 }
 
 
+/*
+  {
+    icon_map[figma_id].description &&
+      <span>{icon_map[figma_id].description}</span>
+  }
+ */
 const IconGrid = ({categoryIcons, maps}) => {
-  // if (iconList === null) {
-  //   iconList = buildIcons(icons);
-  // }
-
   const icon_map = maps.by.figma_id;
 
   return (
     <div layout="grid">
-      {/*<Category title="Category Name"/>*/}
-      {/*<hr/>*/}
       <ul>
         {categoryIcons.map((figma_id) => (
           <li key={figma_id}>
             <div>
-              <span>
+              <div>
                 {buildIcon(icons[figma_id])}
-                <span>{icon_map[figma_id].name}</span>
-                {
-                  icon_map[figma_id].description &&
-                    <span>{icon_map[figma_id].description}</span>
-                }
+              </div>
+              <span truncate="yes">
+                {icon_map[figma_id].name}
               </span>
             </div>
           </li>
         ))}
       </ul>
-      <hr/>
     </div>
   );
 }
