@@ -11,13 +11,13 @@ module.exports = {
     siteUrl: "https://dev.csaa.design"
   },
   plugins: [
-    // {
-    //   resolve: "@lekoarts/gatsby-theme-specimens",
-    //   // See the theme"s README for all available options
-    //   options: {
-    //     CMYK: true,
-    //   },
-    // },
+    {
+      resolve: "@lekoarts/gatsby-theme-specimens",
+      // See the theme"s README for all available options
+      options: {
+        CMYK: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
