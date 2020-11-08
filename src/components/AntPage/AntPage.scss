@@ -394,6 +394,7 @@ $white: #f7f8fc;
             + [class*='TreeItem-label'] {
               > [nav=item] {
                 button {
+                  transition:transform .3s ease;
                   transform: translateX(100px);
                 }
               }
