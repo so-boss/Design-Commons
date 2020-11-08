@@ -13,9 +13,12 @@ import _ from "lodash";
 // import IconButton from '@material-ui/core/IconButton';
 // import InfoIcon from '@material-ui/icons/Info';
 
+import { useAllIcons } from './../../../src/hooks/use-all-icons';
+
 import './../../../src/css/custom.scss'
 
-const { Paragraph, Title } = Typography;
+const {Paragraph, Title} = Typography;
+
 
 //let i = 0;
 
@@ -31,7 +34,7 @@ const buildIcon = (icon) => {
 let iconList = null;
 const buildIcons = (list) => {
   let a = [];
-  _.forEach(icons, function(value, key) {
+  _.forEach(icons, function (value, key) {
     let o = {
       id: key
     };
@@ -52,13 +55,13 @@ const Category = ({title}) => {
 }
 
 const IconGrid = ({}) => {
-  if(iconList===null) {
+  if (iconList === null) {
     iconList = buildIcons(icons);
   }
   return (
     <div layout="grid">
-      <Category title="Category Name" />
-      <hr />
+      <Category title="Category Name"/>
+      <hr/>
       <ul>
         {iconList.map((icon) => (
           <li key={icon.id}>
@@ -70,14 +73,15 @@ const IconGrid = ({}) => {
           </li>
         ))}
       </ul>
-      <hr />
+      <hr/>
     </div>
   );
 }
 
 
 export default function Home() {
-
+  const {meta} = useAllIcons();
+  console.log(meta)
   return (
     <AntPage>
       <IconGrid iconList={iconList}/>
