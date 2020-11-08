@@ -25,6 +25,11 @@ let meta = {
 
 /*
     mapIconsBy([...], "figma_id");
+
+    TODO: Outside of abstracting the category mapping,
+          will need to either sort order here or in the query to graphQL for:
+          1.Categories
+          2.Icons by name
 */
 const mapIconsBy = (icons, what) => {
   let map = meta.maps.by[what];
@@ -45,6 +50,8 @@ const mapIconsBy = (icons, what) => {
     if(map[icon[what]]) {
       // Hmm...we could just overwrite and ignore
       console.log(icon[what], " already exists as a Figma id")
+
+      return;
     }
 
     let o = map[icon[what]] = icon;
@@ -64,7 +71,6 @@ const mapIconsBy = (icons, what) => {
         thisCategory.push(icon.figma_id);
       });
     } else {
-      console.log("NO CATEGORY for", icon.figma_id)
       category_map["undefined"].push(icon.figma_id)
     }
   });
