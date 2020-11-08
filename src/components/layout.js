@@ -51,10 +51,11 @@ const Layout = ({ children }) => {
           html {
             font-size: 16px;
             -webkit-text-size-adjust: 100%;
+            font-family: "RT Raleway", sans-serif;
           }
          body {
             //styleName: CSAA / Body / Large - R;
-            font-family: Cabin;
+            font-family: "RT Raleway", sans-serif;
             font-size: 18px;
             font-style: normal;
             font-weight: 400;
@@ -105,8 +106,6 @@ const Layout = ({ children }) => {
       <main
         css={css`
           max-width: 1200px;
-          //margin: 2rem auto;
-          //padding: 1.5rem;
         `}
       >
         {children}

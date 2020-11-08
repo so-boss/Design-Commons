@@ -48,6 +48,12 @@ $white: #f7f8fc;
       min-height: 100vh;
       position:relative;
       background:rgba(255,255,255,1);
+      overflow:hidden;
+      transition: width .3s ease;
+
+      * {
+        font-family: "RT Raleway", sans-serif;
+      }
       > div {
         padding:16px;
       }
@@ -55,6 +61,7 @@ $white: #f7f8fc;
         display: flex;
         justify-content: center;
         padding-top: 16px;
+        height:72px;
         > a {
           width: 100%;
           height: 100%;
@@ -63,11 +70,24 @@ $white: #f7f8fc;
         }
         img {
           width:60%;
+          transition: .3s ease;
         }
       }
       [sidebar=body] {
         margin-top:30px;
 
+        [class*='TreeView-root'] {
+          [class*='TreeItem-content'] {
+              > [class*='TreeItem-iconContainer'] {
+                + [class*='TreeItem-label'] {
+                  text-transform: uppercase;
+                  font-weight:700;
+
+
+                }
+              }
+          }
+        }
         [class*='TreeItem-content'] {
           padding:6px 0 6px 0px;
         }
@@ -76,6 +96,10 @@ $white: #f7f8fc;
             > div > [class*='TreeItem-label'] {
               background:rgba(255,255,255,0);
               > [nav=item] {
+                button{
+                  transition: transform .3s ease;
+                }
+
                 p {
                   color:#115dc4;
                   background-color:rgba(255,255,255,0);
@@ -83,6 +107,21 @@ $white: #f7f8fc;
                 }
               }
             }
+          }
+          > div > [class*='TreeItem-label'] {
+            padding-left:0px;
+
+            img {
+              transition: all .3s ease;
+              + span {
+                transition: padding .3s ease;
+                padding-left:8px;
+              }
+            }
+          }
+
+          [class*='TreeItem-group'] {
+            margin-left:0px;
           }
         }
 
@@ -103,6 +142,7 @@ $white: #f7f8fc;
 
           [class*='Button-root'] {
             text-transform:initial;
+            font-family:inherit;
             width:100%;
             [class*='Button-label'] {
               justify-content:flex-start;
@@ -115,10 +155,6 @@ $white: #f7f8fc;
       }
       [sidebar=footer] {
 
-      }
-
-      [class*=Typography] {
-        font-family: 'Cabin', sans-serif;
       }
     }
 
@@ -142,7 +178,6 @@ $white: #f7f8fc;
       nav {
         margin-top:12px;
         * {
-          font-family: Roboto;
           font-size:14px;
           font-weight:400;
         }
@@ -296,7 +331,6 @@ $white: #f7f8fc;
                     width: 100%;
 
                     //styleName: CSAA / Caption - R;
-                    font-family: Cabin;
                     font-size: 12px;
                     font-weight: 400;
                     line-height: 17px;
@@ -309,7 +343,71 @@ $white: #f7f8fc;
       }
     }
   }
+
+  //&[expanded=false],
+  @media only screen and (max-width: 768px) {
+
+    > div {
+      [type=sidebar] {
+        width: 72px;
+        [sidebar=header] img {
+          width: 200px;
+          transform: translateX(-60px) translateY(6px);
+          opacity:0;
+        }
+      }
+    }
+
+    div[sidebar=header]:after {
+      content: "CSAA Design";
+      position: absolute;
+      transform: rotate( 270deg);
+      width: 220px;
+      font-family: 'Cabin';
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 400;
+      top: 37px;
+      border-left: 1px solid rgba(0,0,0,.3);
+      padding-left: 18px;
+      color: rgba(0,0,0,.6);
+    }
+
+    [class*='TreeItem-root'] {
+      > div > [class*='TreeItem-label'] {
+        padding-left:0px;
+
+        img {
+          width:24px;
+          height:24px;
+          + span {
+            padding-left:24px !important;
+          }
+        }
+      }
+    }
+
+    [sidebar=body] {
+      [class*='TreeView-root'] {
+        [class*='TreeItem-content'] {
+          > [class*='TreeItem-iconContainer'] {
+            + [class*='TreeItem-label'] {
+              > [nav=item] {
+                button {
+                  transform: translateX(100px);
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+
+  }
 }
+
+
 
 /* CSS Quickly Overwriting the Docusaurus css */
 .container {
@@ -433,7 +531,6 @@ $white: #f7f8fc;
       margin-bottom:-16px;
     }
   }
-
 }
 [role=tabpanel] {
   [layout=panel] {

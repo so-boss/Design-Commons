@@ -3,7 +3,7 @@ import React from "react"
 import {Typography} from 'antd';
 import {AntPage} from "./../../../src/components/";
 import * as icons from "@so.boss/genesis-icon-library"
-import _ from "lodash";
+//import _ from "lodash";
 
 //import { makeStyles } from '@material-ui/core/styles';
 //import GridList from '@material-ui/core/GridList';
@@ -106,8 +106,6 @@ const IconGrid = ({categoryIcons, maps}) => {
 
 export default function Home() {
   const {meta} = useAllIcons();
-
-  console.log(meta.categories)
 
   // 1. Iterate through the entire array of (alphabatized) categories,
   // 2. IF a category has a category map

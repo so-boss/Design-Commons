@@ -1,14 +1,14 @@
 import React from "react";
 
 import {Tag, PageHeader} from 'antd';
-import { makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TreeView from '@material-ui/lab/TreeView';
 import TreeItem from '@material-ui/lab/TreeItem';
 import Button from '@material-ui/core/Button';
 
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+//import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+//import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 
 import { Link } from "gatsby";
@@ -24,19 +24,7 @@ const Item = ({labelText, iconID, type, link}) => (
     {iconID &&
       <img src={"/icons/"+iconID+".svg"} />
     }
-    {
-      type
-        ? (
-          <Typography variant="body1">
-            {labelText}
-          </Typography>
-        )
-        : (
-          <Typography variant="body2">
-            {labelText}
-          </Typography>
-        )
-    }
+    <span>{labelText}</span>
   </Button>
 )
 
@@ -58,24 +46,14 @@ const NavItem = ({labelText, iconID, type, link, ...rest}) => {
   )
 }
 
-const useNavStyles = makeStyles({
-  root: {
-    // height: 240,
-    flexGrow: 1,
-    //maxWidth: 400
-  }
-});
-
 // TODO: Generate this from nav.js
 const Nav = () => {
-  const classes = useNavStyles();
 
   return (
     <TreeView
-      className={classes.root}
       defaultExpanded={['1']}
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
+      // defaultCollapseIcon={<ExpandMoreIcon />}
+      // defaultExpandIcon={<ChevronRightIcon />}
     >
       <NavItem
         nodeId="1"
@@ -105,6 +83,7 @@ const Nav = () => {
   );
 };
 
+// TODO: Migrate the sidebar component into the layout
 const Sidebar = ({children}) => (
   <div type="sidebar">
     <div>

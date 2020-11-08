@@ -3,7 +3,6 @@ import React from "react";
 import {
   Tag,
   PageHeader,
-  Card,
 } from 'antd';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -11,30 +10,13 @@ import TreeView from '@material-ui/lab/TreeView';
 import TreeItem from '@material-ui/lab/TreeItem';
 import Button from '@material-ui/core/Button';
 
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+//import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+//import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import './../../../static/ant/antd.css';
 import './AntPage.scss';
 
 //import '@site/docs/guidelines.scss';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-}));
-
-const useNavStyles = makeStyles({
-  root: {
-    height: 240,
-    flexGrow: 1,
-    maxWidth: 400
-  }
-});
 
 const NavItem = ({labelText, iconID, type, link, ...rest}) => {
   return (
@@ -46,17 +28,8 @@ const NavItem = ({labelText, iconID, type, link, ...rest}) => {
             <img src={"/icons/"+iconID+".svg"} />
             }
             {
-              type
-                ? (
-                  <Typography variant="body1">
-                    {labelText}
-                  </Typography>
-                )
-                : (
-                  <Typography variant="body2">
-                    {labelText}
-                  </Typography>
-                )
+              type &&
+                labelText
             }
           </Button>
         </div>
@@ -67,14 +40,12 @@ const NavItem = ({labelText, iconID, type, link, ...rest}) => {
 }
 
 const Nav = () => {
-  const classes = useNavStyles();
 
   return (
     <TreeView
-      className={classes.root}
       defaultExpanded={['1']}
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
+      // defaultCollapseIcon={}
+      // defaultExpandIcon={}
     >
       <NavItem
         nodeId="1"
@@ -105,8 +76,6 @@ const Nav = () => {
 };
 
 const Sidebar = ({children}) => {
-  const classes = useStyles();
-
   return (
     <div type="sidebar">
       <div>
