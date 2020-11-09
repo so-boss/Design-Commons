@@ -63,6 +63,25 @@ const Category = ({title, children}) => {
   )
 }
 
+const Icon = ({icon_map, figma_id}) => {
+  const [isActive, setActive] = React.useState(false);
+  return (
+    <div
+      className={"active"+isActive}
+      onClick={() => {
+        console.log(isActive)
+        setActive(!isActive)
+      }}
+    >
+      <div>
+        {buildIcon(icons[figma_id])}
+      </div>
+      <span truncate="yes">
+        {icon_map[figma_id].name}
+      </span>
+    </div>
+  )
+}
 
 /*
   {
@@ -85,14 +104,7 @@ const IconGrid = ({categoryIcons, maps}) => {
                 onSelection(figma_id);
               }}
             >
-              <div>
-                <div>
-                  {buildIcon(icons[figma_id])}
-                </div>
-                <span truncate="yes">
-                  {icon_map[figma_id].name}
-                </span>
-              </div>
+              <Icon icon_map={icon_map} figma_id={figma_id} />
             </li>
         ))}
       </ul>

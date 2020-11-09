@@ -40,7 +40,7 @@ $white: #f7f8fc;
 
   > div {
     display:flex;
-    $sidebar-width: 225px;
+    $sidebar-width: 184px;
     [type=sidebar] {
       border-right: 1px solid #00000021;
       box-shadow: -2px -1px 8px 4px #0000001c;
@@ -54,6 +54,8 @@ $white: #f7f8fc;
 
       * {
         font-family: "RT Raleway", sans-serif;
+        font-size:16px;
+        font-weight:400;
       }
       > div {
         padding:16px;
@@ -145,6 +147,10 @@ $white: #f7f8fc;
             text-transform:initial;
             font-family:inherit;
             width:100%;
+            font-size:initial;
+            font-weight:initial;
+            line-height:initial;
+            letter-spacing:initial;
             [class*='Button-label'] {
               justify-content:flex-start;
             }
@@ -272,8 +278,7 @@ $white: #f7f8fc;
           // TODO: Introduce mixins or tokens soon so we can prevent rewriting tokenized styles
           //styleName: CSAA / Subtitile / Large — R;
           font-family: "RT Raleway", sans-serif;
-          font-size: 18px;
-          font-style: normal;
+          font-size: 16px;
           font-weight: 400;
           line-height: 25px;
           color: $black;
@@ -283,7 +288,7 @@ $white: #f7f8fc;
           display: flex;
           flex-wrap: wrap;
           justify-content: space-around;
-          margin: 0;
+          margin: 16px 0 0 0;
           flex-direction: column;
 
           > ul {
@@ -315,7 +320,7 @@ $white: #f7f8fc;
                 align-items: center;
                 justify-content: center;
                 flex: 1;
-                height: 120px;
+                height: 96px; //120px;
                 border: 1px solid rgba(255, 255, 255, 0);
                 border-radius: 3px;
 
@@ -338,6 +343,7 @@ $white: #f7f8fc;
                     font-size: 12px;
                     font-weight: 400;
                     line-height: 17px;
+                    display:none;
                   }
                 }
               }
@@ -376,7 +382,7 @@ $white: #f7f8fc;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: 400;
-      top: 37px;
+      top: 26px;
       border-left: 1px solid rgba(0,0,0,.3);
       padding-left: 18px;
       color: rgba(0,0,0,.6);
