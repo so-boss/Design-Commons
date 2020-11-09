@@ -14,7 +14,8 @@ import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 import { Link } from "gatsby";
 
 import {pages} from "./../nav";
-
+import Inspector from './../../src/components/Inspector';
+import InspectorContext from './../../src/contexts/InspectorContext';
 import './../../static/ant/antd.css';
 import './../../src/components/AntPage/AntPage.scss';
 
@@ -173,25 +174,61 @@ const Footer = ({pages, children}) => {
 }
 
 export default function Layout ({pageContext, location, children}) {
+  let state = {
+    isOpen:false
+  };
+  const [isOpen, setOpen] = React.useState(state);
 
+  const drawerOpen = () => {
+    console.log("open", isOpen, state.isOpen)
+    setOpen({ isOpen: true });
+  };
+
+  const drawerClose = () => {
+    console.log("close", isOpen, state.isOpen)
+    setOpen({ isOpen: false });
+  };
+
+  const drawerToggle = () => {
+    console.log("TOGGLE", isOpen, state.isOpen)
+    if(isOpen.isOpen) {
+      setOpen({isOpen:false})
+    } else {
+      setOpen({isOpen:true})
+    }
+    //setOpen({ isOpen: !state.isOpen })
+  };
   return (
-    <div layout="page">
-      <div>
-        <Sidebar>
-          <Nav />
-        </Sidebar>
-
-        <div type="page">
-          <Header
-            location={location}
-            pages={pages}
-            pageContext={pageContext}
-          />
-          {children}
-          <Footer pages={pages}/>
+    <InspectorContext.Provider
+      value={{
+        isOpen: isOpen,
+        onDrawerOpen: drawerOpen,
+        onDrawerClose: drawerClose,
+        onDrawerToggle: drawerToggle
+      }}
+    >
+      <div layout="page">
+        <div>
+          <Sidebar>
+            <Nav />
+          </Sidebar>
+          <div type="page">
+            <Header
+              location={location}
+              pages={pages}
+              pageContext={pageContext}
+            />
+            {children}
+            <Footer pages={pages}/>
+          </div>
         </div>
+        <Inspector
+          // handleDrawerClose={handleDrawerClose}
+          // handleDrawerOpen={handleDrawerOpen}
+          // open={open}
+        />
       </div>
-    </div>
+    </InspectorContext.Provider>
   );
 }
 

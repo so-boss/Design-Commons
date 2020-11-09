@@ -9,4 +9,6 @@ export { default as Typeface } from './Typeface';
 export { default as TextStyle } from './TextStyle';
 export { default as FontSize } from './FontSize';
 
+export { default as Inspector } from './Inspector';
+
 export { default as AntPage } from './AntPage';

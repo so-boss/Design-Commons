@@ -1,7 +1,9 @@
-import React from "react"
+import React, {useContext} from "react"
 
 import {Typography} from 'antd';
 import {AntPage} from "./../../../src/components/";
+import InspectThis from "./../../../src/components/InspectThis";
+import InspectorContext from './../../../src/contexts/InspectorContext';
 import * as icons from "@so.boss/genesis-icon-library"
 //import _ from "lodash";
 
@@ -82,21 +84,21 @@ const Category = ({title, children}) => {
  */
 const IconGrid = ({categoryIcons, maps}) => {
   const icon_map = maps.by.figma_id;
-
+  const {isOpen, onDrawerOpen, onDrawerToggle} = useContext(InspectorContext);
   return (
     <div layout="grid">
       <ul>
         {categoryIcons.map((figma_id) => (
-          <li key={figma_id}>
-            <div>
+            <li key={figma_id} onClick={onDrawerToggle}>
               <div>
-                {buildIcon(icons[figma_id])}
+                <div>
+                  {buildIcon(icons[figma_id])}
+                </div>
+                <span truncate="yes">
+                  {icon_map[figma_id].name}
+                </span>
               </div>
-              <span truncate="yes">
-                {icon_map[figma_id].name}
-              </span>
-            </div>
-          </li>
+            </li>
         ))}
       </ul>
     </div>
