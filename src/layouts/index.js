@@ -180,17 +180,14 @@ export default function Layout ({pageContext, location, children}) {
   const [isOpen, setOpen] = React.useState(state);
 
   const drawerOpen = () => {
-    console.log("open", isOpen, state.isOpen)
     setOpen({ isOpen: true });
   };
 
   const drawerClose = () => {
-    console.log("close", isOpen, state.isOpen)
     setOpen({ isOpen: false });
   };
 
   const drawerToggle = () => {
-    console.log("TOGGLE", isOpen, state.isOpen)
     if(isOpen.isOpen) {
       setOpen({isOpen:false})
     } else {

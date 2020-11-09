@@ -62,6 +62,8 @@ const Layout = ({ children }) => {
             line-height: 25px;
             color:#0b1421;
             text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
           }
           h1,
           h2,
@@ -103,11 +105,7 @@ const Layout = ({ children }) => {
           }
         `}
       />
-      <main
-        css={css`
-          max-width: 1200px;
-        `}
-      >
+      <main>
         {children}
       </main>
     </React.Fragment>

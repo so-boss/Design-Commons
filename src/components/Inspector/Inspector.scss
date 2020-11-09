@@ -1,0 +1,92 @@
+// TODO: Rearchitect how CSS is handling
+//       imports so we can just include variables at the start
+
+$blue-dark: #00338d;
+$blue: #115dc4;
+$blue-light: #5196e5;
+
+$black: #0b1421;
+$grey-dark: #373b49;
+$grey: #676c7d;
+$grey-light: #abafbf;
+$white: #f7f8fc;
+
+[wrapper=drawer] {
+
+  font-size:14px;
+  [class*=Drawer-paper] {
+    padding: 0 16px 16px 16px;
+    background: rgb(246, 243, 239);
+    > div {
+      display:flex;
+      flex-direction: column;
+    }
+
+    [drawer=header] {
+      height:80px;
+    }
+
+    [drawer=body] {
+      [wrapper=info] {
+        display: flex;
+        flex-direction: column;
+
+        > div {
+          padding:0px 0px 16px 0px;
+          min-height: 32px;
+          display: flex;
+          align-items: center;
+          position:relative;
+
+          &[label] {
+            &:after {
+              content: attr(label);
+              position: absolute;
+              top: -12px;
+              font-size: 10px;
+              text-transform: uppercase;
+              height: 12px;
+              line-height: 13px;
+              font-weight: bold;
+              left: -4px;
+              color: $black;
+              //background: white;
+              padding: 0 4px;
+              width:100%;
+            }
+          }
+
+          &:nth-child(1) {
+            font-size:18px;
+            text-transform:capitalize;
+          }
+          &:nth-child(n+2) {
+            margin-top: 16px;
+
+            > span, [wrapper=bubbles] {
+              margin-top:4px;
+            }
+          }
+
+          &[type=figma] {
+            > span {
+
+            }
+          }
+        }
+      }
+
+      [class*=Chip-root] {
+        border-radius:3px;
+        &:nth-child(n+2) {
+          margin-left:4px;
+        }
+
+      }
+    }
+
+    [drawer=footer] {
+
+    }
+  }
+}

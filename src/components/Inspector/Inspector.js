@@ -4,12 +4,10 @@ import React, {useContext} from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+import Chip from '@material-ui/core/Chip';
+
 import Divider from '@material-ui/core/Divider';
-import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import InspectorContext from './../../../src/contexts/InspectorContext';
@@ -20,23 +18,6 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex"
-  },
-  appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    }),
-    marginRight: drawerWidth
-  },
-  title: {
-    flexGrow: 1
   },
   hide: {
     display: "none"
@@ -113,25 +94,8 @@ export default function Inspector ({}) {
   // };
 
   return (
-    <div className={classes.root}>
+    <div wrapper="drawer" className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Persistent drawer
-          </Typography>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
-            onClick={onDrawerOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
 
       <Drawer
         className={classes.drawer}
@@ -143,8 +107,32 @@ export default function Inspector ({}) {
         }}
       >
         <div>
-          <IconButton onClick={onDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}          </IconButton>
+          <div drawer="header">
+            <IconButton onClick={onDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+          </div>
+          <div drawer="body">
+            <div wrapper="info">
+              <div type="name">
+                <span>flower rose</span>
+              </div>
+              <div type="figma" label="figma id">
+                <span>flower-rose</span>
+              </div>
+              <div type="description" label="description">
+                <span>An icon is a glyph used to represent something else. Icons can represent accessibility standards</span>
+              </div>
+              <div wrapper="categories" label="categories">
+                <div wrapper="bubbles">
+                  <Chip size="small" label="arrows" />
+                  <Chip size="small" label="misc" />
+                  <Chip size="small" label="navigation" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div drawer="footer"></div>
         </div>
         <Divider />
       </Drawer>
