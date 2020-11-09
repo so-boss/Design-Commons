@@ -306,10 +306,20 @@ $white: #f7f8fc;
               transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
               &:hover {
-                background: lightgrey;
-                box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
-
+                background: rgb(229, 229, 229);
                 > div {
+                }
+              }
+              &:active {
+                > div {
+                  border: 1px solid rgba(255, 255, 255, .8);
+                  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+                }
+              }
+              .activetrue {
+                > div {
+                  background: lightgrey;
+                  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
                   border: 1px solid rgba(255, 255, 255, .8);
                 }
               }
