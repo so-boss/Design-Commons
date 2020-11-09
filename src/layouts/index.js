@@ -16,6 +16,8 @@ import { Link } from "gatsby";
 import {pages} from "./../nav";
 import Inspector from './../../src/components/Inspector';
 import InspectorContext from './../../src/contexts/InspectorContext';
+import IconContext from "../../src/contexts/IconContext";
+
 import './../../static/ant/antd.css';
 import './../../src/components/AntPage/AntPage.scss';
 
@@ -174,34 +176,46 @@ const Footer = ({pages, children}) => {
 }
 
 export default function Layout ({pageContext, location, children}) {
-  let state = {
+  const [isOpen, setOpen] = React.useState({
     isOpen:false
-  };
-  const [isOpen, setOpen] = React.useState(state);
+  });
 
-  const drawerOpen = () => {
+  const handleOpeningInspector = () => {
     setOpen({ isOpen: true });
   };
 
-  const drawerClose = () => {
+  const handleClosingInspector = () => {
     setOpen({ isOpen: false });
   };
 
-  const drawerToggle = () => {
+  const handleToggleInspector = () => {
     if(isOpen.isOpen) {
       setOpen({isOpen:false})
     } else {
       setOpen({isOpen:true})
     }
-    //setOpen({ isOpen: !state.isOpen })
   };
+
+  const [selectedIcon, setSelected] = React.useState({
+    selectedIcon:null
+  });
+  const handleSelection = (id) => {
+    setSelected(id);
+  };
+
   return (
+    <IconContext.Provider
+      value={{
+        selectedIcon: selectedIcon,
+        onSelection: handleSelection
+      }}
+    >
     <InspectorContext.Provider
       value={{
         isOpen: isOpen,
-        onDrawerOpen: drawerOpen,
-        onDrawerClose: drawerClose,
-        onDrawerToggle: drawerToggle
+        onOpenInspector: handleOpeningInspector,
+        onCloseInspector: handleClosingInspector,
+        onToggleInspector: handleToggleInspector,
       }}
     >
       <div layout="page">
@@ -219,13 +233,10 @@ export default function Layout ({pageContext, location, children}) {
             <Footer pages={pages}/>
           </div>
         </div>
-        <Inspector
-          // handleDrawerClose={handleDrawerClose}
-          // handleDrawerOpen={handleDrawerOpen}
-          // open={open}
-        />
+        <Inspector selectedIcon={selectedIcon}/>
       </div>
     </InspectorContext.Provider>
+    </IconContext.Provider>
   );
 }
 

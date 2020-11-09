@@ -15073,6 +15073,11 @@ react-live@^2.2.2:
     react-simple-code-editor "^0.10.0"
     unescape "^1.0.1"
 
+react-lorem-ipsum@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/react-lorem-ipsum/-/react-lorem-ipsum-1.4.7.tgz#9fdbd061f8b4b75acc9b3af4c1101f1389471a94"
+  integrity sha512-rmzsK9IIlrraXu5fjy9AScbSgo7d4zsbZ5EamRHNkbauTa/WfbhjwxXP1dsuoOT6AVbvxoTQzxZNqdYRWoG3Mw==
+
 react-number-format@^4.4.1:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-4.4.1.tgz#d5614dd25edfc21ed48b97356213440081437a94"

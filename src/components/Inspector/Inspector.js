@@ -1,6 +1,5 @@
 import React, {useContext} from "react";
 
-//import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from "@material-ui/core/Drawer";
@@ -12,6 +11,9 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import InspectorContext from './../../../src/contexts/InspectorContext';
 import './Inspector.scss';
+import IconContext from "./../../../src/contexts/IconContext";
+import { LoremIpsum } from "react-lorem-ipsum";
+
 
 const drawerWidth = 240;
 
@@ -55,43 +57,52 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-// const AppBar = ({}) => {
-//   return (
-//     <AppBar
-//       position="fixed"
-//     >
-//       <Toolbar>
-//         <Typography variant="h6" noWrap>
-//           Persistent drawer
-//         </Typography>
-//         <IconButton
-//           color="inherit"
-//           aria-label="open drawer"
-//           edge="end"
-//           onClick={handleDrawerOpen}
-//         >
-//           <MenuIcon />
-//         </IconButton>
-//       </Toolbar>
-//     </AppBar>
-//   )
-// }
+function getIcon (id, byThis) {
+  if(!id || id.length<1) {
+    return false;
+  }
 
-export default function Inspector ({}) {
+  const icon = window.maps[id];
+  if(!icon) {
+    return false;
+  }
+  const thisKey = icon[byThis];
+  if(!thisKey) {
+    if(byThis==="description") {
+      return (<LoremIpsum avgSentencesPerParagraph={3} startWithLoremIpsum={false} />)
+    }
+    return false;
+  }
+
+  console.log(icon, thisKey)
+  return thisKey;
+
+}
+
+const Categories = ({categories}) => {
+  console.log(categories)
+  if(!categories) {
+    return false;
+  }
+  const listItems = categories.map((category, index) =>
+    <Chip
+      size="small"
+      label={category.name}
+      key={category}
+    />
+  );
+
+  return (
+    <div wrapper="bubbles">
+      {listItems}
+    </div>
+  )
+}
+
+export default function Inspector ({selectedIcon}) {
   const classes = useStyles();
   const theme = useTheme();
-  const {isOpen, onDrawerOpen, onDrawerClose} = useContext(InspectorContext);
-
-  //const inspector = useContext(InspectorContext);
-  // const [open, setOpen] = React.useState(false);
-  //
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
-  //
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
+  const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
 
   return (
     <div wrapper="drawer" className={classes.root}>
@@ -108,27 +119,23 @@ export default function Inspector ({}) {
       >
         <div>
           <div drawer="header">
-            <IconButton onClick={onDrawerClose}>
+            <IconButton onClick={onCloseInspector}>
               {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
             </IconButton>
           </div>
           <div drawer="body">
             <div wrapper="info">
               <div type="name">
-                <span>flower rose</span>
+                <span>{getIcon(selectedIcon, "name")}</span>
               </div>
               <div type="figma" label="figma id">
-                <span>flower-rose</span>
+                <span>{getIcon(selectedIcon, "figma_id")}</span>
               </div>
               <div type="description" label="description">
-                <span>An icon is a glyph used to represent something else. Icons can represent accessibility standards</span>
+                <span>{getIcon(selectedIcon, "description")}</span>
               </div>
               <div wrapper="categories" label="categories">
-                <div wrapper="bubbles">
-                  <Chip size="small" label="arrows" />
-                  <Chip size="small" label="misc" />
-                  <Chip size="small" label="navigation" />
-                </div>
+                <Categories categories={getIcon(selectedIcon, "category")}/>
               </div>
             </div>
           </div>

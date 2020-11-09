@@ -58,7 +58,9 @@ $white: #f7f8fc;
 
           &:nth-child(1) {
             font-size:18px;
+            font-weight:700;
             text-transform:capitalize;
+            color:#1890ff;
           }
           &:nth-child(n+2) {
             margin-top: 16px;

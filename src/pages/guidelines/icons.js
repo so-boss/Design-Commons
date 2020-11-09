@@ -2,25 +2,13 @@ import React, {useContext} from "react"
 
 import {Typography} from 'antd';
 import {AntPage} from "./../../../src/components/";
-import InspectThis from "./../../../src/components/InspectThis";
 import InspectorContext from './../../../src/contexts/InspectorContext';
 import * as icons from "@so.boss/genesis-icon-library"
 //import _ from "lodash";
 
-//import { makeStyles } from '@material-ui/core/styles';
-//import GridList from '@material-ui/core/GridList';
-// import GridListTile from '@material-ui/core/GridListTile';
-// import GridListTileBar from '@material-ui/core/GridListTileBar';
-// import ListSubheader from '@material-ui/core/ListSubheader';
-// import IconButton from '@material-ui/core/IconButton';
-// import InfoIcon from '@material-ui/icons/Info';
-
 import { useAllIcons } from './../../../src/hooks/use-all-icons';
-
+import IconContext from './../../../src/contexts/IconContext';
 import './../../../src/css/custom.scss'
-//import {Category} from "@material-ui/icons";
-
-const {Paragraph, Title} = Typography;
 
 const buildIcon = (icon) => {
   return React.createElement(icon);
@@ -83,13 +71,20 @@ const Category = ({title, children}) => {
   }
  */
 const IconGrid = ({categoryIcons, maps}) => {
-  const icon_map = maps.by.figma_id;
-  const {isOpen, onDrawerOpen, onDrawerToggle} = useContext(InspectorContext);
+  const icon_map = window.maps = maps.by.figma_id;
+  const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
+  const {selectedIcon, onSelection} = useContext(IconContext);
   return (
     <div layout="grid">
       <ul>
         {categoryIcons.map((figma_id) => (
-            <li key={figma_id} onClick={onDrawerToggle}>
+            <li
+              key={figma_id}
+              onClick={() => {
+                onOpenInspector();
+                onSelection(figma_id);
+              }}
+            >
               <div>
                 <div>
                   {buildIcon(icons[figma_id])}
@@ -105,20 +100,15 @@ const IconGrid = ({categoryIcons, maps}) => {
   );
 }
 
-
 export default function Home() {
   const {meta} = useAllIcons();
 
-  // 1. Iterate through the entire array of (alphabatized) categories,
-  // 2. IF a category has a category map
-  //      THEN build a category with each member icon
-  // console.log(meta)
   return (
-    <AntPage>
-      <Categories
-        categories={meta.categories}
-        maps={meta.maps}
-      />
-    </AntPage>
+      <AntPage>
+        <Categories
+          categories={meta.categories}
+          maps={meta.maps}
+        />
+      </AntPage>
   )
 }
