@@ -17,6 +17,8 @@ import {pages} from "./../nav";
 import Inspector from './../../src/components/Inspector';
 import InspectorContext from './../../src/contexts/InspectorContext';
 import IconContext from "../../src/contexts/IconContext";
+import MapsContext from "../../src/contexts/MapsContext";
+import { useAllIcons } from './../../src/hooks/use-all-icons';
 
 import './../../static/ant/antd.css';
 import './../../src/components/AntPage/AntPage.scss';
@@ -197,13 +199,27 @@ export default function Layout ({pageContext, location, children}) {
   };
 
   const [selectedIcon, setSelected] = React.useState({
-    selectedIcon:null
+    selectedIcon:null,
+    maps:null
   });
-  const handleSelection = (id) => {
-    setSelected(id);
+  const handleSelection = (o) => {
+    // let o = selectedIcon;
+    // if(id===null) {
+    //   o.maps = maps;
+    // } else {
+    //   o.selectedIcon = id;
+    // }
+    setSelected(o);
   };
 
+  const {meta} = useAllIcons();
+
   return (
+    <MapsContext.Provider
+      value={{
+        icon: meta.maps.by
+      }}
+    >
     <IconContext.Provider
       value={{
         selectedIcon: selectedIcon,
@@ -237,6 +253,7 @@ export default function Layout ({pageContext, location, children}) {
       </div>
     </InspectorContext.Provider>
     </IconContext.Provider>
+    </MapsContext.Provider>
   );
 }
 

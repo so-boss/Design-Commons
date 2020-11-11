@@ -13,6 +13,7 @@ import InspectorContext from './../../../src/contexts/InspectorContext';
 import './Inspector.scss';
 import IconContext from "./../../../src/contexts/IconContext";
 import { LoremIpsum } from "react-lorem-ipsum";
+import MapsContext from "./../../../src/contexts/MapsContext";
 
 
 const drawerWidth = 240;
@@ -57,16 +58,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function getIcon (id, byThis) {
+function getIcon (icon, byThis, maps) {
+
+  const id = icon.selectedIcon;
   if(!id || id.length<1) {
     return false;
   }
 
-  const icon = window.maps[id];
-  if(!icon) {
+  if(!icon || !maps) {
     return false;
   }
-  const thisKey = icon[byThis];
+
+  console.log("getICON", maps, id)
+  const thisKey = maps.figma_id[id][byThis];
   if(!thisKey) {
     if(byThis==="description") {
       return (<LoremIpsum avgSentencesPerParagraph={3} startWithLoremIpsum={false} />)
@@ -74,13 +78,10 @@ function getIcon (id, byThis) {
     return false;
   }
 
-  console.log(icon, thisKey)
   return thisKey;
-
 }
 
 const Categories = ({categories}) => {
-  console.log(categories)
   if(!categories) {
     return false;
   }
@@ -103,11 +104,11 @@ export default function Inspector ({selectedIcon}) {
   const classes = useStyles();
   const theme = useTheme();
   const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
+  const maps = useContext(MapsContext).icon;
 
   return (
     <div wrapper="drawer" className={classes.root}>
       <CssBaseline />
-
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -126,16 +127,16 @@ export default function Inspector ({selectedIcon}) {
           <div drawer="body">
             <div wrapper="info">
               <div type="name">
-                <span>{getIcon(selectedIcon, "name")}</span>
+                <span>{getIcon(selectedIcon, "name", maps)}</span>
               </div>
               <div type="figma" label="figma id">
-                <span>{getIcon(selectedIcon, "figma_id")}</span>
+                <span>{getIcon(selectedIcon, "figma_id", maps)}</span>
               </div>
               <div type="description" label="description">
-                <span>{getIcon(selectedIcon, "description")}</span>
+                <span>{getIcon(selectedIcon, "description", maps)}</span>
               </div>
               <div wrapper="categories" label="categories">
-                <Categories categories={getIcon(selectedIcon, "category")}/>
+                <Categories categories={getIcon(selectedIcon, "category", maps)}/>
               </div>
             </div>
           </div>

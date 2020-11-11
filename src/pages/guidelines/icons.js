@@ -8,6 +8,7 @@ import * as icons from "@so.boss/genesis-icon-library"
 
 import { useAllIcons } from './../../../src/hooks/use-all-icons';
 import IconContext from './../../../src/contexts/IconContext';
+import MapsContext from './../../../src/contexts/MapsContext';
 import './../../../src/css/custom.scss'
 
 const buildIcon = (icon) => {
@@ -65,12 +66,20 @@ const Category = ({title, children}) => {
 
 const Icon = ({icon_map, figma_id}) => {
   const [isActive, setActive] = React.useState(false);
+  const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
+  const {selectedIcon, onSelection} = useContext(IconContext);
+  const maps = useContext(MapsContext).icon;
+
+  // const icons = icon_map;
   return (
     <div
       className={"active"+isActive}
       onClick={() => {
-        console.log(isActive)
         setActive(!isActive)
+        onOpenInspector();
+        onSelection({
+          selectedIcon:figma_id
+        });
       }}
     >
       <div>
@@ -90,19 +99,17 @@ const Icon = ({icon_map, figma_id}) => {
   }
  */
 const IconGrid = ({categoryIcons, maps}) => {
-  const icon_map = window.maps = maps.by.figma_id;
+
   const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
   const {selectedIcon, onSelection} = useContext(IconContext);
+
+  const icon_map = maps.by.figma_id;
   return (
     <div layout="grid">
       <ul>
         {categoryIcons.map((figma_id) => (
             <li
               key={figma_id}
-              onClick={() => {
-                onOpenInspector();
-                onSelection(figma_id);
-              }}
             >
               <Icon icon_map={icon_map} figma_id={figma_id} />
             </li>
@@ -114,6 +121,15 @@ const IconGrid = ({categoryIcons, maps}) => {
 
 export default function Home() {
   const {meta} = useAllIcons();
+  //const {selectedIcon, onSelection} = useContext(IconContext);
+  //
+  // //console.log("setSelected", onSelection)
+  // if(selectedIcon.selectedIcon===null) {
+  //   onSelection({
+  //     selectedIcon: selectedIcon.selectedIcon,
+  //     maps: meta.maps
+  //   })
+  // }
 
   return (
       <AntPage>
