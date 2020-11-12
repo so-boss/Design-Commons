@@ -10,7 +10,7 @@ const buildIcon = (icon) => {
   return React.createElement(icon);
 }
 
-export default function Icon ({figma_id}) {
+export default function Icon ({figma_id, index}) {
   const [isActive, setActive] = React.useState(false);
   const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
   const {selectedIcon, onSelection} = useContext(IconContext);
@@ -19,23 +19,49 @@ export default function Icon ({figma_id}) {
   const byFigmaId = maps.figma_id;
 
   // const icons = icon_map;
+  //active={this.state.activeIndex === index}
+
+  let className = "activefalse";
+  if(selectedIcon.index===index) {
+    className = "activetrue";
+  }
+
+  const handleIconActivation = () => {
+    setActive(!isActive)
+    onOpenInspector();
+    onSelection({
+      selectedIcon:figma_id,
+      index:index
+    });
+  };
+  const handleIconDeactivation = () => {
+    setActive(false)
+    onCloseInspector();
+    onSelection({
+      selectedIcon:null,
+      index:null
+    });
+  };
+
   return (
-    <div
-      className={"active"+isActive}
-      onClick={() => {
-        setActive(!isActive)
-        onOpenInspector();
-        onSelection({
-          selectedIcon:figma_id
-        });
-      }}
-    >
-      <div>
-        {buildIcon(icons[figma_id])}
+    <li>
+      <div
+        className={className}
+        onClick={() => {
+          if(selectedIcon.index===index) {
+            return handleIconDeactivation()
+          }
+
+          return handleIconActivation();
+        }}
+      >
+        <div>
+          {buildIcon(icons[figma_id])}
+        </div>
+        <span>
+          {byFigmaId[figma_id].name}
+        </span>
       </div>
-      <span>
-        {byFigmaId[figma_id].name}
-      </span>
-    </div>
+    </li>
   )
 }

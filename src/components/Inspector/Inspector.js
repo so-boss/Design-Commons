@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getIcon (icon, byThis, maps) {
-
   const id = icon.selectedIcon;
   if(!id || id.length<1) {
     return false;
@@ -69,7 +68,6 @@ function getIcon (icon, byThis, maps) {
     return false;
   }
 
-  console.log("getICON", maps, id)
   const thisKey = maps.figma_id[id][byThis];
   if(!thisKey) {
     if(byThis==="description") {
@@ -89,7 +87,7 @@ const Categories = ({categories}) => {
     <Chip
       size="small"
       label={category.name}
-      key={category}
+      key={category.name}
     />
   );
 
