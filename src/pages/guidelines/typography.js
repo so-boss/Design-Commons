@@ -13,7 +13,6 @@ const { Paragraph, Title } = Typography;
 
 export default function Home() {
   const typography = useTypography(null, "definition");
-  console.log(typography.maps)
   return (
     <AntPage>
       <DemoText

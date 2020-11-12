@@ -35,7 +35,6 @@ const Items = ({maps, items}) => {
 // TODO: Might be efficient to have css already constructed?
 //       fontFamily:styles.family, lineHeight: styles.lineHeight, fontSize: styles.size, fontWeight: styles.weight
 const Item = ({title, dummyText, styles}) => {
-  console.log(styles);
   const style = {
     fontFamily:styles.family,
     lineHeight: styles.lineHeight,
