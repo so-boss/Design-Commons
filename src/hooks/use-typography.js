@@ -1,7 +1,23 @@
 import { useStaticQuery, graphql } from "gatsby"
 import _ from "lodash";
-// import {sorter} from './../../src/components/color_utils';
 import maps from "./../../src/components/data/maps";
+
+const dictionaries = {
+  init:false,
+  CSAA:{
+    by:{
+      size:{}
+    }
+  },
+  Definition :{
+    by:{
+      fontFamily:{}
+    }
+  },
+  by: {
+    figma_id: {}
+  }
+}
 
 const getTypeface = (typeface) => {
   const split_name = typeface.name.split(" ");
@@ -41,9 +57,9 @@ function parseTextstyle(textstyle) {
     variation:null      // R, B
   };
 
-  let split_text = textstyle.split(/\/|-|—/ig);
+  let split_text = textstyle.replace(/\s/ig, "").split(/\/|-|—/ig);
   o.dictionary=split_text[0];
-  o.defintion=split_text[1];
+  o.definition=split_text[1];
   o.size=split_text[2];
   o.variation=split_text[3]||o.variation;
 
@@ -59,9 +75,10 @@ const getTextStyles = (textstyles, type) => {
     }
 
     const parsedStyle = parseTextstyle(textstyle.name);
+
     let name;
     if(type==="fontSizes") {
-      name = parsedStyle.defintion;
+      name = parsedStyle.definition;
     } else {
       name = {};
       let short = name.short = parsedStyle.size;
@@ -69,20 +86,72 @@ const getTextStyles = (textstyles, type) => {
       if(maps.sizes[short]) {
         name.long = maps.sizes[short];
       } else {
-        name.long = parsedStyle.defintion + " " + short;
+        name.long = parsedStyle.definition + " " + short;
       }
     }
 
-    family.push({
+
+    let parsedTextStyle = {
       ...getTypeface(textstyle.fontFamily),
       size:textstyle.fontSize,
       lineHeight:textstyle.lineHeight,
       name:name,
       token:textstyle.name
-    });
+    };
+
+    family.push(parsedTextStyle);
   });
 
   return fontSizes;
+}
+
+const getMaps = (toollabs) => {
+  if(dictionaries.init===true) {
+    return dictionaries;
+  }
+
+  _.forEach(toollabs.textstyles, function(textstyle) {
+    const parsedStyle = parseTextstyle(textstyle.name);
+    const dictionary = dictionaries[parsedStyle.dictionary];
+    console.log("dictionary", dictionary)
+    let map;
+    if(parsedStyle.dictionary==="CSAA") {
+      map = dictionary.by.size;
+      let bySize = map[parsedStyle.size];
+      if(!bySize) {
+        bySize = map[parsedStyle.size] = [];
+      }
+      map = bySize;
+    } else {
+      map = dictionary.by.fontFamily;
+      let byFontFamily = map[parsedStyle.definition];
+      if(!byFontFamily) {
+        byFontFamily = map[parsedStyle.definition] =[];
+      }
+      map = byFontFamily;
+    }
+
+    let name = {};
+    let short = name.short = parsedStyle.size;
+
+    if(maps.sizes[short]) {
+      name.long = maps.sizes[short];
+    } else {
+      name.long = parsedStyle.definition + " " + short;
+    }
+
+    dictionaries.by.figma_id[textstyle.name] = {
+      ...getTypeface(textstyle.fontFamily),
+      size:textstyle.fontSize,
+      lineHeight:textstyle.lineHeight,
+      name:name,
+      token:textstyle.name
+    };
+    map.push(textstyle.name);
+  });
+
+  dictionaries.init = true;
+  return dictionaries;
 }
 
 export const useTypography = (filterFor, dictionary) => {
@@ -109,6 +178,7 @@ export const useTypography = (filterFor, dictionary) => {
   )
 
   return {
+    maps: getMaps(data.toollabs),
     typefaces: getTypefaces(data.toollabs.typefaces, filterFor),
     fontsizes: getTextStyles(data.toollabs.textstyles, "FontSizes"),
     textstyles: getTextStyles(data.toollabs.textstyles, dictionary)
