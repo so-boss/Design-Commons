@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 
 import {Icon} from "../index";
 import "./IconCategories.scss"

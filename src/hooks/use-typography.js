@@ -33,6 +33,22 @@ const getTypefaces = (typefaces, filterFor) => {
   return a;
 }
 
+function parseTextstyle(textstyle) {
+  let o = {
+    dictionary:"",    // CSAA, Defintion
+    definition:"",    // Pretitle, Title, RTRaleway
+    size:"",          // Small, Large, Desktop, XXL
+    variation:null      // R, B
+  };
+
+  let split_text = textstyle.split(/\/|-|—/ig);
+  o.dictionary=split_text[0];
+  o.defintion=split_text[1];
+  o.size=split_text[2];
+  o.variation=split_text[3]||o.variation;
+
+  return o;
+}
 
 const getTextStyles = (textstyles, type) => {
   let fontSizes = {};
@@ -42,17 +58,18 @@ const getTextStyles = (textstyles, type) => {
       family = fontSizes[textstyle.fontFamily.value] = [];
     }
 
+    const parsedStyle = parseTextstyle(textstyle.name);
     let name;
     if(type==="fontSizes") {
-      name = textstyle.name.split("-")[1]||textstyle.name;
+      name = parsedStyle.defintion;
     } else {
       name = {};
-      let short = name.short = textstyle.name.split("-")[1]||textstyle.name;
+      let short = name.short = parsedStyle.size;
 
       if(maps.sizes[short]) {
         name.long = maps.sizes[short];
       } else {
-        name.long = short;
+        name.long = parsedStyle.defintion + " " + short;
       }
     }
 
@@ -68,7 +85,7 @@ const getTextStyles = (textstyles, type) => {
   return fontSizes;
 }
 
-export const useTypography = (filterFor) => {
+export const useTypography = (filterFor, dictionary) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -91,19 +108,9 @@ export const useTypography = (filterFor) => {
     `
   )
 
-  //const unsortedColors = data.toollabs.colors;
-  //var sortedColors = sorter(def_id, type, unsortedColors);
-
-  // _.forEach(sortedColors, function(color) {
-  //   rename(color, 'hex', 'color')
-  // });
-
-  //console.log(unsortedColors)
-
-
   return {
     typefaces: getTypefaces(data.toollabs.typefaces, filterFor),
     fontsizes: getTextStyles(data.toollabs.textstyles, "FontSizes"),
-    textstyles: getTextStyles(data.toollabs.textstyles)
+    textstyles: getTextStyles(data.toollabs.textstyles, dictionary)
   };
 }

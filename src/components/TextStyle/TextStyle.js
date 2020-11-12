@@ -61,7 +61,7 @@ const Style = ({name, size, lineHeight, weight, family, text}) => {
   return (
     <div font="textstyle" id={family+"_"+name.short}>
       <div textstyle="label">
-        <span suffix={name.short}>{name.long.replace(/-/g," ")}</span>
+        <span suffix={name.short}>{name.long}</span>
       </div>
       <div textstyle="props">
         <div>

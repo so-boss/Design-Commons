@@ -3,8 +3,6 @@ import React from "react";
 import {Tag, PageHeader} from 'antd';
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 
-import { Link } from "gatsby";
-
 import {pages} from "./../nav";
 import {Inspector, Sidebar, Footer} from './../../src/components';
 import InspectorContext from './../../src/contexts/InspectorContext';

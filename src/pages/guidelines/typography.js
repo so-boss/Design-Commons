@@ -12,7 +12,7 @@ import './../../../src/css/custom.scss'
 const { Paragraph, Title } = Typography;
 
 export default function Home() {
-  const typography = useTypography();
+  const typography = useTypography(null, "defintion");
 
   return (
     <AntPage>
