@@ -179,6 +179,13 @@ $white: #f7f8fc;
         margin-bottom: 42px;
       }
 
+      span[class*="-colorSecondary"] {
+        background-color: $blue;
+      }
+      [class*=-textColorSecondary].Mui-selected {
+        color: $blue
+      }
+
       > span:first-child {
         float:left;
 

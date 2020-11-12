@@ -1,25 +1,74 @@
 import React from "react"
 
-import {
-  Typography
-} from 'antd';
-
+import {Typography} from 'antd';
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Box from '@material-ui/core/Box';
 import {FontSize, TextStyle, Typeface, AntPage, DemoText} from "./../../../src/components/"
-
 import { useTypography } from './../../../src/hooks/use-typography.js';
 import './../../../src/css/custom.scss'
 const { Paragraph, Title } = Typography;
 
 
+const TabSection = ({children, value, index, ...other}) => {
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`nav-tabpanel-${index}`}
+      aria-labelledby={`nav-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   const typography = useTypography(null, "definition");
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <AntPage>
-      <DemoText
-        title="Desktop/Large"
-        collection={typography.maps.CSAA.by.size.Large.concat(typography.maps.CSAA.by.size.Desktop)}
-        maps={typography.maps}
-      />
+      <div>
+        <Paper square>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            variant="fullWidth"
+            indicatorColor="secondary"
+            textColor="secondary"
+            aria-label="platform size"
+          >
+            <Tab label="Desktop / Large" />
+            <Tab label="Mobile / Small" />
+          </Tabs>
+        </Paper>
+        <TabSection value={value} index={0}>
+          <DemoText
+            title="Desktop/Large"
+            collection={typography.maps.CSAA.by.size.Large.concat(typography.maps.CSAA.by.size.Desktop)}
+            maps={typography.maps}
+          />
+        </TabSection>
+        <TabSection value={value} index={1}>
+          <DemoText
+            title="Mobile/Small"
+            collection={typography.maps.CSAA.by.size.Small.concat(typography.maps.CSAA.by.size.Mobile)}
+            maps={typography.maps}
+          />
+        </TabSection>
+      </div>
 
       <Title level={2}>Font: RT Raleway</Title>
       <div row="typefaces">
