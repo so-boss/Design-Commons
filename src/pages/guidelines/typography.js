@@ -33,9 +33,14 @@ const TabSection = ({children, value, index, ...other}) => {
 export default function Home() {
   const typography = useTypography(null, "definition");
   const [value, setValue] = React.useState(0);
+  const [value2, setValue2] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleChange2 = (event, newValue) => {
+    setValue2(newValue);
   };
 
   return (
@@ -70,31 +75,48 @@ export default function Home() {
         </TabSection>
       </div>
 
-      <Title level={2}>Font: RT Raleway</Title>
-      <div row="typefaces">
-        <Typeface typefaces={useTypography("rtraleway").typefaces} />
+      <Title level={4}>Definitions: Font Families</Title>
+      <div>
+        <Paper square>
+          <Tabs
+            value={value2}
+            onChange={handleChange2}
+            variant="fullWidth"
+            indicatorColor="secondary"
+            textColor="secondary"
+            aria-label="platform size"
+          >
+            <Tab label="RT Raleway" />
+            <Tab label="Cabin" />
+          </Tabs>
+        </Paper>
+        <TabSection value={value2} index={0}>
+          <div row="typefaces">
+            <Typeface typefaces={useTypography("rtraleway").typefaces} />
+          </div>
+          <FontSize
+            family="RTRaleway"
+            maps={typography.maps}
+          />
+          <TextStyle
+            family="RTRaleway"
+            maps={typography.maps}
+          />
+        </TabSection>
+        <TabSection value={value2} index={1}>
+          <div row="typefaces">
+            <Typeface typefaces={useTypography("cabin").typefaces} />
+          </div>
+          <FontSize
+            family="Cabin"
+            maps={typography.maps}
+          />
+          <TextStyle
+            family="Cabin"
+            maps={typography.maps}
+          />
+        </TabSection>
       </div>
-      <FontSize
-        family="RTRaleway"
-        maps={typography.maps}
-      />
-      <TextStyle
-        family="RTRaleway"
-        maps={typography.maps}
-      />
-
-      <Title level={2}>Font: Cabin</Title>
-      <div row="typefaces">
-        <Typeface typefaces={useTypography("cabin").typefaces} />
-      </div>
-      <FontSize
-        family="Cabin"
-        maps={typography.maps}
-      />
-      <TextStyle
-        family="Cabin"
-        maps={typography.maps}
-      />
     </AntPage>
   )
 }

@@ -167,6 +167,7 @@ $white: #f7f8fc;
 
     [type=page] {
       margin-left: calc(#{$sidebar-width} + 24px);
+      padding-right:24px;
       transition: margin .3s ease;
       display: flex;
       flex-direction: column;
