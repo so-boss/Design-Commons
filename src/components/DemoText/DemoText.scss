@@ -1,0 +1,21 @@
+[type=demotext] {
+  [layout=table] {
+
+    [table=row] {
+      display:flex;
+      [type=label] {
+        flex:initial;
+        max-width: 200px;
+        text-align: right;
+        + div {
+          margin-left:64px;
+          flex:1;
+        }
+      }
+
+      &:nth-child(n+2) {
+        margin-top:24px;
+      }
+    }
+  }
+}

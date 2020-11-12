@@ -4,18 +4,24 @@ import {
   Typography
 } from 'antd';
 
-import {FontSize, TextStyle, Typeface, AntPage} from "./../../../src/components/"
+import {FontSize, TextStyle, Typeface, AntPage, DemoText} from "./../../../src/components/"
 
 import { useTypography } from './../../../src/hooks/use-typography.js';
 import './../../../src/css/custom.scss'
-
 const { Paragraph, Title } = Typography;
+
 
 export default function Home() {
   const typography = useTypography(null, "definition");
-
+  console.log(typography.maps)
   return (
     <AntPage>
+      <DemoText
+        title="Desktop/Large"
+        collection={typography.maps.CSAA.by.size.Large.concat(typography.maps.CSAA.by.size.Desktop)}
+        maps={typography.maps}
+      />
+
       <Title level={2}>Font: RT Raleway</Title>
       <div row="typefaces">
         <Typeface typefaces={useTypography("rtraleway").typefaces} />

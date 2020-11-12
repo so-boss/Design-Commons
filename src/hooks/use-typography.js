@@ -16,6 +16,12 @@ const dictionaries = {
   },
   by: {
     figma_id: {}
+  },
+  meta: {
+    by: {
+      // dictionaries.meta.by.figma_id[]
+      figma_id: {}
+    }
   }
 }
 
@@ -105,10 +111,24 @@ const getTextStyles = (textstyles, type) => {
   return fontSizes;
 }
 
-const getMaps = (toollabs) => {
+const getMeta = (figma_id) => {
+  let returnThis = dictionaries.meta.by.figma_id[figma_id];
+  if(!returnThis) {
+    returnThis = {};
+  }
+  return returnThis;
+}
+
+const getMaps = (metas, toollabs) => {
   if(dictionaries.init===true) {
     return dictionaries;
   }
+
+  // TODO: Probably don't need to store the meta object in two places as we usually
+  //       store it in an object by figma_id and then reference it
+  _.forEach(metas, function(meta) {
+    dictionaries.meta.by.figma_id[meta.figma_id] = meta;
+  })
 
   _.forEach(toollabs.textstyles, function(textstyle) {
     const parsedStyle = parseTextstyle(textstyle.name);
@@ -144,7 +164,8 @@ const getMaps = (toollabs) => {
       size:textstyle.fontSize,
       lineHeight:textstyle.lineHeight,
       name:name,
-      token:textstyle.name
+      token:textstyle.name,
+      meta:getMeta(textstyle.name)
     };
     map.push(textstyle.name);
   });
@@ -157,6 +178,15 @@ export const useTypography = (filterFor, dictionary) => {
   const data = useStaticQuery(
     graphql`
       query {
+        allSanityTypography {
+          nodes {
+            name
+            figma_id
+            example_label
+            example_content
+            description
+          }
+        }
         toollabs {
           typefaces {
             name
@@ -177,7 +207,7 @@ export const useTypography = (filterFor, dictionary) => {
   )
 
   return {
-    maps: getMaps(data.toollabs),
+    maps: getMaps(data.allSanityTypography.nodes, data.toollabs),
     typefaces: getTypefaces(data.toollabs.typefaces, filterFor),
     fontsizes: getTextStyles(data.toollabs.textstyles, "FontSizes"),
     textstyles: getTextStyles(data.toollabs.textstyles, dictionary)
