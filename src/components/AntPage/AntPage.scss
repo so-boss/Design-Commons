@@ -180,7 +180,7 @@ $white: #f7f8fc;
         margin-bottom: 42px;
       }
 
-      span[class*="-colorSecondary"] {
+      span[class*="-colorSecondary"], span[class*="Tabs-indicator"] {
         background-color: $blue;
       }
       [class*=-textColorSecondary].Mui-selected {
