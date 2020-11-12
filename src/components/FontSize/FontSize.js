@@ -20,15 +20,21 @@ const Size = ({family, name, token, size}) => {
   )
 };
 
-const Sizes = ({family, sizes}) => {
+const getSize = (maps, figma_id) => {
+  return maps.by.figma_id[figma_id];
+}
+
+// TODO: Redo so we arn't calling getSize 100 times
+const Sizes = ({family, sizes, maps}) => {
   return (
     <div>
       {
         sizes.reverse().map((size) => (
           <Size
-            name={size.name}
-            token={size.token}
-            size={size.size}
+            key={getSize(maps, size).token}
+            name={getSize(maps, size).name}
+            token={getSize(maps, size).token}
+            size={getSize(maps, size).size}
             family={family.toLowerCase()}
           />
         ))
@@ -37,10 +43,12 @@ const Sizes = ({family, sizes}) => {
   )
 }
 
-const FontSize = ({family, sizes}) => {
+const FontSize = ({family, maps}) => {
+  const sizes = maps.Definition.by.fontFamily[family];
+
   return (
     <div font="size">
-      <Sizes sizes={sizes} family={family}/>
+      <Sizes sizes={sizes} family={family} maps={maps}/>
       {/*<span>{family}</span>*/}
     </div>
   )

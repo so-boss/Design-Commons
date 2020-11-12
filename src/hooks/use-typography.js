@@ -113,7 +113,6 @@ const getMaps = (toollabs) => {
   _.forEach(toollabs.textstyles, function(textstyle) {
     const parsedStyle = parseTextstyle(textstyle.name);
     const dictionary = dictionaries[parsedStyle.dictionary];
-    console.log("dictionary", dictionary)
     let map;
     if(parsedStyle.dictionary==="CSAA") {
       map = dictionary.by.size;

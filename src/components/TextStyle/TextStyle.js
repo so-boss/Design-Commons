@@ -89,19 +89,25 @@ const Style = ({name, size, lineHeight, weight, family, text}) => {
     </div>
   );
 }
-const Styles = ({textstyles}) => {
 
+const getStyle = (maps, figma_id) => {
+  return maps.by.figma_id[figma_id];
+}
+
+// TODO: Redo so we arn't calling getStyle 100 times
+const Styles = ({family, maps, textstyles}) => {
   return (
     <div>
       {
         textstyles.reverse().map((textstyle) => (
           <Style
-            name={textstyle.name}
-            family={textstyle.family}
-            style={textstyle.style_name}
-            size={textstyle.size}
-            weight={textstyle.weight}
-            lineHeight={textstyle.lineHeight}
+            key={getStyle(maps, textstyle).token}
+            name={getStyle(maps, textstyle).name}
+            family={getStyle(maps, textstyle).family}
+            style={getStyle(maps, textstyle).style_name}
+            size={getStyle(maps, textstyle).size}
+            weight={getStyle(maps, textstyle).weight}
+            lineHeight={getStyle(maps, textstyle).lineHeight}
           />
         ))
       }
@@ -109,9 +115,9 @@ const Styles = ({textstyles}) => {
   )
 }
 
-export default function TextStyle ({textstyles}) {
-
+export default function TextStyle ({family, maps}) {
+  const textstyles = maps.Definition.by.fontFamily[family];
   return (
-    <Styles textstyles={textstyles} />
+    <Styles textstyles={textstyles} maps={maps}/>
   );
 }

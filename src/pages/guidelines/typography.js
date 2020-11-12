@@ -13,7 +13,6 @@ const { Paragraph, Title } = Typography;
 
 export default function Home() {
   const typography = useTypography(null, "definition");
-  console.log(typography)
 
   return (
     <AntPage>
@@ -23,9 +22,12 @@ export default function Home() {
       </div>
       <FontSize
         family="RTRaleway"
-        sizes={typography.fontsizes.rtraleway}
+        maps={typography.maps}
       />
-      <TextStyle textstyles={typography.textstyles.rtraleway}/>
+      <TextStyle
+        family="RTRaleway"
+        maps={typography.maps}
+      />
 
       <Title level={2}>Font: Cabin</Title>
       <div row="typefaces">
@@ -33,9 +35,12 @@ export default function Home() {
       </div>
       <FontSize
         family="Cabin"
-        sizes={typography.fontsizes.Cabin}
+        maps={typography.maps}
       />
-      <TextStyle textstyles={typography.textstyles.Cabin}/>
+      <TextStyle
+        family="Cabin"
+        maps={typography.maps}
+      />
     </AntPage>
   )
 }
