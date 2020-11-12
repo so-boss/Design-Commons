@@ -2,7 +2,7 @@ import React from "react";
 
 import {Tag, PageHeader} from 'antd';
 //import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+//import Typography from '@material-ui/core/Typography';
 import TreeView from '@material-ui/lab/TreeView';
 import TreeItem from '@material-ui/lab/TreeItem';
 import Button from '@material-ui/core/Button';
@@ -14,7 +14,7 @@ import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 import { Link } from "gatsby";
 
 import {pages} from "./../nav";
-import Inspector from './../../src/components/Inspector';
+import {Inspector, Sidebar} from './../../src/components';
 import InspectorContext from './../../src/contexts/InspectorContext';
 import IconContext from "../../src/contexts/IconContext";
 import MapsContext from "../../src/contexts/MapsContext";
@@ -23,6 +23,7 @@ import { useAllIcons } from './../../src/hooks/use-all-icons';
 import './../../static/ant/antd.css';
 import './../../src/components/AntPage/AntPage.scss';
 
+/*
 //TODO: Fix this ugliness before I cry anymore (at least it performs decent)
 const Item = ({labelText, iconID, type, link}) => (
   <Button href={link}>
@@ -87,23 +88,23 @@ const Nav = () => {
     </TreeView>
   );
 };
-
+*/
 // TODO: Migrate the sidebar component into the layout
-const Sidebar = ({children}) => (
-  <div type="sidebar">
-    <div>
-      <div sidebar="header">
-        <Link to="/">
-          <img src="/img/aaa-logo.svg" />
-        </Link>
-      </div>
-      <div sidebar="body">
-        {children}
-      </div>
-      <div sidebar="footer"></div>
-    </div>
-  </div>
-);
+// const Sidebar = ({children}) => (
+//   <div type="sidebar">
+//     <div>
+//       <div sidebar="header">
+//         <Link to="/">
+//           <img src="/img/aaa-logo.svg" />
+//         </Link>
+//       </div>
+//       <div sidebar="body">
+//         {children}
+//       </div>
+//       <div sidebar="footer"></div>
+//     </div>
+//   </div>
+// );
 
 const Header = ({pageContext, pages, location}) => {
   let cleanpath = location.pathname.replace(/\//g, "");
@@ -214,45 +215,44 @@ export default function Layout ({pageContext, location, children}) {
 
   const {meta} = useAllIcons();
 
+  // TODO: Reduce this context craziness
   return (
     <MapsContext.Provider
       value={{
         icon: meta.maps.by
       }}
     >
-    <IconContext.Provider
-      value={{
-        selectedIcon: selectedIcon,
-        onSelection: handleSelection
-      }}
-    >
-    <InspectorContext.Provider
-      value={{
-        isOpen: isOpen,
-        onOpenInspector: handleOpeningInspector,
-        onCloseInspector: handleClosingInspector,
-        onToggleInspector: handleToggleInspector,
-      }}
-    >
-      <div layout="page">
-        <div>
-          <Sidebar>
-            <Nav />
-          </Sidebar>
-          <div type="page">
-            <Header
-              location={location}
-              pages={pages}
-              pageContext={pageContext}
-            />
-            {children}
-            <Footer pages={pages}/>
+      <IconContext.Provider
+        value={{
+          selectedIcon: selectedIcon,
+          onSelection: handleSelection
+        }}
+      >
+        <InspectorContext.Provider
+          value={{
+            isOpen: isOpen,
+            onOpenInspector: handleOpeningInspector,
+            onCloseInspector: handleClosingInspector,
+            onToggleInspector: handleToggleInspector,
+          }}
+        >
+          <div layout="page">
+            <div>
+              <Sidebar />
+              <div type="page">
+                <Header
+                  location={location}
+                  pages={pages}
+                  pageContext={pageContext}
+                />
+                {children}
+                <Footer pages={pages}/>
+              </div>
+            </div>
+            <Inspector selectedIcon={selectedIcon}/>
           </div>
-        </div>
-        <Inspector selectedIcon={selectedIcon}/>
-      </div>
-    </InspectorContext.Provider>
-    </IconContext.Provider>
+        </InspectorContext.Provider>
+      </IconContext.Provider>
     </MapsContext.Provider>
   );
 }
