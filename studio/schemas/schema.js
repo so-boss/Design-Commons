@@ -5,6 +5,7 @@ import icon_category from './icon_category';
 import icons from './icons';
 import typography from './typography';
 import content from './content'
+import content_category from './content_category'
 
 
 export default createSchema({
@@ -13,6 +14,7 @@ export default createSchema({
     icon_category,
     icons,
     typography,
-    content
+    content,
+    content_category
   ]),
 })
