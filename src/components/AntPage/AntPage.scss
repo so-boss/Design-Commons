@@ -12,6 +12,7 @@ $white: #f7f8fc;
 
 
 [layout=page] {
+  margin-bottom:0px;
   // TODO: Bring in pixel css mixins/utils to
   //       reduce organic flex box use amound other craziness
   [truncate] {
