@@ -1,5 +1,7 @@
-import React from 'react';
-import { ArrowRight } from '@so.boss/genesis-icon-library';
+import React, {useContext, useState} from 'react';
+import InspectorContext from './../../../src/contexts/InspectorContext';
+import InspectableContext from "./../../../src/contexts/InspectableContext";
+import MapsContext from "./../../../src/contexts/MapsContext";
 import './TextStyle.scss';
 
 function LineHeightIcon(props) {
@@ -57,13 +59,71 @@ function WeightScaleIcon(props) {
   );
 };
 
-const Style = ({name, size, lineHeight, weight, family, text}) => {
+const Style = ({name, size, lineHeight, weight, family, text, figma_id, index}) => {
+  const [isActive, setActive] = React.useState(false);
+  const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
+  const {selectedItem, onSelection} = useContext(InspectableContext);
+  const maps = useContext(MapsContext).icon;
+
+  const byFigmaId = maps.figma_id;
+
+  let className = "activefalse";
+  if(selectedItem.index===index) {
+    className = "activetrue";
+  }
+
+  const handleTextActivation = () => {
+    setActive(!isActive)
+    onOpenInspector();
+    onSelection({
+      id:figma_id,
+      type:"typography",
+      index:index
+    });
+  };
+  const handleTextDeactivation = () => {
+    setActive(false)
+    onCloseInspector();
+    onSelection({
+      id:null,
+      type:null,
+      index:null
+    });
+  };
+
+
   return (
-    <div font="textstyle" id={family+"_"+name.short}>
+    <div
+      font="textstyle"
+      id={family+"_"+name.short}
+      className={className}
+      onClick={() => {
+        if(selectedItem.index===index) {
+          return handleTextDeactivation()
+        }
+
+        return handleTextActivation();
+      }}
+    >
       <div textstyle="label">
         <span suffix={name.short}>{name.long}</span>
       </div>
-      <div textstyle="props">
+
+      <div font="preview"
+           style={{
+             fontFamily: family,
+             lineHeight:lineHeight,
+             fontWeight:weight,
+             fontSize:size
+           }}>
+        <div>Select vehicles to put on your policy.</div>
+      </div>
+    </div>
+  );
+}
+
+/*
+ <div textstyle="props">
         <div>
           <label alt="font size">
             <FontSizeIcon />
@@ -83,12 +143,7 @@ const Style = ({name, size, lineHeight, weight, family, text}) => {
           <span style={{fontWeight: weight}}>{weight}</span>
         </div>
       </div>
-      <div font="preview" style={{fontFamily: family}}>
-        <div>{text}</div>
-      </div>
-    </div>
-  );
-}
+ */
 
 const getStyle = (maps, figma_id) => {
   return maps.by.figma_id[figma_id];
@@ -99,8 +154,10 @@ const Styles = ({family, maps, textstyles}) => {
   return (
     <div>
       {
-        textstyles.reverse().map((textstyle) => (
+        textstyles.reverse().map((textstyle, index) => (
           <Style
+            index={index}
+            figma_id={textstyle}
             key={getStyle(maps, textstyle).token}
             name={getStyle(maps, textstyle).name}
             family={getStyle(maps, textstyle).family}
@@ -116,6 +173,10 @@ const Styles = ({family, maps, textstyles}) => {
 }
 
 export default function TextStyle ({family, maps}) {
+  // const [isActive, setActive] = React.useState(false);
+  // const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
+  // const maps_ctx = useContext(MapsContext).typography;
+
   const textstyles = maps.Definition.by.fontFamily[family];
   return (
     <Styles textstyles={textstyles} maps={maps}/>

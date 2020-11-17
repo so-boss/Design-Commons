@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import InspectorContext from './../../../src/contexts/InspectorContext';
-import IconContext from "./../../../src/contexts/IconContext";
+import InspectableContext from "./../../../src/contexts/InspectableContext";
 import MapsContext from "./../../../src/contexts/MapsContext";
 import * as icons from "@so.boss/genesis-icon-library";
 
@@ -13,16 +13,13 @@ const buildIcon = (icon) => {
 export default function Icon ({figma_id, index}) {
   const [isActive, setActive] = React.useState(false);
   const {isOpen, onOpenInspector, onCloseInspector} = useContext(InspectorContext);
-  const {selectedIcon, onSelection} = useContext(IconContext);
+  const {selectedItem, onSelection} = useContext(InspectableContext);
   const maps = useContext(MapsContext).icon;
 
   const byFigmaId = maps.figma_id;
 
-  // const icons = icon_map;
-  //active={this.state.activeIndex === index}
-
   let className = "activefalse";
-  if(selectedIcon.index===index) {
+  if(selectedItem.index===index) {
     className = "activetrue";
   }
 
@@ -30,7 +27,8 @@ export default function Icon ({figma_id, index}) {
     setActive(!isActive)
     onOpenInspector();
     onSelection({
-      selectedIcon:figma_id,
+      id:figma_id,
+      type:"icon",
       index:index
     });
   };
@@ -38,7 +36,8 @@ export default function Icon ({figma_id, index}) {
     setActive(false)
     onCloseInspector();
     onSelection({
-      selectedIcon:null,
+      id:null,
+      type:null,
       index:null
     });
   };
@@ -48,7 +47,7 @@ export default function Icon ({figma_id, index}) {
       <div
         className={className}
         onClick={() => {
-          if(selectedIcon.index===index) {
+          if(selectedItem.index===index) {
             return handleIconDeactivation()
           }
 

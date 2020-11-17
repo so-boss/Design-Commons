@@ -6,9 +6,10 @@ import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 import {pages} from "./../nav";
 import {Inspector, Sidebar, Footer} from './../../src/components';
 import InspectorContext from './../../src/contexts/InspectorContext';
-import IconContext from "../../src/contexts/IconContext";
+import InspectableContext from "../../src/contexts/InspectableContext";
 import MapsContext from "../../src/contexts/MapsContext";
 import { useAllIcons } from './../../src/hooks/use-all-icons';
+import { useTypography } from './../../src/hooks/use-typography.js';
 
 import './../../static/ant/antd.css';
 import './../../src/components/AntPage/AntPage.scss';
@@ -45,8 +46,6 @@ const Header = ({pageContext, pages, location}) => {
   } else {
     avatar.src = `/icons/sprite/circle.svg`
   }
-
-  console.log(pageContext.breadcrumb.crumbs.slice(1))
 
   return (
     <div page="header">
@@ -87,9 +86,10 @@ export default function Layout ({pageContext, location, children}) {
     }
   };
 
-  const [selectedIcon, setSelected] = React.useState({
-    selectedIcon:null,
-    maps:null
+  const [selectedItem, setSelected] = React.useState({
+    id:null,
+    type:null,
+    index:null
   });
   const handleSelection = (o) => {
     setSelected(o);
@@ -97,16 +97,18 @@ export default function Layout ({pageContext, location, children}) {
 
   const {meta} = useAllIcons();
 
+
   // TODO: Reduce this context craziness
   return (
     <MapsContext.Provider
       value={{
-        icon: meta.maps.by
+        icon: meta.maps.by,
+        typography: useTypography().maps.by
       }}
     >
-      <IconContext.Provider
+      <InspectableContext.Provider
         value={{
-          selectedIcon: selectedIcon,
+          selectedItem: selectedItem,
           onSelection: handleSelection
         }}
       >
@@ -133,10 +135,10 @@ export default function Layout ({pageContext, location, children}) {
                 <Footer pages={pages}/>
               </div>
             </div>
-            <Inspector selectedIcon={selectedIcon}/>
+            <Inspector selectedTem={selectedItem}/>
           </div>
         </InspectorContext.Provider>
-      </IconContext.Provider>
+      </InspectableContext.Provider>
     </MapsContext.Provider>
   );
 }
