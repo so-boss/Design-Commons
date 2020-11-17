@@ -25,6 +25,10 @@ const theme = createMuiTheme({
           WebkitFontSmoothing: 'auto',
           fontFamily:"'RT Raleway', sans-serif"
         },
+        body: {
+          WebkitFontSmoothing: 'auto',
+          fontFamily:"'RT Raleway', sans-serif"
+        },
       },
     },
   },
@@ -153,7 +157,7 @@ export default function Layout ({pageContext, location, children}) {
                   <Footer pages={pages}/>
                 </div>
               </div>
-              <Inspector selectedTem={selectedItem}/>
+              <Inspector selectedItem={selectedItem}/>
             </div>
           </ThemeProvider>
         </InspectorContext.Provider>
