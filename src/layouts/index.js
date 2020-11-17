@@ -90,12 +90,6 @@ export default function Layout ({pageContext, location, children}) {
     maps:null
   });
   const handleSelection = (o) => {
-    // let o = selectedIcon;
-    // if(id===null) {
-    //   o.maps = maps;
-    // } else {
-    //   o.selectedIcon = id;
-    // }
     setSelected(o);
   };
 
