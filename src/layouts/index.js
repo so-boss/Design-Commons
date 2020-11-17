@@ -47,7 +47,7 @@ const Header = ({pageContext, pages, location}) => {
   }
 
   return (
-    <>
+    <div page="header">
       <Breadcrumb
         location={location}
         crumbs={pageContext.breadcrumb.crumbs.slice(1)}
@@ -60,7 +60,7 @@ const Header = ({pageContext, pages, location}) => {
         avatar={avatar}
         type="page"
       />
-    </>
+    </div>
   )
 }
 
@@ -131,7 +131,9 @@ export default function Layout ({pageContext, location, children}) {
                   pages={pages}
                   pageContext={pageContext}
                 />
-                {children}
+                <div page="body">
+                  {children}
+                </div>
                 <Footer pages={pages}/>
               </div>
             </div>
