@@ -26,6 +26,7 @@ const Layout = ({ children }) => {
         <title>{meta.siteTitle}</title>
         <meta name="description" content={meta.siteDescription} />
         <meta name="image" content={meta.banner} />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="lekoarts.de" />
         <meta property="og:url" content={meta.siteUrl} />
@@ -33,7 +34,6 @@ const Layout = ({ children }) => {
         <meta property="og:description" content={meta.siteDescription} />
         <meta property="og:image" content={meta.banner} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content="@lekoarts_de" />
         <meta name="twitter:title" content={meta.siteTitle} />
         <meta name="twitter:description" content={meta.siteDescription} />
         <meta name="twitter:image" content={meta.banner} />

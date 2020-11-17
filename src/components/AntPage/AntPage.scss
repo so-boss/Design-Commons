@@ -397,6 +397,7 @@ $white: #f7f8fc;
       }
       [type=page] {
         margin-left:calc(#{$sidebar-width-768} + 24px);
+        width: calc(100% - #{$sidebar-width-768} - 24px);
       }
     }
 
