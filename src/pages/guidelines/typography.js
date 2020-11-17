@@ -92,7 +92,7 @@ export default function Home() {
         </Paper>
         <TabSection value={value2} index={0}>
           <div row="typefaces">
-            <Typeface typefaces={useTypography("rtraleway").typefaces} />
+            <Typeface typefaces={useTypography("rt raleway").typefaces} />
           </div>
           <FontSize
             family="RTRaleway"
