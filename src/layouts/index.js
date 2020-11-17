@@ -140,8 +140,8 @@ export default function Layout ({pageContext, location, children}) {
             onToggleInspector: handleToggleInspector,
           }}
         >
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
+
+
             <div layout="page">
               <div>
                 <Sidebar />
@@ -159,7 +159,7 @@ export default function Layout ({pageContext, location, children}) {
               </div>
               <Inspector selectedItem={selectedItem}/>
             </div>
-          </ThemeProvider>
+
         </InspectorContext.Provider>
       </InspectableContext.Provider>
     </MapsContext.Provider>

@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
 const theme = createMuiTheme({
   overrides: {
     root: {
-      fontFamily: 'rtraleway'
+      fontFamily:  "'RT Raleway', sans-serif"
     },
     MuiCard: {
       root: {
@@ -156,7 +156,7 @@ const theme = createMuiTheme({
         letterSpacing:"initial"
       },
       body2:{
-        fontFamily: 'rtraleway',
+        fontFamily: "'RT Raleway', sans-serif",
         fontWeight:700,
         fontSize:"14px",
         fontStyle:"normal",
@@ -166,7 +166,7 @@ const theme = createMuiTheme({
         letterSpacing:"initial"
       },
       h5:{
-        fontFamily: 'inherit',
+        fontFamily:  "'RT Raleway', sans-serif",
         fontWeight:700,
         fontSize:"23px",
         lineHeight:"34px",
@@ -174,7 +174,7 @@ const theme = createMuiTheme({
         letterSpacing:"initial"
       },
       h6:{
-        fontFamily: 'rtraleway',
+        fontFamily:  "'RT Raleway', sans-serif",
         fontWeight:700,
         fontSize:"18px",
         lineHeight:"25.2px",
