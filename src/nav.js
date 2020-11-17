@@ -89,7 +89,7 @@ export const pages = {
       label:"Under Development"
     }
   },
-  experimentsdeductibltask3: {
+  experimentsdeductibletask3: {
     title:"Task 3",
     summary:"",
     icon:"lab",
