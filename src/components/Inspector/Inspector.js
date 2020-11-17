@@ -163,7 +163,6 @@ function WeightScaleIcon(props) {
 const Icon = ({selectedItem, maps}) => {
   const item = getInspectable(selectedItem, "all", maps);
 
-  console.log("ICON", item);
   return (
     <>
       <div type="name">

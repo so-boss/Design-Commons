@@ -4,6 +4,9 @@ import {Tag, PageHeader} from 'antd';
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 
 import {pages} from "./../nav";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 import {Inspector, Sidebar, Footer} from './../../src/components';
 import InspectorContext from './../../src/contexts/InspectorContext';
 import InspectableContext from "../../src/contexts/InspectableContext";
@@ -13,6 +16,19 @@ import { useTypography } from './../../src/hooks/use-typography.js';
 
 import './../../static/ant/antd.css';
 import './../../src/components/AntPage/AntPage.scss';
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          WebkitFontSmoothing: 'auto',
+          fontFamily:"'RT Raleway', sans-serif"
+        },
+      },
+    },
+  },
+});
 
 const Header = ({pageContext, pages, location}) => {
   let cleanpath = location.pathname.replace(/\//g, "");
@@ -120,23 +136,26 @@ export default function Layout ({pageContext, location, children}) {
             onToggleInspector: handleToggleInspector,
           }}
         >
-          <div layout="page">
-            <div>
-              <Sidebar />
-              <div type="page">
-                <Header
-                  location={location}
-                  pages={pages}
-                  pageContext={pageContext}
-                />
-                <div page="body">
-                  {children}
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <div layout="page">
+              <div>
+                <Sidebar />
+                <div type="page">
+                  <Header
+                    location={location}
+                    pages={pages}
+                    pageContext={pageContext}
+                  />
+                  <div page="body">
+                    {children}
+                  </div>
+                  <Footer pages={pages}/>
                 </div>
-                <Footer pages={pages}/>
               </div>
+              <Inspector selectedTem={selectedItem}/>
             </div>
-            <Inspector selectedTem={selectedItem}/>
-          </div>
+          </ThemeProvider>
         </InspectorContext.Provider>
       </InspectableContext.Provider>
     </MapsContext.Provider>
