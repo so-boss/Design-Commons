@@ -98,9 +98,9 @@ export default function Home() {
           Interactive Designs
         </Typography>
         <ul type="experiments">
-          <li><a href="task1">One</a></li>
-          <li><a href="task2">Two</a></li>
-          <li><a href="task3">Three</a></li>
+          <li><a href="/experiments/coverage_control/task1">One</a></li>
+          <li><a href="/experiments/coverage_control/task2">Two</a></li>
+          <li><a href="/experiments/coverage_control/task3">Three</a></li>
         </ul>
       </ThemeProvider>
     </AntPage>

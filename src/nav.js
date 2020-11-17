@@ -26,6 +26,42 @@ export const pages = {
       label:"Under Development"
     }
   },
+  experimentscoverage_control: {
+    title:"Coverage Control: Tasks",
+    summary:"",
+    icon:"lab",
+    tag:{
+      color:"blue",
+      label:"Under Development"
+    }
+  },
+  experimentscoverage_controltask1: {
+    title:"Coverage Control: Task 1",
+    summary:"",
+    icon:"lab",
+    tag:{
+      color:"blue",
+      label:"Under Development"
+    }
+  },
+  experimentscoverage_controltask2: {
+    title:"Coverage Control: Task 2",
+    summary:"",
+    icon:"lab",
+    tag:{
+      color:"blue",
+      label:"Under Development"
+    }
+  },
+  experimentscoverage_controltask3: {
+    title:"Coverage Control: Task 3",
+    summary:"",
+    icon:"lab",
+    tag:{
+      color:"blue",
+      label:"Under Development"
+    }
+  },
   experimentsdeductible_control: {
     title:"Deductible: Tasks",
     summary:"",
