@@ -46,6 +46,8 @@ const Header = ({pageContext, pages, location}) => {
     avatar.src = `/icons/sprite/circle.svg`
   }
 
+  console.log(pageContext.breadcrumb.crumbs.slice(1))
+
   return (
     <div page="header">
       <Breadcrumb

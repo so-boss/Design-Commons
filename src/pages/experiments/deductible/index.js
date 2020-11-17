@@ -12,9 +12,9 @@ export default function Home() {
           Interactive Designs
         </Typography>
         <ul type="experiments">
-          <li><a href="/experiments/deductible_control/task1">One</a></li>
-          <li><a href="/experiments/deductible_control/task2">Two</a></li>
-          <li><a href="/experiments/deductible_control/task3">Three</a></li>
+          <li><a href="/experiments/deductible/task1">One</a></li>
+          <li><a href="/experiments/deductible/task2">Two</a></li>
+          <li><a href="/experiments/deductible/task3">Three</a></li>
         </ul>
     </AntPage>
   );

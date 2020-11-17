@@ -36,7 +36,7 @@ export const pages = {
     }
   },
   experimentscoverage_controltask1: {
-    title:"Coverage Control: Task 1",
+    title:"Task 1",
     summary:"",
     icon:"lab",
     tag:{
@@ -45,7 +45,7 @@ export const pages = {
     }
   },
   experimentscoverage_controltask2: {
-    title:"Coverage Control: Task 2",
+    title:"Task 2",
     summary:"",
     icon:"lab",
     tag:{
@@ -54,7 +54,7 @@ export const pages = {
     }
   },
   experimentscoverage_controltask3: {
-    title:"Coverage Control: Task 3",
+    title:"Task 3",
     summary:"",
     icon:"lab",
     tag:{
@@ -62,7 +62,7 @@ export const pages = {
       label:"Under Development"
     }
   },
-  experimentsdeductible_control: {
+  experimentsdeductible: {
     title:"Deductible: Tasks",
     summary:"",
     icon:"lab",
@@ -71,8 +71,8 @@ export const pages = {
       label:"Under Development"
     }
   },
-  experimentsdeductible_controltask1: {
-    title:"Deductible: Task 1",
+  experimentsdeductibletask1: {
+    title:"Task 1",
     summary:"",
     icon:"lab",
     tag:{
@@ -80,8 +80,8 @@ export const pages = {
       label:"Under Development"
     }
   },
-  experimentsdeductible_controltask2: {
-    title:"Deductible: Task 2",
+  experimentsdeductibletask2: {
+    title:"Task 2",
     summary:"",
     icon:"lab",
     tag:{
@@ -89,8 +89,8 @@ export const pages = {
       label:"Under Development"
     }
   },
-  experimentsdeductible_controltask3: {
-    title:"Deductible: Task 3",
+  experimentsdeductibltask3: {
+    title:"Task 3",
     summary:"",
     icon:"lab",
     tag:{
