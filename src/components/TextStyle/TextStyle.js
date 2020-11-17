@@ -95,7 +95,7 @@ const Style = ({name, size, lineHeight, weight, family, text, figma_id, index}) 
   return (
     <div
       font="textstyle"
-      id={family+"_"+name.short}
+      id={family.replace(" ", "")+"_"+name.short}
       className={className}
       onClick={() => {
         if(selectedItem.index===index) {
