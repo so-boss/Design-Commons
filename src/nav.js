@@ -26,6 +26,42 @@ export const pages = {
       label:"Under Development"
     }
   },
+  experimentsdeductible_control: {
+    title:"Deductible: Tasks",
+    summary:"",
+    icon:"lab",
+    tag:{
+      color:"blue",
+      label:"Under Development"
+    }
+  },
+  experimentsdeductible_controltask1: {
+    title:"Deductible: Task 1",
+    summary:"",
+    icon:"lab",
+    tag:{
+      color:"blue",
+      label:"Under Development"
+    }
+  },
+  experimentsdeductible_controltask2: {
+    title:"Deductible: Task 2",
+    summary:"",
+    icon:"lab",
+    tag:{
+      color:"blue",
+      label:"Under Development"
+    }
+  },
+  experimentsdeductible_controltask3: {
+    title:"Deductible: Task 3",
+    summary:"",
+    icon:"lab",
+    tag:{
+      color:"blue",
+      label:"Under Development"
+    }
+  },
   "404": {
     title:"404",
     summary:"",
