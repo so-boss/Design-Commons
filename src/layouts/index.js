@@ -1,13 +1,13 @@
 import React from "react";
 
-import {Tag, PageHeader} from 'antd';
-import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
+//import {Tag, PageHeader} from 'antd';
+//import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 
 import {pages} from "./../nav";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 //import CssBaseline from '@material-ui/core/CssBaseline';
 
-import {Inspector, Sidebar, Footer} from './../../src/components';
+import {Inspector, Sidebar, Footer, PageHeader} from './../../src/components';
 import InspectorContext from './../../src/contexts/InspectorContext';
 import InspectableContext from "../../src/contexts/InspectableContext";
 import MapsContext from "../../src/contexts/MapsContext";
@@ -32,56 +32,56 @@ const theme = createMuiTheme({
   },
 });
 
-const Header = ({pageContext, pages, location}) => {
-  let cleanpath = location.pathname.replace(/\//g, "");
-  let page = pages[cleanpath];
-  if(!page) {
-    return false;
-  }
-
-  let avatar = {
-    shape: 'square',
-  };
-
-  if(!page) {
-    let page = {
-      title:"",
-      summary:"",
-      icon:"color",
-      tag:{
-        color:"blue",
-        label:"Under Development"
-      }
-    }
-  }
-
-  const {title, icon, tag} = page;
-
-  if(page) {
-    if(page.icon) {
-      avatar.src = "/icons/"+page.icon+".svg"
-    }
-  } else {
-    avatar.src = `/icons/sprite/circle.svg`
-  }
-
-  return (
-    <div page="header">
-      <Breadcrumb
-        location={location}
-        crumbs={pageContext.breadcrumb.crumbs.slice(1)}
-        crumbSeparator=" / "
-      />
-      <PageHeader
-        title={title}
-        className="site-page-header"
-        tags={<Tag color={tag.color}>{tag.label}</Tag>}
-        avatar={avatar}
-        type="page"
-      />
-    </div>
-  )
-}
+//
+// const Header = ({pageContext, pages, location}) => {
+//   let cleanpath = location.pathname.replace(/\//g, "");
+//   let page = pages[cleanpath];
+//   if(!page) {
+//     return false;
+//   }
+//
+//   let avatar = {
+//     shape: 'square',
+//   };
+//
+//   if(!page) {
+//     let page = {
+//       title:"",
+//       summary:"",
+//       icon:"color",
+//       tag:{
+//         color:"blue",
+//         label:"Under Development"
+//       }
+//     }
+//   }
+//
+//   const {title, icon, tag} = page;
+//
+//   if(page) {
+//     if(page.icon) {
+//       avatar.src = "/icons/"+page.icon+".svg"
+//     }
+//   } else {
+//     avatar.src = `/icons/sprite/circle.svg`
+//   }
+//
+//   return (
+//     <div page="header">
+//       <Breadcrumb
+//         location={location}
+//         crumbs={pageContext.breadcrumb.crumbs.slice(1)}
+//         crumbSeparator=" / "
+//       />
+//
+//       <PageTitle
+//         icon={avatar}
+//         title={title}
+//         tag={tag}
+//       />
+//     </div>
+//   )
+// }
 
 export default function Layout ({pageContext, location, children}) {
   const [isOpen, setOpen] = React.useState({
@@ -144,7 +144,7 @@ export default function Layout ({pageContext, location, children}) {
               <div>
                 <Sidebar />
                 <div type="page">
-                  <Header
+                  <PageHeader
                     location={location}
                     pages={pages}
                     pageContext={pageContext}
