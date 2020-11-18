@@ -80,6 +80,7 @@ const Layout = ({ children }) => {
           
           a {
             color:initial;
+            text-decoration: none;
           }
 
           .sizes-table {

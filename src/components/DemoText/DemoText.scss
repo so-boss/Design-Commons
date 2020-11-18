@@ -1,12 +1,28 @@
+$blue-dark: #00338d;
+$blue: #115dc4;
+$blue-light: #5196e5;
+
+$black: #0b1421;
+$grey-dark: #373b49;
+$grey: #676c7d;
+$grey-light: #abafbf;
+$white: #f7f8fc;
+
 [type=demotext] {
   [layout=table] {
 
     [table=row] {
       display:flex;
+      cursor:pointer;
+      padding: 12px 0;
+
       [type=label] {
         flex:initial;
         max-width: 200px;
         text-align: right;
+        display: flex;
+        width: 140px;
+        justify-content: flex-end;
         + div {
           margin-left:64px;
           flex:1;
@@ -14,7 +30,32 @@
       }
 
       &:nth-child(n+2) {
-        margin-top:24px;
+
+      }
+
+      &:hover {
+        background-color:#abafbf30;
+      }
+
+      > div:empty {
+        display:none;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    [layout=table] {
+      [table=row] {
+        flex-direction:column;
+
+        [type=label] {
+          text-align: left;
+          justify-content: flex-start;
+          + div {
+            color:#676c7d;
+            margin-left:0px;
+          }
+        }
       }
     }
   }

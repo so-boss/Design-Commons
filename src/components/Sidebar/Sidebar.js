@@ -4,13 +4,7 @@ import TreeView from '@material-ui/lab/TreeView';
 import TreeItem from '@material-ui/lab/TreeItem';
 import Button from '@material-ui/core/Button';
 
-//import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-//import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-
-// import './../../../static/ant/antd.css';
 import './Sidebar.scss';
-
-//import '@site/docs/guidelines.scss';
 
 const Item = ({labelText, iconID, type, link}) => (
   <Button href={link}>

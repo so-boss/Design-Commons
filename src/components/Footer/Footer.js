@@ -1,8 +1,6 @@
 import React from "react";
-
 import { Link } from "gatsby";
 import './Footer.scss';
-
 
 export default function Footer ({pages, children}) {
 

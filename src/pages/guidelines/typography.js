@@ -1,6 +1,5 @@
 import React from "react"
 
-import {Typography} from 'antd';
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -8,8 +7,6 @@ import Box from '@material-ui/core/Box';
 import {FontSize, TextStyle, Typeface, AntPage, DemoText} from "./../../../src/components/"
 import { useTypography } from './../../../src/hooks/use-typography.js';
 import './../../../src/css/custom.scss'
-const { Paragraph, Title } = Typography;
-
 
 const TabSection = ({children, value, index, ...other}) => {
 
@@ -22,8 +19,8 @@ const TabSection = ({children, value, index, ...other}) => {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
+        <Box>
+          {children}
         </Box>
       )}
     </div>
@@ -45,7 +42,7 @@ export default function Home() {
 
   return (
     <AntPage>
-      <div>
+      <div page="section">
         <Paper square>
           <Tabs
             value={value}
@@ -75,8 +72,7 @@ export default function Home() {
         </TabSection>
       </div>
 
-      <Title level={4}>Definitions: Font Families</Title>
-      <div>
+      <div page="section">
         <Paper square>
           <Tabs
             value={value2}
@@ -120,7 +116,3 @@ export default function Home() {
     </AntPage>
   )
 }
-
-/*
-      <Paragraph>The CSAA color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for CSAA. Text colors displayed in light or dark tints represent CSAA's recommended accessible pairing with the color.</Paragraph>
- */

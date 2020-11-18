@@ -14,7 +14,7 @@ import MapsContext from "../../src/contexts/MapsContext";
 import { useAllIcons } from './../../src/hooks/use-all-icons';
 import { useTypography } from './../../src/hooks/use-typography.js';
 
-import './../../static/ant/antd.css';
+//import './../../static/ant/antd.css';
 import './../../src/components/AntPage/AntPage.scss';
 
 const theme = createMuiTheme({

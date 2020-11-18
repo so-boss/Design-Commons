@@ -2,17 +2,6 @@ import React from 'react';
 
 import './DemoText.scss';
 
-
-
-//
-// // TODO: Redo so we arn't calling getSize 100 times
-// const Sizes = ({family, sizes, maps}) => {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
 const getSize = (maps, figma_id) => {
   return maps.by.figma_id[figma_id];
 }
