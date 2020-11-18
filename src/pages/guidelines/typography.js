@@ -76,8 +76,6 @@ export default function Home() {
             value={value2}
             onChange={handleChange2}
             variant="fullWidth"
-            indicatorColor="secondary"
-            textColor="secondary"
             aria-label="platform size"
           >
             <Tab label="RT Raleway" />
