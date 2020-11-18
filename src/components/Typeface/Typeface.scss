@@ -3,6 +3,7 @@
   >div {
     display:flex;
     flex:1;
+    flex-wrap: wrap;
   }
 }
 div[font=typeface] {
@@ -14,7 +15,7 @@ div[font=typeface] {
   flex:1;
 
   &:nth-child(1n+2) {
-    margin-left:16px;
+    //margin-left:16px;
   }
 
   [face=label] {

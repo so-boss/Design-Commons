@@ -48,24 +48,22 @@ export default function Home() {
             value={value}
             onChange={handleChange}
             variant="fullWidth"
-            indicatorColor="secondary"
-            textColor="secondary"
             aria-label="platform size"
           >
-            <Tab label="Desktop / Large" />
-            <Tab label="Mobile / Small" />
+            <Tab label="Large" />
+            <Tab label="Small" />
           </Tabs>
         </Paper>
         <TabSection value={value} index={0}>
           <DemoText
-            title="Desktop/Large"
+            title="Large"
             collection={typography.maps.CSAA.by.size.Large.concat(typography.maps.CSAA.by.size.Desktop)}
             maps={typography.maps}
           />
         </TabSection>
         <TabSection value={value} index={1}>
           <DemoText
-            title="Mobile/Small"
+            title="Small"
             collection={typography.maps.CSAA.by.size.Small.concat(typography.maps.CSAA.by.size.Mobile)}
             maps={typography.maps}
           />

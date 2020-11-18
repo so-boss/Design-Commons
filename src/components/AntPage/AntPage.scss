@@ -51,9 +51,9 @@ $white: #f7f8fc;
       min-height: 100vh;
       max-width:100vw;
 
-      > [page=header], [page=body] {
+      > [page=header], [page=body], [page=footer] {
         margin-left: calc(#{$sidebar-width} + 24px);
-        transition: margin .3s ease;
+        //transition: margin .3s ease;
       }
 
       span[class*="-colorSecondary"], span[class*="Tabs-indicator"] {
@@ -69,6 +69,10 @@ $white: #f7f8fc;
 
       [page=body] {
         flex:1;
+
+        > div {
+          padding-right:24px;
+        }
 
         [page=section] {
           margin-top:16px;
@@ -182,7 +186,7 @@ $white: #f7f8fc;
     > div {
       $sidebar-width-768: 62px;
       [type=page] {
-        > [page=header], [page=body] {
+        > [page=header], [page=body], [page=footer] {
           margin-left:calc(#{$sidebar-width-768} + 24px);
           //width: calc(100% - #{$sidebar-width-768} - 24px);
         }
