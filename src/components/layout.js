@@ -56,10 +56,9 @@ const Layout = ({ children }) => {
          body {
             //styleName: CSAA / Body / Large - R;
             font-family: "RT Raleway", sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             font-style: normal;
             font-weight: 400;
-            line-height: 25px;
             color:#0b1421;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
@@ -71,8 +70,7 @@ const Layout = ({ children }) => {
           h4,
           h5,
           h6 {
-            margin-top: 2rem !important;
-            margin-bottom: 1rem !important;
+            margin:0;
           }
           h3 {
             margin-top: 6rem !important;

@@ -1,8 +1,9 @@
 [page=footer] {
-  width: calc(100% + 24px);
-
+  //width: calc(100% + 24px);
+  margin-top:24px;
   height:140px;
   position:relative;
+
   &:after {
     content: "";
     position: absolute;
