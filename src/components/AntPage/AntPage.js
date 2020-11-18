@@ -1,6 +1,6 @@
 import React from "react";
 
-import './../../../static/ant/antd.css';
+// import './../../../static/ant/antd.css';
 import './AntPage.scss';
 
 export default function AntPage ({summary, children}) {

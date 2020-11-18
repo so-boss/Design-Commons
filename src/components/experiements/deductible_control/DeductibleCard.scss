@@ -1,3 +1,15 @@
+$blue-dark: #00338d;
+$blue: #115dc4;
+$blue-light: #5196e5;
+
+$black: #0b1421;
+$grey-dark: #373b49;
+$grey: #676c7d;
+$grey-light: #abafbf;
+$white: #f7f8fc;
+
+
+
 [card] {
   span {
     &[type=separator] {
@@ -9,6 +21,16 @@
 }
 
 [wrapper=select] {
+  *, [class*=FormLabel] {
+    font-family: 'RT Raleway', sans-serif;
+    font-weight:400;
+    color:$black;
+    font-size:14px;
+    transform: initial;
+  }
+  > div:first-child {
+    display:flex;
+  }
   .MuiFormControl-root {
     width:100%;
   }

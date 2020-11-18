@@ -5,7 +5,7 @@ import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 
 import {pages} from "./../nav";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+//import CssBaseline from '@material-ui/core/CssBaseline';
 
 import {Inspector, Sidebar, Footer} from './../../src/components';
 import InspectorContext from './../../src/contexts/InspectorContext';
@@ -22,11 +22,9 @@ const theme = createMuiTheme({
     MuiCssBaseline: {
       '@global': {
         html: {
-          WebkitFontSmoothing: 'auto',
           fontFamily:"'RT Raleway', sans-serif"
         },
         body: {
-          WebkitFontSmoothing: 'auto',
           fontFamily:"'RT Raleway', sans-serif"
         },
       },
@@ -140,7 +138,7 @@ export default function Layout ({pageContext, location, children}) {
             onToggleInspector: handleToggleInspector,
           }}
         >
-
+          <ThemeProvider theme={theme}>
 
             <div layout="page">
               <div>
@@ -159,7 +157,7 @@ export default function Layout ({pageContext, location, children}) {
               </div>
               <Inspector selectedItem={selectedItem}/>
             </div>
-
+          </ThemeProvider>
         </InspectorContext.Provider>
       </InspectableContext.Provider>
     </MapsContext.Provider>

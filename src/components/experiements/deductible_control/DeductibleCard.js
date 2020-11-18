@@ -74,10 +74,10 @@ const BootstrapInput = withStyles((theme) => ({
     },
   },
   formControl: {
-
-    root:{
       width: '100%'
-    }
+  },
+  label:{
+    transform: "initial"
   },
   input: {
     borderRadius: 4,
@@ -86,13 +86,13 @@ const BootstrapInput = withStyles((theme) => ({
     border: '1px solid #ced4da',
     fontSize: 16,
     padding: '10px 26px 10px 12px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Roboto font.
     fontFamily: [
+      'RT Raleway',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
-      'Roboto',
       '"Helvetica Neue"',
       'Arial',
       'sans-serif',
@@ -109,7 +109,7 @@ const BootstrapInput = withStyles((theme) => ({
 }))(InputBase);
 const useStyles = makeStyles((theme) => ({
   margin: {
-    margin: theme.spacing(1),
+
   },
 }));
 
@@ -120,7 +120,8 @@ const theme = createMuiTheme({
     },
     MuiCard: {
       root: {
-        padding: "24px"
+        padding: "24px",
+        fontFamily: "'RT Raleway', sans-serif",
       }
     },
     MuiCardHeader: {
@@ -144,6 +145,14 @@ const theme = createMuiTheme({
         transform: "translateY(-2px)"
       },
       markLabel: {},
+    },
+    MuiFormControl:{
+      root: {
+        fontFamily: "'RT Raleway', sans-serif"
+      },
+      label: {
+        fontFamily: "'RT Raleway', sans-serif"
+      }
     },
     MuiTypography: {
       body1:{
@@ -230,7 +239,7 @@ export default class CoverageCard extends React.Component {
   render() {
     const classes = makeStyles((theme) => ({
       margin: {
-        margin: theme.spacing(2),
+
       },
     }));
 
@@ -277,7 +286,7 @@ export default class CoverageCard extends React.Component {
               this.props.controlType==="select" &&
               (
                 <div wrapper="select">
-                  <FormControl className={classes.margin}>
+                  <FormControl>
                     <InputLabel htmlFor="demo-customized-select-native">Deductible Amount</InputLabel>
                     <NativeSelect
                       id="demo-customized-select-native"
