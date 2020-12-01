@@ -6,16 +6,16 @@ import Button from '@material-ui/core/Button';
 
 import './Sidebar.scss';
 
-const Item = ({labelText, iconID, type, link}) => (
+const Item = ({ labelText, iconID, type, link }) => (
   <Button href={link}>
     {iconID &&
-    <img src={"/icons/"+iconID+".svg"} />
+      <img src={"/icons/" + iconID + ".svg"} />
     }
     <span>{labelText}</span>
   </Button>
 )
 
-const NavItem = ({labelText, iconID, type, link, ...rest}) => {
+const NavItem = ({ labelText, iconID, type, link, ...rest }) => {
   return (
     <TreeItem
       label={
@@ -38,8 +38,8 @@ const Nav = () => {
   return (
     <TreeView
       defaultExpanded={['1']}
-      // defaultCollapseIcon={<ExpandMoreIcon />}
-      // defaultExpandIcon={<ChevronRightIcon />}
+    // defaultCollapseIcon={<ExpandMoreIcon />}
+    // defaultExpandIcon={<ChevronRightIcon />}
     >
       <NavItem
         nodeId="1"
@@ -64,12 +64,18 @@ const Nav = () => {
           iconID="vector"
           link="/guidelines/icons"
         />
+        <NavItem
+          nodeId="5"
+          labelText="UI Styles"
+          iconID="vector"
+          link="/guidelines/content"
+        />
       </NavItem>
     </TreeView>
   );
 };
 
-export default function Sidebar ({children}) {
+export default function Sidebar({ children }) {
 
   return (
     <div type="sidebar">
