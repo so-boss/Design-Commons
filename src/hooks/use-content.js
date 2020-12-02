@@ -7,17 +7,13 @@ export const useContent = () => {
   const data = useStaticQuery(
     graphql`
             query MyQuery {
-                allSanityContent {
-                    nodes {
-                        name
-                        description
-                        category {
-                        name
-                            }
-                                }
-                                    }
-                                        }
-                                        `
+  allSanityContent(sort: {order: ASC, fields: name}) {
+    nodes {
+      description
+      name
+    }
+  }
+}`
   )
 
 
