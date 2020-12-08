@@ -13,7 +13,7 @@ export default function Time() {
     return (
 
         <AntPage>
-            {/* slice(26, 27) 11 12 for time*/}
+
             {contents.slice(11, 12).map((content, index) => (
                 <div
                     key={index}

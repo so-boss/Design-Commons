@@ -9,13 +9,16 @@ import Time from '../../components/Time/time'
 /*
      TODO: Migrating the icon meta data into context
  */
+
+
 export default function Home() {
     const contents = useContent()
     return (
 
         <AntPage>
             <VoiceTone />
-            <Time />
+
+
         </AntPage >
 
     )
