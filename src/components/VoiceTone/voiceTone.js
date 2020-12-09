@@ -11,8 +11,9 @@ import { useContent } from './../../../src/hooks/use-content';
 function Time() {
     const contents = useContent()
     return <div>
-        {
-            contents.slice(24, 25).map((content, index) => (
+        {//31 time, 28 range of time
+
+            contents.slice(31, 32).map((content, index) => (
                 <div
                     key={index}
                     figma_id={content.figma_id}
@@ -33,7 +34,7 @@ function RangeofTime() {
     const contents = useContent()
     return <div>
         {
-            contents.slice(22, 23).map((content, index) => (
+            contents.slice(28, 29).map((content, index) => (
                 <div
                     key={index}
                     figma_id={content.figma_id}
@@ -54,7 +55,7 @@ function Date() {
     const contents = useContent()
     return <div>
         {
-            contents.slice(11, 12).map((content, index) => (
+            contents.slice(13, 15).map((content, index) => (
                 <div
                     key={index}
                     figma_id={content.figma_id}
@@ -68,54 +69,118 @@ function Date() {
                 </div>
             ))
         }
-    </div>;
+    </div>
 }
-/* Days of week */
-function DaysofWeek() {
-    const contents = useContent()
-    return <div>
-        {
-            contents.slice(12, 13).map((content, index) => (
-                <div
-                    key={index}
-                    figma_id={content.figma_id}
-                >
-                    <h2>
-                        {content.name}
-                    </h2>
-                    <p>
-                        {content.description}
-                    </p>
-                </div>
-            ))
-        }
-    </div>;
-}
-/* end of days of week */
+
 /* Start of Date component */
 
 /* Punctuation */
-function Punctuation() {
+function Ampersand() {
     const contents = useContent()
     return <div>
         {
-            contents.map((content, index) => (
+            contents.slice(3, 4).map((content, index) => (
                 <div
                     key={index}
                     figma_id={content.figma_id}
                 >
                     <h2>
-                        {content.name}
-                    </h2>
-                    <p>
-                        {content.description}
-                    </p>
+                        Punctuation
+                        </h2>
+                    <ul>
+                        <li type="circle">
+                            <b>{content.name}</b>: {content.description}
+                        </li>
+                    </ul>
+
                 </div>
             ))
         }
-    </div>;
+    </div>
 }
-/* end of days of week */
+
+function Colon() {
+    const contents = useContent()
+    return <div>
+        {/* 9, 11)17 20*/
+            contents.slice(9, 11).map((content, index) => (
+                <div
+                    key={index}
+                    figma_id={content.figma_id}
+                >
+                    <ul>
+                        <li type="circle">
+                            <b>{content.name}</b>: {content.description}
+                        </li>
+                    </ul>
+
+                </div>
+            ))
+        }
+    </div>
+}
+function Dashes() {
+    const contents = useContent()
+    return <div>
+        {/* 9, 11)16 20  --24 hypen 29-30 slash */
+            contents.slice(16, 20).map((content, index) => (
+                <div
+                    key={index}
+                    figma_id={content.figma_id}
+                >
+                    <ul>
+                        <li type="circle">
+                            <b>{content.name}</b>: {content.description}
+                        </li>
+                    </ul>
+
+                </div>
+            ))
+        }
+    </div>
+}
+function Hyphen() {
+    const contents = useContent()
+    return <div>
+        {/* 9, 11)16 20  --24 hypen 29-30 slash */
+            contents.slice(23, 24).map((content, index) => (
+                <div
+                    key={index}
+                    figma_id={content.figma_id}
+                >
+                    <ul>
+                        <li type="circle">
+                            <b>{content.name}</b>: {content.description}
+                        </li>
+                    </ul>
+
+                </div>
+            ))
+        }
+    </div>
+}
+
+function Slash() {
+    const contents = useContent()
+    return <div>
+        {/* 9, 11)16 20  --24 hypen 29-30 slash */
+            contents.slice(29, 30).map((content, index) => (
+                <div
+                    key={index}
+                    figma_id={content.figma_id}
+                >
+                    <ul>
+                        <li type="circle">
+                            <b>{content.name}</b>: {content.description}
+                        </li>
+                    </ul>
+
+                </div>
+            ))
+        }
+    </div>
+}
+/* end of punctuation */
 
 export default function VoiceTone() {
     const contents = useContent()
@@ -123,7 +188,7 @@ export default function VoiceTone() {
 
         <AntPage>
             {/* slice(26, 27) 11 12 for time*/}
-            {contents.slice(26, 27).map((content, index) => (
+            {contents.slice(33, 34).map((content, index) => (
                 <div
                     key={index}
                     figma_id={content.figma_id}
@@ -132,7 +197,6 @@ export default function VoiceTone() {
                         {content.name}
                     </h2>
                     <p>
-                        {/* <h2> {index + 1} </h2> */}
                         {content.description}
                     </p>
                 </div>
@@ -140,8 +204,11 @@ export default function VoiceTone() {
             <Time />
             <RangeofTime />
             <Date />
-            <DaysofWeek />
-            <Punctuation />
+            <Ampersand />
+            <Colon />
+            <Dashes />
+            <Hyphen />
+            <Slash />
         </AntPage>
 
     )
