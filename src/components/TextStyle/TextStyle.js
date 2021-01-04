@@ -106,7 +106,7 @@ const Style = ({name, size, lineHeight, weight, family, text, figma_id, index}) 
       }}
     >
       <div textstyle="label">
-        <span suffix={name.short}>{name.long}</span>
+        <span suffix={name.short}>{name.short}</span>
       </div>
 
       <div font="preview"
@@ -121,29 +121,6 @@ const Style = ({name, size, lineHeight, weight, family, text, figma_id, index}) 
     </div>
   );
 }
-
-/*
- <div textstyle="props">
-        <div>
-          <label alt="font size">
-            <FontSizeIcon />
-          </label>
-          <span suffix="px">{parseInt(size)}</span>
-        </div>
-        <div>
-          <label alt="line height">
-            <LineHeightIcon />
-          </label>
-          <span suffix="px">{parseInt(lineHeight)}</span>
-        </div>
-        <div>
-          <label alt="weight">
-            <WeightScaleIcon />
-          </label>
-          <span style={{fontWeight: weight}}>{weight}</span>
-        </div>
-      </div>
- */
 
 const getStyle = (maps, figma_id) => {
   return maps.by.figma_id[figma_id];

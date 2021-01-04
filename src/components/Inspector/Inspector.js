@@ -183,7 +183,6 @@ const Icon = ({selectedItem, maps}) => {
 const Typography = ({selectedItem, maps}) => {
   const item = getInspectable(selectedItem, "all", maps);
 
-  console.log("TYPE", item);
   return (
     <>
       <div type="name">
@@ -227,7 +226,6 @@ export default function Inspector ({}) {
   const {selectedItem} = useContext(InspectableContext);
   const maps = useContext(MapsContext)[selectedItem.type];
 
-  console.log(selectedItem)
   return (
     <div wrapper="drawer" className={classes.root}>
       <CssBaseline />
