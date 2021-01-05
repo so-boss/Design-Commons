@@ -26,7 +26,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@mdx-js/mdx": "^1.5.9",
     "@so.boss/genesis-icon-library": "^0.0.3",
-    "@so.boss/pixel": "0.1.8",
+    "@so.boss/pixel": "0.1.12",
     "@theme-ui/presets": "^0.3.0",
     "antd": "^4.7.2",
     "gatsby": "^2.20.36",
