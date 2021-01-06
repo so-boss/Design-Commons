@@ -17,17 +17,24 @@
     "sanity"
   ],
   "dependencies": {
+    "@andre-brdoch/sanity-plugin-schema-inspector": "^1.1.0",
     "@sanity/base": "^2.0.9",
     "@sanity/cli": "^2.1.0",
     "@sanity/components": "^2.0.9",
     "@sanity/core": "^2.0.9",
+    "@sanity/dashboard": "^2.1.0",
     "@sanity/default-layout": "^2.0.9",
     "@sanity/default-login": "^2.0.9",
     "@sanity/desk-tool": "^2.0.9",
     "@sanity/vision": "^2.0.9",
     "prop-types": "^15.7",
     "react": "^17.0",
-    "react-dom": "^17.0"
+    "react-dom": "^17.0",
+    "sanity-plugin-content-model-graph": "^1.1.1",
+    "sanity-plugin-dark-mode": "^0.0.32",
+    "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
+    "sanity-plugin-dashboard-widget-notes": "^0.3.2",
+    "sanity-plugin-minesweeper": "^0.0.3"
   },
   "devDependencies": {}
 }
