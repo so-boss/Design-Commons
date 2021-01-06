@@ -19,7 +19,10 @@
     "dashboard-widget-notes",
     "minesweeper",
     "@sanity/dashboard",
-    "dashboard-widget-netlify"
+    "dashboard-widget-netlify",
+    "content-calendar",
+    "media",
+    "autocomplete-tags"
   ],
   "env": {
     "development": {
