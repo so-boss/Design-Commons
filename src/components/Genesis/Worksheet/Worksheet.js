@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Paper, Divider, Button } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
-
+import InfoIcon from '@material-ui/icons/Info';
 import Icon from '@material-ui/core/Icon';
 
 // import {limits, maps} from "./data.js";
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Worksheet = ({title, summary, children, description_expanded}) => {
+const Worksheet = ({title, summary, children, description_expanded, alert_upper, alert_lower}) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(description_expanded);
 
@@ -79,6 +79,12 @@ const Worksheet = ({title, summary, children, description_expanded}) => {
               <div>{title}</div>
               <div>{summary}</div>
             </div>
+            {alert_upper &&
+              <div alert="container">
+                <InfoIcon />
+                <div>Max Limit 100k person / 300K incident. Increase Your Property Damage limits to get more Uninsured Property Damage coverage.</div>
+              </div>
+            }
             <Divider />
           </div>
           <div section="body">
@@ -89,7 +95,14 @@ const Worksheet = ({title, summary, children, description_expanded}) => {
               <ShowWhat expanded={expanded} />
             </div>
           </div>
-          <div section="footer"></div>
+          <div section="footer">
+            {alert_lower &&
+            <div alert="container">
+              <InfoIcon />
+              <div>Max Limit 100k person / 300K incident. Increase Your Property Damage limits to get more Uninsured Property Damage coverage.</div>
+            </div>
+            }
+          </div>
         </div>
       </Paper>
     </div>

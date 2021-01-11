@@ -90,7 +90,29 @@ $white: #f7f8fc;
       }
 
       > [section=footer] {
+        [alert] {
+          margin-bottom:0px;
+        }
+      }
+    }
 
+    [alert] {
+      display:flex;
+      padding:8px 24px;
+      border-radius:4px;
+      background: #E3E5EE;
+      margin: 24px 0;
+      font-family: Cabin;
+      font-size: 18px;
+      line-height: 25.2px;
+      align-items: center;
+      svg {
+        flex:initial;
+        fill:rgba(0,0,0,.2);
+         + div {
+           flex:1;
+           margin-left:16px;
+         }
       }
     }
   }
