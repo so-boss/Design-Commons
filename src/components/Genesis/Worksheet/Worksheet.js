@@ -76,7 +76,7 @@ const LimitSelector = () => {
       )
     },
     {
-      key: 7,
+      key: 8,
       disabled: true,
       text: "$1M / $1M",
       value: "$1M / $1M",

@@ -4,11 +4,11 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Worksheet from "../components/Genesis/Worksheet/Worksheet.js"
 
 export default {
-  title: 'Full Coverages',
+  title: 'Disabled Amounts',
   //component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  // argTypes: {
+  //   //backgroundColor: { control: 'color' },
+  // },
 } as Meta;
 
 export const TaskA = () => {

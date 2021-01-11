@@ -6,9 +6,9 @@ import Worksheet from "../components/Genesis/Worksheet/Worksheet.js"
 export default {
   title: 'Messaging',
   //component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  // argTypes: {
+  //   backgroundColor: { control: 'color' },
+  // },
 } as Meta;
 
 export const UninsuredMotoristA = () => {

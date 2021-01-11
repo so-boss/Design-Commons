@@ -6,9 +6,9 @@ import Worksheet from "../components/Genesis/Worksheet/Worksheet.js"
 export default {
   title: 'Coverage Information',
   //component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  // argTypes: {
+  //   backgroundColor: { control: 'color' },
+  // },
 } as Meta;
 
 //const Template: Story<PageProps> = (args) => <Page {...args} />;
