@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Paper, Divider, Button } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+
 import Icon from '@material-ui/core/Icon';
 
 // import {limits, maps} from "./data.js";
@@ -37,34 +39,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Worksheet() {
+const Worksheet = ({title, summary, children, description_expanded}) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(description_expanded);
 
+  function ShowWhat(props) {
+    if(props.expanded==="true") {
+      return <ShowLess />
+    }
+    return <ShowMore />
+  };
+  // onClick={() => setExpanded(prevExpanded => !prevExpanded)}
+  function ShowMore() {
+    return (
+      <Button
+        startIcon={<AddCircleIcon />}
+        onClick={() => setExpanded("true")}
+      >
+        Show More
+      </Button>
+    )
+  }
+  function ShowLess() {
+    return (
+      <Button
+        startIcon={<RemoveCircleIcon />}
+        onClick={() => setExpanded("false")}
+      >
+        Show Less
+      </Button>
+    )
+  }
   return (
     <div worksheet="container" className={classes.root}>
       <Paper worksheet="section" elevation={5}>
         <div>
           <div section="header">
             <div block="container">
-              <div>Bodily Injury</div>
-              <div>Covers the injuries of others if you’re at fault</div>
+              <div>{title}</div>
+              <div>{summary}</div>
             </div>
             <Divider />
           </div>
           <div section="body">
-            <div expandable="container" expanded={expanded.toString()}>
+            <div expandable="container" expanded={expanded}>
               <div>
-                <p>For example, if you rear-end someone, and they need medical care, a $25K/ $50K bodily injury liability limit would pay up to $25,000 for an individual, and up to $50,000 for all people injured in that single accident. This coverage also pays for legal defense costs if you’re sued.</p>
-                <p>Consider increasing your liability limits if you have assets such as a home to protect from a lawsuit.</p>
+                {children}
               </div>
-              <Button
-                variant="text"
-                startIcon={<AddIcon />}
-                onClick={() => setExpanded(prevExpanded => !prevExpanded)}
-              >
-                Show More
-              </Button>
+              <ShowWhat expanded={expanded} />
             </div>
           </div>
           <div section="footer"></div>
@@ -73,3 +95,5 @@ export default function Worksheet() {
     </div>
   );
 }
+
+export default Worksheet;
