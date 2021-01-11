@@ -41,6 +41,7 @@ $white: #f7f8fc;
           > div {
             flex:1;
             &[dropdown] {
+              z-index:1;
               width:330px;
               flex:initial;
               display:flex;
@@ -199,5 +200,11 @@ $white: #f7f8fc;
          }
       }
     }
+  }
+}
+
+[popup] {
+  .content {
+    padding:8px 16px;
   }
 }

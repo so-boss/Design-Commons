@@ -3,30 +3,15 @@ import { Paper, Divider, Button, FormControl, MenuItem, InputLabel, Select, Nati
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import InfoIcon from '@material-ui/icons/Info';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
 
+import { Dropdown, Popup, Header } from 'semantic-ui-react'
 
-import { Dropdown } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 // import {limits, maps} from "./data.js";
-import {makeStyles, withStyles} from '@material-ui/core/styles';
 
 //import './../../../../../src/css/custom.scss';
 import './Worksheet.scss';
-//
-// const CardBody = ({children, description}) => {
-//   return (
-//     <div container="body">
-//       <CardContent>
-//         {description && (
-//           <Typography>
-//             {description}
-//           </Typography>
-//         )}
-//         {children}
-//       </CardContent>
-//     </div>
-//   )
-// }
 
 const LimitSelector = () => {
   const [limit, setLimit] = React.useState("$50k person / $100K incident");
@@ -37,14 +22,74 @@ const LimitSelector = () => {
   };
 
   const options = [
-    { key: 1, text: "$15k / $30K", value: "$15k / $30K" },
+    {
+      key: 1,
+      value: "$15k / $30K",
+      text: "$15k / $30K",
+    },
     { key: 2, text: "$25k / $50K", value: "$25k / $50K" },
     { key: 3, text: "$50k / $100K", value: "$50k / $100K" },
     { key: 4, text: "$100k / $300K", value: "$100k / $300K" },
-    { key: 5, disabled: true, text: "$300k / $500K", value: "$300k / $500K" },
-    { key: 6, disabled: true, text: "$500k / $500K", value: "$500k / $500K" },
-    { key: 7, disabled: true, text: "$500k / $1M", value: "$500k / $1M" },
-    { key: 7, disabled: true, text: "$1M / $1M", value: "$1M / $1M" },
+    {
+      key: 5,
+      disabled: true,
+      text: "$300k / $500K",
+      value: "$300k / $500K",
+      content: (
+        <Popup
+          popup="container"
+          trigger={<Dropdown.Item as="span">$300k / $500K</Dropdown.Item>}
+          position='right center'
+          inverted
+          content="Increase Your Bodily Injury limits to get more __________ coverage."
+        />
+      )
+    },
+    {
+      key: 6,
+      disabled: true,
+      text: "$500k / $500K",
+      value: "$500k / $500K",
+      content: (
+        <Popup
+          popup="container"
+          trigger={<Dropdown.Item as="span">$500k / $500K</Dropdown.Item>}
+          position='right center'
+          inverted
+          content="Increase Your Bodily Injury limits to get more __________ coverage."
+        />
+      )
+    },
+    {
+      key: 7,
+      disabled: true,
+      text: "$500k / $1M",
+      value: "$500k / $1M",
+      content: (
+        <Popup
+          popup="container"
+          trigger={<Dropdown.Item as="span">$500k / $1M</Dropdown.Item>}
+          position='right center'
+          inverted
+          content="Increase Your Bodily Injury limits to get more __________ coverage."
+        />
+      )
+    },
+    {
+      key: 7,
+      disabled: true,
+      text: "$1M / $1M",
+      value: "$1M / $1M",
+      content: (
+        <Popup
+          popup="container"
+          trigger={<Dropdown.Item as="span">$1M / $1M</Dropdown.Item>}
+          position='right center'
+          inverted
+          content="Increase Your Bodily Injury limits to get more __________ coverage."
+        />
+      )
+    },
   ]
 
   return (
