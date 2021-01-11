@@ -67,6 +67,22 @@ $white: #f7f8fc;
                   font-weight: bold;
                   font-size: 14px;
                 }
+
+                > .menu {
+                  // Todo: Figure out why this is like this
+                  margin-top: 40px !important;
+                  margin-left: -24px;
+                  padding: 0 0 0 9px;
+                  width: calc(100% + 52px);
+
+                  > .item {
+                    span {
+                      font-family: Raleway;
+                      font-size: 18px;
+                      color: #4D5160;
+                    }
+                  }
+                }
               }
             }
           }

@@ -29,7 +29,7 @@ import './Worksheet.scss';
 // }
 
 const LimitSelector = () => {
-  const [limit, setLimit] = React.useState("$50k / $100K");
+  const [limit, setLimit] = React.useState("$50k person / $100K incident");
   const handleChange = (event, opt) => {
     let label = opt.value.split(" / ");
     label = label[0] + " person / " + label[1] + " incident";
@@ -41,10 +41,10 @@ const LimitSelector = () => {
     { key: 2, text: "$25k / $50K", value: "$25k / $50K" },
     { key: 3, text: "$50k / $100K", value: "$50k / $100K" },
     { key: 4, text: "$100k / $300K", value: "$100k / $300K" },
-    { key: 5, text: "$300k / $500K", value: "$300k / $500K" },
-    { key: 6, text: "$500k / $500K", value: "$500k / $500K" },
-    { key: 7, text: "$500k / $1M", value: "$500k / $1M" },
-    { key: 7, text: "$1M / $1M", value: "$1M / $1M" },
+    { key: 5, disabled: true, text: "$300k / $500K", value: "$300k / $500K" },
+    { key: 6, disabled: true, text: "$500k / $500K", value: "$500k / $500K" },
+    { key: 7, disabled: true, text: "$500k / $1M", value: "$500k / $1M" },
+    { key: 7, disabled: true, text: "$1M / $1M", value: "$1M / $1M" },
   ]
 
   return (
