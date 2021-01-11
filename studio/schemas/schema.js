@@ -7,6 +7,8 @@ import typography from './typography';
 import content from './content'
 import content_category from './content_category'
 import coverage from './coverage'
+import limits from './limits'
+import limit from './limit'
 
 export default createSchema({
   name: 'genesis',
@@ -16,6 +18,8 @@ export default createSchema({
     typography,
     content,
     content_category,
-    coverage
+    coverage,
+    limits,
+    limit
   ]),
 })

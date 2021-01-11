@@ -21,18 +21,9 @@ import { Header } from './Header';
 import './page.css';
 
 
-// export interface PageProps {
-//   user?: {};
-//   onLogin: () => void;
-//   onLogout: () => void;
-//   onCreateAccount: () => void;
-// }
-//ser, onLogin, onLogout, onCreateAccount
 export const Page: React.FC<PageProps> = ({  }) => (
   <article>
-    {/*<Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />*/}
-
-    <section>
+      <section>
       <h2>Pixel + Genesis</h2>
       <p>
           Elements

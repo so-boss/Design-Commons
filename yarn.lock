@@ -3420,7 +3420,7 @@
     react-dom "^16.13.1"
     styled-components "^5.1.1"
 
-"@so.boss/pixel@^0.1.12":
+"@so.boss/pixel@0.1.12":
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/@so.boss/pixel/-/pixel-0.1.12.tgz#117dc370314ec00e82569c7c5f8489a668071ec6"
   integrity sha512-txikPZf6AxFDmeIkyQ9in/cKkVRKHidqEwkO2q8xW+R0YTYLccDVoLBIfoC/sUB3gDLJTMdadqGKwXlxbH7beg==
@@ -3864,6 +3864,11 @@
   integrity sha512-ICW70RuOJOHD7PcKq62yr7hCmo04F7yRMuy5/MD/G+Neaw3YpfYTc6pQ228h5UrmXiKSKG1unPkjzuIAoIeN7w==
   dependencies:
     core-js "^3.0.1"
+
+"@storybook/preset-scss@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@storybook/preset-scss/-/preset-scss-1.0.3.tgz#8ac834545c642dada0f64f510ef08dfb882e9737"
+  integrity sha512-o9Iz6wxPeNENrQa2mKlsDKynBfqU2uWaRP80HeWp4TkGgf7/x3DVF2O7yi9N0x/PI1qzzTTpxlQ90D62XmpiTw==
 
 "@storybook/react@^6.1.11":
   version "6.1.11"

@@ -19,9 +19,13 @@ export default {
             type: 'text'
         },
         {
-            name: 'limit_type',
-            title: 'Limit Type',
-            type: 'string'
+            title: 'Limits',
+            name: 'limits',
+            type: 'array',
+            of: [{
+                type: 'reference',
+                to: [{ type: 'limits' }]
+            }]
         }
     ]
 }
