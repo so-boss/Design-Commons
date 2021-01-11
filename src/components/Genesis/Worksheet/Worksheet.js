@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Paper, Divider, Button } from '@material-ui/core';
+import { Paper, Divider, Button, FormControl, MenuItem, InputLabel, Select, NativeSelect, InputBase } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import InfoIcon from '@material-ui/icons/Info';
-import Icon from '@material-ui/core/Icon';
 
+
+import { Dropdown } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 // import {limits, maps} from "./data.js";
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles, withStyles} from '@material-ui/core/styles';
 
 //import './../../../../../src/css/custom.scss';
 import './Worksheet.scss';
@@ -25,6 +27,43 @@ import './Worksheet.scss';
 //     </div>
 //   )
 // }
+
+const LimitSelector = () => {
+  const [limit, setLimit] = React.useState("$50k / $100K");
+  const handleChange = (event, opt) => {
+    let label = opt.value.split(" / ");
+    label = label[0] + " person / " + label[1] + " incident";
+    setLimit(label);
+  };
+
+  const options = [
+    { key: 1, text: "$15k / $30K", value: "$15k / $30K" },
+    { key: 2, text: "$25k / $50K", value: "$25k / $50K" },
+    { key: 3, text: "$50k / $100K", value: "$50k / $100K" },
+    { key: 4, text: "$100k / $300K", value: "$100k / $300K" },
+    { key: 5, text: "$300k / $500K", value: "$300k / $500K" },
+    { key: 6, text: "$500k / $500K", value: "$500k / $500K" },
+    { key: 7, text: "$500k / $1M", value: "$500k / $1M" },
+    { key: 7, text: "$1M / $1M", value: "$1M / $1M" },
+  ]
+
+  return (
+    <div dropdown="container">
+      <Dropdown
+        text="Limits"
+        labeled
+        options={options}
+        floating
+        button
+        onChange={handleChange}
+      />
+      <div>
+        {limit}
+      </div>
+    </div>
+  )
+}
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,10 +114,14 @@ const Worksheet = ({title, summary, children, description_expanded, alert_upper,
       <Paper worksheet="section" elevation={5}>
         <div>
           <div section="header">
-            <div block="container">
-              <div>{title}</div>
-              <div>{summary}</div>
+            <div>
+              <div block="container">
+                <div>{title}</div>
+                <div>{summary}</div>
+              </div>
+              <LimitSelector />
             </div>
+
             {alert_upper &&
               <div alert="container">
                 <InfoIcon />
