@@ -23,11 +23,7 @@ const LimitSelector = () => {
   };
 
   const options = [
-    {
-      key: 1,
-      value: "$15k / $30K",
-      text: "$15k / $30K",
-    },
+    { key: 1, value: "$15k / $30K", text: "$15k / $30K" },
     { key: 2, text: "$25k / $50K", value: "$25k / $50K" },
     { key: 3, text: "$50k / $100K", value: "$50k / $100K" },
     { key: 4, text: "$100k / $300K", value: "$100k / $300K" },
@@ -93,16 +89,56 @@ const LimitSelector = () => {
     },
   ]
 
+  const EnabledItem = ({item}) => (
+      <Dropdown.Item
+        key={item.key}
+        value={item.value}
+      >
+        {item.text}
+      </Dropdown.Item>
+    )
+  const DisabledItems = ({items}) => {
+    // const items = props.items;
+    const listItems = items.map((item) => {
+      if(item.disabled && item.disabled===true) {
+        return (<div class="item">{item.text}</div>);
+      }
+    });
+
+    return listItems;
+  }
+  const EnabledItems = ({items}) => {
+    // const items = props.items;
+    const listItems = items.map((item) => {
+      if(!item.disabled) {
+        return (<EnabledItem item={item}/>)
+      }
+    });
+
+    return listItems;
+  }
+
   return (
     <div dropdown="container">
       <Dropdown
         text="Limits"
         labeled
-        options={options}
         floating
         button
         onChange={handleChange}
-      />
+      >
+        <Dropdown.Menu>
+          <EnabledItems items={options} />
+          <Popup
+            popup="container"
+            trigger={<div items="disabled"><DisabledItems items={options} /></div>}
+            position='right center'
+            inverted
+            content="Increase Your Bodily Injury limits to get more __________ coverage."
+          />
+
+        </Dropdown.Menu>
+      </Dropdown>
       <div>
         {limit}
       </div>
