@@ -12,6 +12,7 @@ import 'semantic-ui-css/semantic.min.css'
 
 //import './../../../../../src/css/custom.scss';
 import './Worksheet.scss';
+import './../fonts/faces.scss'
 
 const LimitSelector = () => {
   const [limit, setLimit] = React.useState("$50k person / $100K incident");

@@ -1,0 +1,10 @@
+@mixin font($font-family, $font-family2, $font-weight, $font-path, $font-weight-int) {
+  @font-face {
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: $font-weight-int;
+    src: url($font-path + '/' + $font-family2 + '-' + $font-weight + '.woff2') format('woff2');
+  }
+}
+@include font('rt raleway', 'rtraleway', 'regular', '/RTRaleway-Regular', 400);
+@include font('rt raleway', 'rtraleway', 'bold', '/RTRaleway-Bold', 700);

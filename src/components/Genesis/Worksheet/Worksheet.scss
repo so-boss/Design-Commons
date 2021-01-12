@@ -1,3 +1,4 @@
+
 $blue-dark: #00338d;
 $blue: #115dc4;
 $blue-light: #5196e5;
@@ -7,9 +8,23 @@ $grey-dark: #373b49;
 $grey: #676c7d;
 $grey-light: #abafbf;
 $white: #f7f8fc;
+//@mixin font($font-family, $font-family2, $font-weight, $font-path, $font-weight-int) {
+//  @font-face {
+//    font-family: $font-family;
+//    font-style: normal;
+//    font-weight: $font-weight-int;
+//    src: url($font-path + '/' + $font-family2 + '-' + $font-weight + '.woff2') format('woff2');
+//  }
+//}
+//
+//@include font('rt raleway', 'rtraleway', 'regular', '/fonts/RTRaleway-Regular', 400);
+//@include font('rt raleway', 'rtraleway', 'bold', '/fonts/RTRaleway-Bold', 700);
+//@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700');
+//
+
 
 [worksheet="container"] {
-  font-family: Raleway;
+  font-family: RT Raleway;
   font-style: normal;
 
   [worksheet="section"] {
@@ -64,7 +79,7 @@ $white: #f7f8fc;
                 z-index:10;
                 transition: 300ms;
                 &:last-child {
-                  font-family: Raleway;
+                  font-family: RT Raleway;
                   font-weight: normal;
                   font-size: 18px;
                   z-index:0;
@@ -80,7 +95,7 @@ $white: #f7f8fc;
               }
               > .dropdown {
                 > .text {
-                  font-family: Raleway;
+                  font-family: RT Raleway;
                   font-weight: bold;
                   font-size: 14px;
                   width: 100%;
@@ -98,7 +113,7 @@ $white: #f7f8fc;
 
                     }
                     span {
-                      font-family: Raleway;
+                      font-family: RT Raleway;
                       font-size: 18px;
                       color: #4D5160;
                     }
@@ -161,7 +176,7 @@ $white: #f7f8fc;
           }
           > div {
             + button {
-              font-family: Raleway;
+              font-family: RT Raleway;
               font-style: normal;
               font-weight: bold;
               font-size: 18px;
