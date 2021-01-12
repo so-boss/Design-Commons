@@ -4,6 +4,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import InfoIcon from '@material-ui/icons/Info';
 import {makeStyles, withStyles} from '@material-ui/core/styles';
+const _ = require('lodash');
 
 import { Dropdown, Popup, Header } from 'semantic-ui-react'
 
@@ -22,102 +23,84 @@ const LimitSelector = () => {
     setLimit(label);
   };
 
+  // Liability Limits (bodily, property)
+  const limits = {
+    bodily:[
+      [15,30],
+      [25,50],
+      [50,100],
+      [100,300],
+      [300,500],
+      [500,500],
+      [500,1000],
+      [1000,1000]
+    ],
+    property:[
+      [10],
+      [25],
+      [50],
+      [100],
+      [300],
+      [500],
+      [1000]
+    ]
+  }
+
   const options = [
     { key: 1, value: "$15k / $30K", text: "$15k / $30K" },
     { key: 2, text: "$25k / $50K", value: "$25k / $50K" },
     { key: 3, text: "$50k / $100K", value: "$50k / $100K" },
     { key: 4, text: "$100k / $300K", value: "$100k / $300K" },
-    {
-      key: 5,
-      disabled: true,
-      text: "$300k / $500K",
-      value: "$300k / $500K",
-      content: (
-        <Popup
-          popup="container"
-          trigger={<Dropdown.Item as="span">$300k / $500K</Dropdown.Item>}
-          position='right center'
-          inverted
-          content="Increase Your Bodily Injury limits to get more __________ coverage."
-        />
-      )
-    },
-    {
-      key: 6,
-      disabled: true,
-      text: "$500k / $500K",
-      value: "$500k / $500K",
-      content: (
-        <Popup
-          popup="container"
-          trigger={<Dropdown.Item as="span">$500k / $500K</Dropdown.Item>}
-          position='right center'
-          inverted
-          content="Increase Your Bodily Injury limits to get more __________ coverage."
-        />
-      )
-    },
-    {
-      key: 7,
-      disabled: true,
-      text: "$500k / $1M",
-      value: "$500k / $1M",
-      content: (
-        <Popup
-          popup="container"
-          trigger={<Dropdown.Item as="span">$500k / $1M</Dropdown.Item>}
-          position='right center'
-          inverted
-          content="Increase Your Bodily Injury limits to get more __________ coverage."
-        />
-      )
-    },
-    {
-      key: 8,
-      disabled: true,
-      text: "$1M / $1M",
-      value: "$1M / $1M",
-      content: (
-        <Popup
-          popup="container"
-          trigger={<Dropdown.Item as="span">$1M / $1M</Dropdown.Item>}
-          position='right center'
-          inverted
-          content="Increase Your Bodily Injury limits to get more __________ coverage."
-        />
-      )
-    },
+    { key: 5, text: "$300k / $500K", value: "$300k / $500K" },
+    { key: 6, text: "$500k / $500K", value: "$500k / $500K" },
+    { key: 7, text: "$500k / $1M", value: "$500k / $1M" },
+    { key: 8, text: "$1M / $1M", value: "$1M / $1M" },
   ]
 
+  function format(num, max) {
+    return "$"+num+"K";
+  }
+
+  // filterLimits([[15,30], [25,50], ...], 50)
+  function filterLimits(limits, max, per) {
+    var filteredSet = {
+      enabled: [],
+      disabled: []
+    };
+
+    filteredSet.enabled = _.filter(limits, function(limit) {
+      return limit[1]<=max;
+    });
+    filteredSet.disabled = _.filter(limits, function(limit) {
+      return limit[1]>max;
+    });
+
+    return filteredSet;
+  }
   const EnabledItem = ({item}) => (
       <Dropdown.Item
-        key={item.key}
-        value={item.value}
+        value={item.join("-")}
       >
-        {item.text}
+        {format(item[0]) + " 🞄 " + format(item[1])}
       </Dropdown.Item>
     )
   const DisabledItems = ({items}) => {
-    // const items = props.items;
     const listItems = items.map((item) => {
-      if(item.disabled && item.disabled===true) {
-        return (<div class="item">{item.text}</div>);
-      }
+      return (<div class="item"> {format(item[0]) + " 🞄 " + format(item[1])}</div>);
     });
 
     return listItems;
   }
   const EnabledItems = ({items}) => {
-    // const items = props.items;
     const listItems = items.map((item) => {
-      if(!item.disabled) {
-        return (<EnabledItem item={item}/>)
-      }
+
+      return (<EnabledItem item={item}/>)
     });
 
     return listItems;
   }
 
+  const items = filterLimits(limits.bodily, 300)
   return (
     <div dropdown="container">
       <Dropdown
@@ -128,10 +111,10 @@ const LimitSelector = () => {
         onChange={handleChange}
       >
         <Dropdown.Menu>
-          <EnabledItems items={options} />
+          <EnabledItems items={items.enabled} />
           <Popup
             popup="container"
-            trigger={<div items="disabled"><DisabledItems items={options} /></div>}
+            trigger={<div items="disabled"><DisabledItems items={items.disabled} /></div>}
             position='right center'
             inverted
             content="Increase Your Bodily Injury limits to get more __________ coverage."
@@ -160,8 +143,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Worksheet = ({title, summary, children, description_expanded, alert_upper, alert_lower}) => {
-  const classes = useStyles();
+const Section = ({title, summary, description, description_expanded, alert_upper, alert_lower}) => {
   const [expanded, setExpanded] = useState(description_expanded);
 
   function ShowWhat(props) {
@@ -192,44 +174,60 @@ const Worksheet = ({title, summary, children, description_expanded, alert_upper,
     )
   }
   return (
-    <div worksheet="container" className={classes.root}>
-      <Paper worksheet="section" elevation={5}>
-        <div>
-          <div section="header">
-            <div>
-              <div block="container">
-                <div>{title}</div>
-                <div>{summary}</div>
-              </div>
-              <LimitSelector />
+    <Paper worksheet="section" elevation={5}>
+      <div>
+        <div section="header">
+          <div>
+            <div block="container">
+              <div>{title}</div>
+              <div>{summary}</div>
             </div>
+            <LimitSelector />
+          </div>
 
-            {alert_upper &&
-              <div alert="container">
-                <InfoIcon />
-                <div>Max Limit 100k person / 300K incident. Increase Your Property Damage limits to get more Uninsured Property Damage coverage.</div>
-              </div>
-            }
-            <Divider />
+          {alert_upper &&
+          <div alert="container">
+            <InfoIcon />
+            <div>Max Limit 100k person / 300K incident. Increase Your Property Damage limits to get more Uninsured Property Damage coverage.</div>
           </div>
-          <div section="body">
-            <div expandable="container" expanded={expanded}>
-              <div>
-                {children}
-              </div>
-              <ShowWhat expanded={expanded} />
-            </div>
-          </div>
-          <div section="footer">
-            {alert_lower &&
-            <div alert="container">
-              <InfoIcon />
-              <div>Max Limit 100k person / 300K incident. Increase Your Property Damage limits to get more Uninsured Property Damage coverage.</div>
-            </div>
-            }
+          }
+          <Divider />
+        </div>
+        <div section="body">
+          <div expandable="container" expanded={expanded}>
+            <div dangerouslySetInnerHTML={{__html: description.join("")}} />
+            <ShowWhat expanded={expanded} />
           </div>
         </div>
-      </Paper>
+        <div section="footer">
+          {alert_lower &&
+          <div alert="container">
+            <InfoIcon />
+            <div>Max Limit 100k person / 300K incident. Increase Your Property Damage limits to get more Uninsured Property Damage coverage.</div>
+          </div>
+          }
+        </div>
+      </div>
+    </Paper>
+  )
+};
+
+const Worksheet = ({children}) => {
+  const classes = useStyles();
+  return (
+    <div worksheet="container" className={classes.root}>
+      {
+        children.map(child => (
+          <Section
+            title={child.title}
+            summary={child.summary}
+            description_expanded={child.description_expanded}
+            description={child.description}
+            alert_upper={child.alert_upper}
+            alert_lower={child.alert_lower}
+          />
+        ))
+      }
     </div>
   );
 }
