@@ -6,5 +6,6 @@
     src: url($font-path + '/' + $font-family2 + '-' + $font-weight + '.woff2') format('woff2');
   }
 }
-@include font('rt raleway', 'rtraleway', 'regular', '/RTRaleway-Regular', 400);
-@include font('rt raleway', 'rtraleway', 'bold', '/RTRaleway-Bold', 700);
+@include font('rt raleway', 'rtraleway', 'regular', 'RTRaleway-Regular', 400);
+@include font('rt raleway', 'rtraleway', 'bold', 'RTRaleway-Bold', 700);
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700');

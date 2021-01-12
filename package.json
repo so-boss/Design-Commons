@@ -15,7 +15,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -s ./static"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
@@ -70,10 +70,11 @@
     "typescript": "^4.0.3"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.1.11",
-    "@storybook/addon-essentials": "^6.1.11",
-    "@storybook/addon-links": "^6.1.11",
-    "@storybook/react": "^6.1.11",
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addon-knobs": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@storybook/react": "^6.1.14",
     "babel-loader": "^8.2.2",
     "cross-env": "^5.2.0",
     "prettier": "2.1.2"
