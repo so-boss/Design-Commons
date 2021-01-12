@@ -10,9 +10,9 @@ import { Dropdown, Popup, Header } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 // import {limits, maps} from "./data.js";
 
-//import './../../../../../src/css/custom.scss';
+import './../../../../src/css/custom.scss';
 import './Worksheet.scss';
-import './../fonts/faces.scss'
+
 
 const LimitSelector = () => {
   const [limit, setLimit] = React.useState("$50k person / $100K incident");
