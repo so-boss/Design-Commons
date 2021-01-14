@@ -88,6 +88,16 @@ $white: #f7f8fc;
                   display: flex;
                   align-items: center;
                   margin-top: 19px;
+                  > span {
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    display: flex;
+                    height: 14px;
+                    margin-left: 2px;
+                    opacity: .4;
+                    font-family: 'Cabin';
+                  }
                   > b {
                     display: flex;
                     width: 4px;
@@ -95,6 +105,7 @@ $white: #f7f8fc;
                     background: grey;
                     border-radius: 100px;
                     margin: 0 16px;
+                    opacity:.4;
                   }
                 }
                 &:last-child {
@@ -104,7 +115,7 @@ $white: #f7f8fc;
                   z-index:0;
                   position:relative;
                   display: flex;
-                  align-items: flex-end;
+                  //align-items: flex-end;
                 }
 
                 &.active {
@@ -125,10 +136,11 @@ $white: #f7f8fc;
                 }
 
                 > .menu {
-padding:16px;
+                  padding:16px;
+
                   .item {
                     // TODO: GEt rid of important
-                    padding-left:8px !important;
+                    padding-left:16px !important;
                     height:42px;
                     margin-bottom:8px;
                     display:flex;
@@ -137,6 +149,12 @@ padding:16px;
                     font-weight: 400;
                     font-family: RT Raleway;
                     font-size:18px;
+
+                    &[active=true] {
+                      background: #0B1421;
+                      border-radius: 4px;
+                      color:white;
+                    }
                     &:last-child {
                       margin-bottom:0px;
                     }
