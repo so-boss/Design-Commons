@@ -186,7 +186,7 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
     if(o.limit[1]) {
       max=o.limit[1];
     }
-    if(limitSelectorType=="bodily") {
+    if(id=="bodily_injury") {
       max=1000000
     }
     const items = filterLimits(limits[type], max)
@@ -209,7 +209,7 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
 
       let matchingItem = $dropdown.children(".menu").find("[limits='"+o.limit.toString()+"']")
       matchingItem.attr("active", true);
-    }, 1000)
+    }, 3000)
 
     return callback.apply($("body"), [{__html:  $("body").data("limits")[id].formatted}]);
   };
@@ -358,7 +358,7 @@ const Worksheet = ({indicatorMethod, children}) => {
             description={child.description}
             alert_upper={child.alert_upper}
             alert_lower={child.alert_lower}
-            tooltip={children.tooltip}
+            tooltip={child.tooltip}
 
           />
         ))
