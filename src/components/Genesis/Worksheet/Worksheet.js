@@ -27,7 +27,7 @@ import './Worksheet.scss';
 
 
 
-const LimitSelector = ({id, type, initialLimit, indicatorMethod, tooltip}) => {
+const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMethod, tooltip}) => {
   //setupData();
   let initValue = initialLimit;
   if(!initValue) {
@@ -186,6 +186,9 @@ const LimitSelector = ({id, type, initialLimit, indicatorMethod, tooltip}) => {
     if(o.limit[1]) {
       max=o.limit[1];
     }
+    if(limitSelectorType=="bodily") {
+      max=1000000
+    }
     const items = filterLimits(limits[type], max)
     if(callback) {
       return callback.apply($("body"), [items[which]]);
@@ -307,6 +310,7 @@ const Section = ({id, title, summary, description, indicatorMethod, description_
               type={limitSelectorType}
               indicatorMethod={indicatorMethod}
               tooltip={tooltip}
+              limitSelectorType={limitSelectorType}
             />
           </div>
 
