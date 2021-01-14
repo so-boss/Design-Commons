@@ -209,7 +209,7 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
 
       let matchingItem = $dropdown.children(".menu").find("[limits='"+o.limit.toString()+"']")
       matchingItem.attr("active", true);
-    }, 3000)
+    }, 1000)
 
     return callback.apply($("body"), [{__html:  $("body").data("limits")[id].formatted}]);
   };
