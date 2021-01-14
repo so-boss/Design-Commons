@@ -83,6 +83,20 @@ $white: #f7f8fc;
                 top: 0;
                 //z-index:10;
                 transition: 300ms;
+
+                + [label=selectedLimit] {
+                  display: flex;
+                  align-items: center;
+                  margin-top: 19px;
+                  > b {
+                    display: flex;
+                    width: 4px;
+                    height: 4px;
+                    background: grey;
+                    border-radius: 100px;
+                    margin: 0 16px;
+                  }
+                }
                 &:last-child {
                   font-family: RT Raleway;
                   font-weight: normal;

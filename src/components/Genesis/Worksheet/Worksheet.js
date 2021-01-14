@@ -15,13 +15,61 @@ import './../../../../src/css/custom.scss';
 import './Worksheet.scss';
 
 
-const LimitSelector = () => {
-  const [limit, setLimit] = React.useState("$50k person / $100K incident");
+// function formatSelectedLimit(value) {
+//   const selectedValue = value.split("-");
+//   let label;
+//   if(selectedValue[1]) {
+//     label = format(selectedValue[0]) + " person <b /> " + format(selectedValue[1]) + " incident";
+//   } else {
+//     label = format(selectedValue[0] + " incident");
+//   }
+//
+//   return labe
+//
+//   setLimit(selectedValue);
+// }
+
+const LimitSelector = ({type, initialLimit}) => {
+  let initValue = initialLimit;
+  if(!initValue) {
+    initValue = [];
+  }
+  const [limit, setLimit] = React.useState(limit);
+  const [formattedLimit, setFormattedLimit] = React.useState(limitChanged(initValue).formattedLimit);
+
+  function limitChanged(value) {
+    console.log(value)
+    let selectedValue = value;
+    let label;
+    if(!selectedValue || selectedValue.length<1) {
+      selectedValue=[];
+      label="";
+    } else if(selectedValue[1]) {
+      label = format(selectedValue[0]) + " person <b><b/> " + format(selectedValue[1]) + " incident";
+    } else {
+      label = format(selectedValue[0] + " incident");
+    }
+
+    return {
+      selectedValue: selectedValue,
+      formattedLimit: label
+    }
+  }
+
   const handleChange = (event, opt) => {
-    let label = opt.value.split(" / ");
-    label = label[0] + " person / " + label[1] + " incident";
-    setLimit(label);
+    limitChanged(opt.value.split("-"));
   };
+
+  const handleClick = (event, opt) => {
+    var x = limitChanged(opt.value.split("-"));
+
+    setLimit(x.selectedValue);
+    setFormattedLimit(x.formattedLimit)
+  }
+
+  //setFormattedLimit(limitChanged(limit).formattedLimit);
+
+
 
   // Liability Limits (bodily, property)
   const limits = {
@@ -45,18 +93,6 @@ const LimitSelector = () => {
       [1000]
     ]
   }
-
-  const options = [
-    { key: 1, value: "$15k / $30K", text: "$15k / $30K" },
-    { key: 2, text: "$25k / $50K", value: "$25k / $50K" },
-    { key: 3, text: "$50k / $100K", value: "$50k / $100K" },
-    { key: 4, text: "$100k / $300K", value: "$100k / $300K" },
-    { key: 5, text: "$300k / $500K", value: "$300k / $500K" },
-    { key: 6, text: "$500k / $500K", value: "$500k / $500K" },
-    { key: 7, text: "$500k / $1M", value: "$500k / $1M" },
-    { key: 8, text: "$1M / $1M", value: "$1M / $1M" },
-  ]
-
   function format(num, max) {
     return "$"+num+"K";
   }
@@ -69,23 +105,36 @@ const LimitSelector = () => {
     };
 
     filteredSet.enabled = _.filter(limits, function(limit) {
-      return limit[1]<=max;
+      if(limit[1]) {
+        return limit[1]<=max;
+      }
+      return limit[0]<=max;
     });
     filteredSet.disabled = _.filter(limits, function(limit) {
-      return limit[1]>max;
+      if(limit[1]) {
+        return limit[1]>max;
+      }
+      return limit[0]>max;
     });
 
     return filteredSet;
   }
   const EnabledItem = ({item}) => (
       <Dropdown.Item
+        onClick={handleClick}
         value={item.join("-")}
       >
-        {format(item[0]) + " 🞄 " + format(item[1])}
+        {item[1]
+          ? format(item[0]) + " 🞄 " + format(item[1])
+          : format(item[0])
+        }
       </Dropdown.Item>
     )
   const DisabledItems = ({items}) => {
     const listItems = items.map((item) => {
+      if(item.length<2) {
+        return (<div class="item"> {format(item[0])}</div>);
+      }
       return (<div class="item"> {format(item[0]) + " 🞄 " + format(item[1])}</div>);
     });
 
@@ -100,7 +149,8 @@ const LimitSelector = () => {
     return listItems;
   }
 
-  const items = filterLimits(limits.bodily, 300)
+  const items = filterLimits(limits[type], 500)
+
   return (
     <div dropdown="container">
       <Dropdown
@@ -122,9 +172,7 @@ const LimitSelector = () => {
 
         </Dropdown.Menu>
       </Dropdown>
-      <div>
-        {limit}
-      </div>
+      <div label="selectedLimit" dangerouslySetInnerHTML={{__html: formattedLimit}} />
     </div>
   )
 }
@@ -143,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Section = ({title, summary, description, description_expanded, alert_upper, alert_lower}) => {
+const Section = ({title, summary, description, description_expanded, alert_upper, alert_lower, initialLimit, limitSelectorType}) => {
   const [expanded, setExpanded] = useState(description_expanded);
 
   function ShowWhat(props) {
@@ -182,7 +230,10 @@ const Section = ({title, summary, description, description_expanded, alert_upper
               <div>{title}</div>
               <div>{summary}</div>
             </div>
-            <LimitSelector />
+            <LimitSelector
+              initialLimit={initialLimit}
+              type={limitSelectorType}
+            />
           </div>
 
           {alert_upper &&
@@ -221,10 +272,13 @@ const Worksheet = ({children}) => {
           <Section
             title={child.title}
             summary={child.summary}
+            initialLimit={child.initialLimit}
+            limitSelectorType={child.limitSelectorType}
             description_expanded={child.description_expanded}
             description={child.description}
             alert_upper={child.alert_upper}
             alert_lower={child.alert_lower}
+
           />
         ))
       }

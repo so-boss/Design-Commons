@@ -5,18 +5,31 @@ import Worksheet from "../components/Genesis/Worksheet/Worksheet.js"
 
 export default {
   title: 'Coverage Information',
-  //component: Button,
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
+  component: Worksheet,
+  argTypes: {
+    title: {
+      control: {
+        type: 'text'
+      }
+    },
+    summary: { control: 'text' },
+    description_expanded: { control: 'boolean' },
+    description: { control: 'array'}
+  },
 } as Meta;
 
-//const Template: Story<PageProps> = (args) => <Page {...args} />;
-// export const Primary = Template.bind({});
-// Primary.args = {
-//   primary: true,
-//   label: 'Button',
-// };
+const Template = (args) => <Worksheet children={<>{[args]}</>} />;
+
+export const HodilyInjury = Template.bind({});
+HodilyInjury.args = {
+  title: "Bodily Injury",
+  summary: "Covers the injuries of others if you’re at fault",
+  description_expanded: "true",
+  description: [
+    "<p>For example, if you rear-end someone, and they need medical care, a $25K/ $50K bodily injury liability limit would pay up to $25,000 for an individual, and up to $50,000 for all people injured in that single accident. This coverage also pays for legal defense costs if you’re sued.</p>",
+    "<p>Consider increasing your liability limits if you have assets such as a home to protect from a lawsuit.</p>"
+  ]
+}
 
 export const BodilyInjury = () => {
   return (
