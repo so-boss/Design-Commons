@@ -14,6 +14,16 @@ export const TaskB = () => {
       <>
         <Worksheet
           indicatorMethod="alert"
+          showMore="Learn More"
+          showLess="Learn Less"
+          initialSelections={{
+            max_max: [1000,1000],
+            bodily_injury: [300,500],
+            property_damage: [100],
+            uninsured_bodily: [100,300],
+            underinsured_bodily: [100,300],
+            uninsured_property: [100]
+          }}
         >
           {[
             {
@@ -22,6 +32,9 @@ export const TaskB = () => {
               summary: "Covers the injuries of others if you’re at fault",
               limitSelectorType: "bodily",
               initialLimit:[300,500],
+              limited: {
+                by: "bodily_injury"
+              },
               description_expanded: "false",
               description: [
                 "<p>For example, if you rear-end someone, and they need medical care, a $25K/ $50K bodily injury liability limit would pay up to $25,000 for an individual, and up to $50,000 for all people injured in that single accident. This coverage also pays for legal defense costs if you’re sued.</p>",
@@ -34,6 +47,9 @@ export const TaskB = () => {
               summary: "Covers the property of others if you’re at fault",
               limitSelectorType: "property",
               initialLimit:[100],
+              limited: {
+                by: "bodily_injury"
+              },
               description_expanded: "false",
               alert_lower: "Max Limit 500K incident. Increase your Bodily Injury limits to get more Property Damage coverage.",
               description: [
@@ -46,6 +62,9 @@ export const TaskB = () => {
               summary: "Covers you if the at-fault driver is uninsured",
               limitSelectorType: "bodily",
               initialLimit:[100,300],
+              limited: {
+                by: "bodily_injury"
+              },
               description_expanded: "false",
               alert_lower: "Max Limit 300k person / 500K incident. Increase your Bodily Injury limits to get more Uninsured Motorist Bodily Injury coverage.",
               description: [
@@ -59,6 +78,9 @@ export const TaskB = () => {
               summary: "Covers you if the at-fault driver is underinsured",
               limitSelectorType: "bodily",
               initialLimit:[100,300],
+              limited:{
+                by:"bodily_injury"
+              },
               description_expanded: "false",
               alert_lower: "Max Limit 300k person / 500K incident. Increase your Bodily Injury limits to get more Underinsured Motorist Bodily Injury coverage.",
               description: [
@@ -72,6 +94,9 @@ export const TaskB = () => {
               summary: "Covers the property of others if you’re at fault",
               limitSelectorType: "property",
               initialLimit:[100],
+              limited: {
+                by: "property_damage"
+              },
               alert_lower: "Max Limit 100K incident. Increase your Property Damage limits to get more Uninsured Property Damage coverage.",
               description_expanded: "false",
               description: [

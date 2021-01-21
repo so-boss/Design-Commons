@@ -11,9 +11,16 @@ export default {
 
 export const TaskC = () => {
   return (
-      <>
         <Worksheet
           indicatorMethod="tooltip"
+          initialSelections={{
+            max_max: [1000,1000],
+            bodily_injury: [300,500],
+            property_damage: [100],
+            uninsured_bodily: [300,500],
+            underinsured_bodily: [100,300],
+            uninsured_property: [100]
+          }}
         >
           {[
             {
@@ -22,6 +29,9 @@ export const TaskC = () => {
               summary: "Covers the injuries of others if you’re at fault",
               limitSelectorType: "bodily",
               initialLimit:[300,500],
+              limited: {
+                by: "bodily_injury"
+              },
               description_expanded: "false",
               description: [
                 "<p>For example, if you rear-end someone, and they need medical care, a $25K/ $50K bodily injury liability limit would pay up to $25,000 for an individual, and up to $50,000 for all people injured in that single accident. This coverage also pays for legal defense costs if you’re sued.</p>",
@@ -34,6 +44,9 @@ export const TaskC = () => {
               summary: "Covers the property of others if you’re at fault",
               limitSelectorType: "property",
               initialLimit:[100],
+              limited: {
+                by: "bodily_injury"
+              },
               tooltip: "Increase Your Bodily Injury limits to get more property coverage.",
               description_expanded: "false",
               description: [
@@ -46,6 +59,9 @@ export const TaskC = () => {
               summary: "Covers you if the at-fault driver is uninsured",
               limitSelectorType: "bodily",
               initialLimit:[300,500],
+              limited: {
+                by: "bodily_injury"
+              },
               tooltip: "Increase Your Bodily Injury limits to get more uninsured coverage.",
               description_expanded: "false",
               description: [
@@ -59,6 +75,9 @@ export const TaskC = () => {
               summary: "Covers you if the at-fault driver is underinsured",
               limitSelectorType: "bodily",
               initialLimit:[100,300],
+              limited:{
+                by:"bodily_injury"
+              },
               tooltip: "Increase Your Bodily Injury limits to get more underinsured coverage.",
               description_expanded: "false",
               description: [
@@ -72,6 +91,9 @@ export const TaskC = () => {
               summary: "Covers the property of others if you’re at fault",
               limitSelectorType: "property",
               initialLimit:[100],
+              limited: {
+                by: "property_damage"
+              },
               tooltip: "Increase Your Property limits to get more uninsured property coverage.",
               description_expanded: "false",
               description: [
@@ -81,7 +103,6 @@ export const TaskC = () => {
             }
           ]}
         </Worksheet>
-    </>
   )
 }
 

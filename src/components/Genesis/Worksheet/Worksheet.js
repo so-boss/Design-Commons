@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Paper, Divider, Button } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
@@ -7,6 +7,11 @@ import {makeStyles } from '@material-ui/core/styles';
 const _ = require('lodash');
 
 import { Dropdown, Popup, Header } from 'semantic-ui-react'
+import {model, CoverageContext} from "./../contexts/CoverageContext";
+
+import {CoverageContextManager, CoverageContextManagerProvider} from "./../contexts/CoverageContextManager"
+import {WorksheetContext, WorksheetContextProvider} from "./../contexts/WorksheetContext"
+
 import jQuery from "jquery";
 window.$ = window.jQuery = jQuery;
 import 'semantic-ui-css/semantic.min.css'
@@ -15,41 +20,81 @@ import './../../../../src/css/custom.scss';
 import './Worksheet.scss';
 
 
-  $("body").data({
-    $els: {
-      sections:{},
-      coverages:{}
-    },
-    coverages:{},
-    limits: {},
-    refs: {},
-  })
+$("body").data({
+  $els: {
+    sections:{},
+    coverages:{}
+  },
+  coverages:{},
+  limits: {},
+  refs: {},
+  // maxLimits, property_choice
+  scenario: {},
+  getScenario: function() {
+    const thix = this;
+      function sync(type) {
+        let limit, selection;
 
+        $("body").data("scenario", $.extend(true,
+          {},
+          $("body").data("scenario")[type],
+          $("body").data("limits")[type])
+        );
 
+      };
+      const typesToSync = [
+        "bodily_injury",
+        "property_damage",
+        "uninsured_bodily",
+        "underinsured_bodily",
+        "uninsured_property"
+      ]
 
-const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMethod, tooltip}) => {
-  //setupData();
-  let initValue = initialLimit;
-  if(!initValue) {
-    initValue = [];
+    _.each(typesToSync, function(type) {
+      if(!$("body").data("scenario")[type]) {
+        const newScenario = $("body").data("scenario");
+        newScenario[type] = {};
+
+        $("body").data("scenario", $.extend( $("body").data("scenario"), newScenario));
+      }
+
+      sync(type);
+    })
   }
-  if(!window.limits) {
-    window.limits = {}
-  }
-  window.limits[id] = {
-    initValue: initValue
+});
+
+function limitChanged(value) {
+  let selectedValue = value;
+  let label;
+  if (!selectedValue || selectedValue.length < 1) {
+    selectedValue = [];
+    label = "";
+  } else if (selectedValue[1]) {
+    label = format(selectedValue[0]) + "<span>person</span> <b></b>" + format(selectedValue[1]) + "<span>incident</span>";
+  } else {
+    label = format(selectedValue[0]) + "<span>incident</span>";
   }
 
-  const [limit, setLimit] = React.useState(limit);
+  return {
+    selectedValue: selectedValue,
+    formattedLimit: label
+  }
+}
+
+const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMethod, tooltip, limited_by, setMaxLimit}) => {
+  const state = useContext(CoverageContextManager);
+  const worksheet_state = useContext(WorksheetContext);
+
+  const [updated, setUpdated] = React.useState("");
   const dropdown = useRef(null);
 
   function limitChanged(value) {
     let selectedValue = value;
     let label;
-    if(!selectedValue || selectedValue.length<1) {
-      selectedValue=[];
-      label="";
-    } else if(selectedValue[1]) {
+    if (!selectedValue || selectedValue.length < 1) {
+      selectedValue = [];
+      label = "";
+    } else if (selectedValue[1]) {
       label = format(selectedValue[0]) + "<span>person</span> <b></b>" + format(selectedValue[1]) + "<span>incident</span>";
     } else {
       label = format(selectedValue[0]) + "<span>incident</span>";
@@ -61,21 +106,25 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
     }
   }
 
-  var x = limitChanged(initValue);
-  $("body").data("limits")[id] = {
-    id: id,
-    ref: dropdown,
-    limit: x.selectedValue,
-    formatted: x.formattedLimit
+  function format(num, max) {
+    return "$"+num+"K";
   }
 
-  // const handleChange = (event, opt) => {
-  //   limitChanged(opt.value.split("-"));
-  // };
+  /*
+    handleClick("bodily_injury", [25, 50],
+      id > bodily_injury
+  */
+  function handleClick(type, item, e) {
+    const x = limitChanged(item);
 
-  const handleClick = (event, opt) => {
-    const $item = $(event.target),
+    let $item, $dropdown;
+    if(e.target) {
+      $item = $(e.target);
       $dropdown = $item.closest(".dropdown");
+    } else {
+      $item = $(e.current);
+      $dropdown = $item;
+    }
 
     if($item.is("[active=true]")) {
       return false;
@@ -84,16 +133,28 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
     $item
       .attr("active", true)
       .siblings().removeAttr("active");
-    const x = limitChanged(opt.limits.split(","));
 
-    $dropdown
-      .data("active", {
-        $el: $item,
-        index: $item.index(),
-        limit: x.selectedValue,
-        formatted: x.formattedLimit
-      })
-      .siblings("[label=selectedLimit]").html(x.formattedLimit);
+    $dropdown.siblings("[label=selectedLimit]").html(x.formattedLimit);
+
+    var options = {
+      type:id,
+      selection: x.selectedValue,
+    }
+    state.setSelection(options)
+
+    let theChange = {...worksheet_state};
+    theChange[id] = options;
+    worksheet_state.setSectionChange(theChange)
+
+    setMaxLimit(worksheet_state[limited_by].selection);
+
+
+    let $matchingItem = $dropdown.children(".menu").find("[limits='"+item.toString()+"']");
+    if($matchingItem.length>0) {
+      $matchingItem.attr("active", true);
+
+      console.log("MATHCING ITEMS", $matchingItem)
+    }
   }
 
   // Liability Limits (bodily, property)
@@ -148,7 +209,7 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
   }
   const EnabledItem = ({item}) => (
       <Dropdown.Item
-        onClick={handleClick}
+        onClick={(e) => handleClick(id, item, e)}
         limits={item.join(",")}
         active={false}
       >
@@ -177,18 +238,17 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
     return listItems;
   }
 
-
-
   function getItems(which, callback) {
-    let o = $("body").data("limits")[id];
+    let limitValues =  worksheet_state[limited_by].selection || worksheet_state[limited_by];
 
-    let max = o.limit[0];
-    if(o.limit[1]) {
-      max=o.limit[1];
+    let max = limitValues[0];
+    if(limitValues[1]) {
+      max=limitValues[1];
     }
     if(id=="bodily_injury") {
-      max=1000000
+      max=1000
     }
+
     const items = filterLimits(limits[type], max)
     if(callback) {
       return callback.apply($("body"), [items[which]]);
@@ -196,35 +256,58 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
     return items[which]
   }
 
-  function getSelectedLimit(callback) {
-    let o = $("body").data("limits")[id];
+  const DropdownSelectionLabel = ({dropdown, html}) => {
+    return (
+      <div
+        label="selectedLimit"
+        dangerouslySetInnerHTML={html}
+      />
+    )
+  }
 
-    setTimeout(function() {
-      let ref = o.ref;
-      let $dropdown = $(ref.current.ref.current)
-      // o.limits = {
-      //   person: o.limit[0],
-      //   incident:o.limit[1]
-      // }
+  function getSelectedLimit(el) {
+    let limit_to_return;
 
-      let matchingItem = $dropdown.children(".menu").find("[limits='"+o.limit.toString()+"']")
-      matchingItem.attr("active", true);
-    }, 1000)
+    let limited_by_selected_value = worksheet_state[limited_by].selection || worksheet_state[limited_by];
+    if(limited_by_selected_value) {
+      let limited_by_selected_value_max = _.last(limited_by_selected_value);
 
-    return callback.apply($("body"), [{__html:  $("body").data("limits")[id].formatted}]);
-  };
+      let current_selected_value =  worksheet_state[id].selection || worksheet_state[id];
+      let current_selected_value_max = _.last(current_selected_value);
+
+      limit_to_return = current_selected_value;
+      //IF the current value is greater than the new Maximum
+      if(current_selected_value_max > limited_by_selected_value_max) {
+        // THEN we need to select a lower value > ie use the new max
+        
+        if(current_selected_value[1]) {
+          limit_to_return = limited_by_selected_value
+        } else {
+          limit_to_return = [limited_by_selected_value[1] || limited_by_selected_value[0]];
+        }
+
+        // Now emulate a click to make sure the modified selection is registered
+        //  "bodily_injury", [25, 50],
+        handleClick(id, limit_to_return, el)
+      }
+    }
+
+    const limit_got_formatted = limitChanged(limit_to_return);
+
+    return limit_got_formatted.formattedLimit;
+  }
+
   return (
     <div dropdown="container">
       <Dropdown
         id={id}
         ref={dropdown}
-        text="Limits"
+        text="limits"
         labeled
         floating
         button
-        //onChange={handleChange}
       >
-        <Dropdown.Menu>
+        <Dropdown.Menu updated={updated}>
           <EnabledItems items={getItems("enabled", function(items) {
             return items
           })} />
@@ -238,17 +321,15 @@ const LimitSelector = ({id, type, initialLimit, limitSelectorType, indicatorMeth
               />)
             : <div items="disabled"><DisabledItems items={getItems("disabled")} /></div>
           }
-
-
         </Dropdown.Menu>
       </Dropdown>
-      <div label="selectedLimit" dangerouslySetInnerHTML={getSelectedLimit(function(html) {
-        return html
-      })}/>
+      <DropdownSelectionLabel
+        dropdown={dropdown}
+        html={{__html: getSelectedLimit(dropdown)}}
+      />
     </div>
   )
 }
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -263,8 +344,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Section = ({id, title, summary, description, indicatorMethod, description_expanded, alert_upper, alert_lower, tooltip, initialLimit, limitSelectorType}) => {
+const Section = ({id, title, summary, description, showMore, showLess, indicatorMethod, limited_by, description_expanded, alert_upper, alert_lower, tooltip, initialLimit, limitSelectorType}) => {
+  const state = useContext(CoverageContextManager)
+  const worksheet_state = useContext(WorksheetContext);
+
   const [expanded, setExpanded] = useState(description_expanded);
+  const [selection, setSelectionState] = useState([100,300]);
+  const [maxLimit, setMaxLimit] = useState(worksheet_state[limited_by].selection);
 
   function ShowWhat(props) {
     if(props.expanded==="true") {
@@ -279,7 +365,7 @@ const Section = ({id, title, summary, description, indicatorMethod, description_
         startIcon={<AddCircleIcon />}
         onClick={() => setExpanded("true")}
       >
-        Show More
+        {showMore}
       </Button>
     )
   }
@@ -289,15 +375,23 @@ const Section = ({id, title, summary, description, indicatorMethod, description_
         startIcon={<RemoveCircleIcon />}
         onClick={() => setExpanded("false")}
       >
-        Show Less
+        {showLess}
       </Button>
     )
   }
 
+  const init = {
+    type: id,
+    selection: initialLimit,
+    max: initialLimit,
+    recent_change: null
+  }
+
   //$("body").data("$els").sections[id] = {};
   return (
-    <Paper worksheet="section" elevation={5} id={id}>
-      <div>
+    <CoverageContextManagerProvider value={init}>
+      <Paper worksheet="section" elevation={5} id={id}>
+        <div>
         <div section="header">
           <div>
             <div block="container">
@@ -307,10 +401,16 @@ const Section = ({id, title, summary, description, indicatorMethod, description_
             <LimitSelector
               id={id}
               initialLimit={initialLimit}
+              limited_by={limited_by}
+              max_limit={maxLimit}
               type={limitSelectorType}
               indicatorMethod={indicatorMethod}
               tooltip={tooltip}
               limitSelectorType={limitSelectorType}
+              setMaxLimit={setMaxLimit}
+              setSelection={() => model.setSelection(id, selection, setSelectionState)}
+              getScenario={() => model.getScenario(id)}
+              handleChange={(e) => handleChange(id, item, e)}
             />
           </div>
 
@@ -337,33 +437,46 @@ const Section = ({id, title, summary, description, indicatorMethod, description_
           }
         </div>
       </div>
-    </Paper>
+      </Paper>
+    </CoverageContextManagerProvider>
   )
 };
 
-const Worksheet = ({indicatorMethod, children}) => {
+const Worksheet = ({indicatorMethod, showMore, showLess, initialSelections, children}) => {
   const classes = useStyles();
-  return (
-    <div worksheet="container" className={classes.root}>
-      {
-        children.map(child => (
-          <Section
-            id={child.id}
-            title={child.title}
-            summary={child.summary}
-            indicatorMethod={indicatorMethod}
-            initialLimit={child.initialLimit}
-            limitSelectorType={child.limitSelectorType}
-            description_expanded={child.description_expanded}
-            description={child.description}
-            alert_upper={child.alert_upper}
-            alert_lower={child.alert_lower}
-            tooltip={child.tooltip}
 
-          />
-        ))
-      }
-    </div>
+  const init = {
+    ...initialSelections,
+    changes: [],
+  }
+
+  return (
+    <WorksheetContextProvider value={init}>
+      <div worksheet="container" className={classes.root}>
+        {
+          children.map(child => (
+            <Section
+              key={child.id}
+              id={child.id}
+              title={child.title}
+              summary={child.summary}
+              showMore={showMore || "Show More"}
+              showLess={showLess || "Show Less"}
+              indicatorMethod={indicatorMethod}
+              initialLimit={child.initialLimit}
+              limited_by={child.limited.by}
+              limitSelectorType={child.limitSelectorType}
+              description_expanded={child.description_expanded}
+              description={child.description}
+              alert_upper={child.alert_upper}
+              alert_lower={child.alert_lower}
+              tooltip={child.tooltip}
+              getScenario={model.getScenario}
+            />
+          ))
+        }
+      </div>
+    </WorksheetContextProvider>
   );
 }
 
