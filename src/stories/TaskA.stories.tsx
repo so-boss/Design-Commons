@@ -49,7 +49,7 @@ export const TaskA = () => {
                 by: "bodily_injury"
               },
               description_expanded: "false",
-              alert_upper: "Max Limit 300K incident. Increase your Bodily Injury limits to get more Property Damage coverage.",
+              alert_upper: "Max Limit MAXLIMITAMT. Increase your COVERAGETYPE limits to get more Property Damage coverage.",
               description: [
                 "<p>Pays for damage you cause to the property of others when you’re involved in a covered automobile accident. This includes damage to the other person's car or other property. This coverage also pays for legal defense costs if the insured is sued.</p>"
               ]

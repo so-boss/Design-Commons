@@ -344,6 +344,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+const Alert = ({message, data}) => {
+  const lexicon = [
+    {regex: /MAXLIMITAMT/g, map: "max"},
+    {regex: /COVERAGETYPE/g, map: "type"}
+  ]
+
+  function mergeData(content, data) {
+    let mergedContent = content;
+    _.each(lexicon, function(o) {
+      mergedContent = mergedContent.replace(o.regex, data[o.map]);
+    })
+
+    return mergedContent;
+  }
+
+
+  return (
+    <div alert="container">
+      <InfoIcon />
+      <div>{mergeData(message, data)}</div>
+    </div>
+  )
+}
+
 const Section = ({id, title, summary, description, showMore, showLess, indicatorMethod, limited_by, description_expanded, alert_upper, alert_lower, tooltip, initialLimit, limitSelectorType}) => {
   const state = useContext(CoverageContextManager)
   const worksheet_state = useContext(WorksheetContext);
@@ -415,10 +441,13 @@ const Section = ({id, title, summary, description, showMore, showLess, indicator
           </div>
 
           {alert_upper &&
-          <div alert="container">
-            <InfoIcon />
-            <div>{alert_upper}</div>
-          </div>
+            <Alert
+              message={alert_upper}
+              data={{
+                max:maxLimit,
+                type:limitSelectorType
+              }}
+            />
           }
           <Divider />
         </div>
