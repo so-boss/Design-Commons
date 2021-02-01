@@ -100,9 +100,10 @@ const LimitSelector = ({id, type, indicatorMethod, tooltip, limited_by, setMaxLi
     setMaxLimit(worksheet_state[limited_by].selection);
   }
 
-  function format(num, max) {
+  function format(num) {
     return "$"+num+"K";
   }
+
 
   // filterLimits([[15,30], [25,50], ...], 50)
   function filterLimits(limits, max, per) {
@@ -128,6 +129,14 @@ const LimitSelector = ({id, type, indicatorMethod, tooltip, limited_by, setMaxLi
 
     return filteredSet;
   }
+
+  const EnabledItems = ({items}) => {
+    const listItems = items.map((item, index) => {
+      return (<EnabledItem item={item} index={index}/>)
+    });
+
+    return listItems;
+  }
   const EnabledItem = ({item, index}) => (
       <Dropdown.Item
         onClick={(e) => handleClick(id, item, e)}
@@ -136,29 +145,47 @@ const LimitSelector = ({id, type, indicatorMethod, tooltip, limited_by, setMaxLi
         active={(state.selection_index==index) ? true : false}
         index={index}
       >
-        {item[1]
-          ? format(item[0]) + " / " + format(item[1])
-          : format(item[0])
-        }
+        <Item limit={item} index={index} />
       </Dropdown.Item>
     )
+
   const DisabledItems = ({items}) => {
     const listItems = items.map((item, index) => {
-      if(item.length<2) {
-        return (<div class="item" index={10+index}> {format(item[0])}</div>);
-      }
-      return (<div class="item" index={10+index}> {format(item[0]) + " / " + format(item[1])}</div>);
+      return (<DisabledItem index={10+index} limit={item} />);
     });
 
     return listItems;
   }
-  const EnabledItems = ({items}) => {
-    const listItems = items.map((item, index) => {
-      return (<EnabledItem item={item} index={index}/>)
-    });
+  const DisabledItem = ({limit, index}) => (
+    <div className="item" index={index}>
+      <Item limit={limit} />
+    </div>
+  )
 
-    return listItems;
+  const Item = ({limit}) => {
+    if(limit.length<2) {
+      return (
+        <div>
+          <Amount>{limit[0]}</Amount>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <Amount>{limit[0]}</Amount>
+        <span type="spacer" seperator="/"></span>
+        <Amount>{limit[1]}</Amount>
+      </div>);
   }
+  const Amount = ({prefix, suffix, children}) => (
+    <span
+      className="amt"
+      prefix={prefix || "$"}
+      suffix={suffix || "k"}
+    >
+      {children}
+    </span>
+  )
 
   function getItems(which, callback) {
     let limitValues =  worksheet_state[limited_by].selection || worksheet_state[limited_by];
