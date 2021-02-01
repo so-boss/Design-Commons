@@ -100,7 +100,6 @@ const LimitSelector = ({id, type, indicatorMethod, tooltip, limited_by, setMaxLi
     setMaxLimit(worksheet_state[limited_by].selection);
   }
 
-
   function format(num, max) {
     return "$"+num+"K";
   }
