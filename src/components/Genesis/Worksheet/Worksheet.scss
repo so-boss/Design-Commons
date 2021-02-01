@@ -150,9 +150,14 @@ $white: #f7f8fc;
                     font-family: RT Raleway;
                     font-size:18px;
 
-                    &[active=true] {
-                      background: #0B1421;
+                    &:hover, &.active {
                       border-radius: 4px;
+                    }
+                    &:hover {
+                      background: #F7F8FC;
+                    }
+                    &.active {
+                      background: #0B1421;
                       color:white;
                     }
                     &:last-child {

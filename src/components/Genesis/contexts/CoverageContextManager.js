@@ -5,6 +5,7 @@ export const CoverageContextManager = React.createContext({
   selection: null,
   max: null,
   recent_change: null,
+  selection_index: null,
   setSelection: () => {}
 })
 
@@ -14,13 +15,14 @@ export const CoverageContextManagerProvider = (props) => {
     setState({...state, ...selection})
   }
 
-  const {type, selection, max, recent_change} = props.value;
+  const {type, selection, max, recent_change, selection_index, initialSelectionIndex} = props.value;
 
   const initState = {
     type: type,
     selection: selection,
     max: max,
     recent_change: recent_change,
+    selection_index: selection_index | initialSelectionIndex,
     setSelection: setSelection
   }
 

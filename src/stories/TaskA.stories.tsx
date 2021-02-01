@@ -29,7 +29,7 @@ export const TaskA = () => {
               title: "Bodily Injury",
               summary: "Covers the injuries of others if you’re at fault",
               limitSelectorType: "bodily",
-              initialLimit:[100,300],
+              initialLimit:3, //[100,300],
               limited: {
                 by: "bodily_injury"
               },
@@ -44,7 +44,7 @@ export const TaskA = () => {
               title: "Property Damage",
               summary: "Covers the property of others if you’re at fault",
               limitSelectorType: "property",
-              initialLimit:[100],
+              initialLimit:3, //[100],
               limited: {
                 by: "bodily_injury"
               },
@@ -59,7 +59,7 @@ export const TaskA = () => {
               title: "Uninsured Motorist Bodily Injury",
               summary: "Covers you if the at-fault driver is uninsured",
               limitSelectorType: "bodily",
-              initialLimit:[100,300],
+              initialLimit:3, //[100,300],
               limited: {
                 by: "bodily_injury"
               },
@@ -75,7 +75,7 @@ export const TaskA = () => {
               title: "Underinsured Motorist Bodily Injury",
               summary: "Covers you if the at-fault driver is underinsured",
               limitSelectorType: "bodily",
-              initialLimit:[100,300],
+              initialLimit:3, //[100,300],
               limited:{
                 by:"bodily_injury"
               },
@@ -91,7 +91,7 @@ export const TaskA = () => {
               title: "Uninsured Property Damage",
               summary: "Covers the property of others if you’re at fault",
               limitSelectorType: "property",
-              initialLimit:[100],
+              initialLimit:3, //[100],
               limited: {
                 by: "property_damage"
               },
