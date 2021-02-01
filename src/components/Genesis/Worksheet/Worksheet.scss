@@ -95,8 +95,10 @@ $white: #f7f8fc;
                     display: flex;
                     height: 14px;
                     margin-left: 2px;
-                    opacity: .4;
+                    opacity: .6;
                     font-family: 'Cabin';
+                    position:relative;
+                    bottom:1px;
                   }
                   > b {
                     display: flex;
@@ -126,6 +128,7 @@ $white: #f7f8fc;
               > .dropdown {
                 > .text {
                   font-family: RT Raleway;
+                  color: #4D5160;
                   font-weight: bold;
                   font-size: 14px;
                   width: 100%;
@@ -133,6 +136,7 @@ $white: #f7f8fc;
                   padding: 8px 24px;
                   z-index:10;
                   position: relative;
+                  text-transform: capitalize;
                 }
 
                 > .menu {
