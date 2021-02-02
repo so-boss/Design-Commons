@@ -1,0 +1,147 @@
+@mixin item {
+  [type=item], &[type=item], &[item=dropdown] {
+    // TODO: GEt rid of important
+    padding-left:16px !important;
+    height:42px;
+    margin-bottom:8px;
+    display:flex;
+    line-height: 1em;
+    align-items: center;
+    font-weight: 400;
+    font-family: RT Raleway;
+    font-size:18px;
+
+    @include item-states;
+
+    &:last-child {
+      margin-bottom:0px;
+    }
+    &.disabled {
+
+    }
+
+    > div {
+      display:flex;
+      align-items: center;
+    }
+    span {
+      font-family: RT Raleway;
+      font-size: 18px;
+      color: #4D5160;
+
+      &[type=spacer] {
+        padding: 0 8px;
+        position: relative;
+        line-height: 10px;
+        height: 15px;
+
+        &:before {
+          content:attr(separator);
+          font-size:14px;
+        }
+      }
+    }
+  }
+  @content;
+}
+
+@mixin item-states {
+  &:hover, &.active {
+    border-radius: 4px;
+  }
+  &:hover {
+    background: #F7F8FC;
+  }
+  &.active {
+    background: #0B1421;
+
+    &:hover {
+      background: #0B1421;
+      color:white;
+    }
+
+    span {
+      color:white;
+    }
+  }
+}
+
+@mixin items {
+  > [items=disabled] {
+    position:relative;
+    border-top:1px solid #ABAFBF;
+    padding-top: 16px;
+    margin-top: 16px;
+
+    &:empty {
+      display:none;
+    }
+
+    .item, [type=item] {
+
+      span {
+        color: #ABAFBF;
+      }
+      &:hover {
+        background: rgba(255,255,255,1);
+      }
+    }
+    &:before {
+      content: "disabled";
+      display: flex;
+      background: white;
+      text-transform: capitalize;
+      font-size: 12px;
+      flex: initial;
+      text-align: right;
+      padding-left: 4px;
+      justify-content: flex-end;
+      position: absolute;
+      right: 0px;
+      height: 14px;
+      line-height: 14px;
+      top: -7px;
+      font-weight: 400;
+      font-family: 'Cabin';
+      color: #ABAFBF;
+    }
+    @content;
+  }
+};
+
+@mixin dropdown_item {
+  [dropdown=container] {
+    .ui.dropdown > {
+      //@include dropdown_item-text;
+      .menu {
+        > .item, .item.active {
+          @include unset_semantic_ui;
+          @content;
+        }
+        .item {
+          @include item;
+        }
+        @include item;
+
+        @include items;
+      }
+    }
+  }
+}
+
+@mixin unset_semantic_ui {
+  height: unset;
+  line-height: unset;
+  color: unset;
+  padding: unset !important;
+  font-size: unset;
+  text-transform: unset;
+  font-weight: unset;
+}
+
+
+
+@include dropdown_item {
+  @include item-states;
+};
+

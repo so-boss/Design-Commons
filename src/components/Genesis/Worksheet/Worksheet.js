@@ -4,6 +4,10 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import InfoIcon from '@material-ui/icons/Info';
 import {makeStyles } from '@material-ui/core/styles';
+
+import Amount from '../Amount/Amount.js'
+import Item from '../Item/Item.js'
+
 const _ = require('lodash');
 
 import { Dropdown, Popup } from 'semantic-ui-react'
@@ -11,14 +15,11 @@ import { Dropdown, Popup } from 'semantic-ui-react'
 import {CoverageContextManager, CoverageContextManagerProvider} from "./../contexts/CoverageContextManager"
 import {WorksheetContext, WorksheetContextProvider} from "./../contexts/WorksheetContext"
 
-// import jQuery from "jquery";
-// window.$ = window.jQuery = jQuery;
 import 'semantic-ui-css/semantic.min.css'
 
 import './../../../../src/css/custom.scss';
 import './Worksheet.scss';
 
-// Liability Limits (bodily, property)
 const limits = {
   bodily:[
     [15,30],
@@ -100,11 +101,6 @@ const LimitSelector = ({id, type, indicatorMethod, tooltip, limited_by, setMaxLi
     setMaxLimit(worksheet_state[limited_by].selection);
   }
 
-  function format(num) {
-    return "$"+num+"K";
-  }
-
-
   // filterLimits([[15,30], [25,50], ...], 50)
   function filterLimits(limits, max, per) {
     var filteredSet = {
@@ -138,16 +134,18 @@ const LimitSelector = ({id, type, indicatorMethod, tooltip, limited_by, setMaxLi
     return listItems;
   }
   const EnabledItem = ({item, index}) => (
-      <Dropdown.Item
-        onClick={(e) => handleClick(id, item, e)}
-        limits={item.join(",")}
-        value={item.join(",")}
-        active={(state.selection_index==index) ? true : false}
-        index={index}
-      >
-        <Item limit={item} index={index} />
-      </Dropdown.Item>
-    )
+    <Dropdown.Item
+      onClick={(e) => handleClick(id, item, e)}
+      limits={item.join(",")}
+      value={item.join(",")}
+      active={(state.selection_index==index) ? true : false}
+      index={index}
+      item="dropdown"
+      className="notitem"
+    >
+      <Item type="dropdown">{item}</Item>
+    </Dropdown.Item>
+  )
 
   const DisabledItems = ({items}) => {
     const listItems = items.map((item, index) => {
@@ -157,35 +155,33 @@ const LimitSelector = ({id, type, indicatorMethod, tooltip, limited_by, setMaxLi
     return listItems;
   }
   const DisabledItem = ({limit, index}) => (
-    <div className="item" index={index}>
-      <Item limit={limit} />
-    </div>
+      <Item index={index}>{limit}</Item>
   )
 
-  const Item = ({limit}) => {
-    if(limit.length<2) {
-      return (
-        <div>
-          <Amount>{limit[0]}</Amount>
-        </div>
-      );
-    }
-    return (
-      <div>
-        <Amount>{limit[0]}</Amount>
-        <span type="spacer" seperator="/"></span>
-        <Amount>{limit[1]}</Amount>
-      </div>);
-  }
-  const Amount = ({prefix, suffix, children}) => (
-    <span
-      className="amt"
-      prefix={prefix || "$"}
-      suffix={suffix || "k"}
-    >
-      {children}
-    </span>
-  )
+  // const Item = ({limit}) => {
+  //   if(limit.length<2) {
+  //     return (
+  //       <div>
+  //         <Amount>{limit[0]}</Amount>
+  //       </div>
+  //     );
+  //   }
+  //   return (
+  //     <div>
+  //       <Amount>{limit[0]}</Amount>
+  //       <span type="spacer" separator="/"></span>
+  //       <Amount>{limit[1]}</Amount>
+  //     </div>);
+  // }
+  // const Amount = ({prefix, suffix, children}) => (
+  //   <span
+  //     className="amt"
+  //     prefix={prefix || "$"}
+  //     suffix={suffix || "k"}
+  //   >
+  //     {children}
+  //   </span>
+  // )
 
   function getItems(which, callback) {
     let limitValues =  worksheet_state[limited_by].selection || worksheet_state[limited_by];

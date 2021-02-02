@@ -1,0 +1,16 @@
+[amount=number] {
+  &:before {
+    content:attr(prefix);
+    font-size: 10px;
+    margin-right: 1px;
+    position: relative;
+    top: -6px;
+  }
+  &:after {
+    content:attr(suffix);
+    font-size:12px;
+
+    opacity:.8;
+    margin-left:1px;
+  }
+}

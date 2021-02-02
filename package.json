@@ -82,6 +82,7 @@
     "@storybook/react": "^6.1.15",
     "babel-loader": "^8.2.2",
     "cross-env": "^5.2.0",
+    "nwb": "^0.25.2",
     "prettier": "2.1.2",
     "storybook-react-context": "^0.2.4"
   }
