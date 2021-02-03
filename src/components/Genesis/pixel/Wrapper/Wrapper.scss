@@ -1,0 +1,18 @@
+//@mixin wrapper {
+//  &[layout=wrap] {
+//    @mixin flex wrap;
+//    > * {
+//      flex:1;
+//
+//      &[spacing="natural"] {
+//        flex:initial;
+//      }
+//      &[spacing="half"] {
+//        flex:calc(1 / 2);
+//      }
+//      &[spacing="third"] {
+//        flex:calc(1 / 3);
+//      }
+//    }
+//  }
+//}

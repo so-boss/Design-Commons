@@ -11,7 +11,7 @@ $white: #f7f8fc;
 [worksheet="section"] {
   background:#f7f8fc;
   > div {
-    > [section=header] {
+    [type=header] {
       [block=container] {
         :nth-child(1) {
           color:$black;
@@ -27,106 +27,10 @@ $white: #f7f8fc;
           font-size: 18px;
         }
       }
-
-      [dropdown] {
-
-      }
-
       > div:first-child {
         display:flex;
         > div {
-          flex:1;
-          &[dropdown] {
-            //z-index:1;
-            width:330px;
-            flex:initial;
-            display:flex;
-            flex-direction: column;
-            background: white;
-            border-radius: 4px;
-            height: 64px;
-            padding: 12px 24px;
-            border-bottom: 1px solid #0000001f;
-            box-shadow: 0px 0.5px 0px #0000001f;
-            position:relative;
-            transition: 300ms;
-            > div {
-              flex:1;
-              position: absolute;
-              height: 100%;
-              width: 100%;
-              left: 0;
-              top: 0;
-              //z-index:10;
-              transition: 300ms;
 
-              + [label=selectedLimit] {
-                display: flex;
-                align-items: center;
-                margin-top: 19px;
-                > span {
-                  font-size: 12px;
-                  text-transform: uppercase;
-                  font-weight: bold;
-                  display: flex;
-                  height: 14px;
-                  margin-left: 3px;
-                  opacity: .4;
-                  font-family: 'Cabin';
-                  position:relative;
-                  bottom:1px;
-                }
-                > b {
-                  display: flex;
-                  width: 4px;
-                  height: 4px;
-                  background: grey;
-                  border-radius: 100px;
-                  margin: 0 16px;
-                  opacity:.4;
-                }
-              }
-              &:last-child {
-                font-family: RT Raleway;
-                font-weight: normal;
-                font-size: 18px;
-                z-index:0;
-                position:relative;
-                display: flex;
-                //align-items: flex-end;
-              }
-
-              &.active {
-                border-bottom: 3px solid $black !important;
-                box-shadow: 0px 1.5px 10px rgba(0,0,0,.2) !important;
-              }
-            }
-            > .ui.dropdown {
-              > .text {
-                font-family: RT Raleway;
-                color: #4D5160;
-                font-weight: bold;
-                font-size: 14px;
-                width: 100%;
-                height: 100%;
-                padding: 10px 24px 0 24px;
-                z-index:10;
-                position: relative;
-                text-transform: capitalize;
-              }
-              > .menu {
-                padding:16px;
-              }
-
-              > .dropdown.icon {
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 48px;
-              }
-            }
-          }
         }
       }
 
@@ -137,7 +41,7 @@ $white: #f7f8fc;
       }
     }
 
-    > [section=body] {
+    [type=body] {
       p {
         margin: 16px 0;
         font-family: Cabin;
@@ -153,64 +57,12 @@ $white: #f7f8fc;
           margin-bottom:0px;
         }
       }
-      //[expandable] {
-      //  > div {
-      //    transition: 600ms;
-      //    overflow:hidden;
-      //
-      //  }
-      //  &[expanded=false] {
-      //    > div {
-      //      height:0;
-      //
-      //    }
-      //  }
-      //  &[expanded=true] {
-      //    > div {
-      //      height:auto;
-      //      max-height:400px;
-      //      margin-bottom:24px;
-      //    }
-      //  }
-      //  > div {
-      //    + button {
-      //      font-family: RT Raleway;
-      //      font-style: normal;
-      //      font-weight: bold;
-      //      font-size: 18px;
-      //      border:0px none;
-      //      padding-left: 0;
-      //      text-transform: capitalize;
-      //      background-color:rgba(255,255,255,0);
-      //    }
-      //  }
-      //}
     }
 
-    > [section=footer] {
+    [type=footer] {
       [alert] {
         margin-bottom:0px;
       }
     }
   }
-
-  //[alert] {
-  //  display:flex;
-  //  padding:8px 24px;
-  //  border-radius:4px;
-  //  background: #E3E5EE;
-  //  margin: 24px 0;
-  //  font-family: Cabin;
-  //  font-size: 18px;
-  //  line-height: 25.2px;
-  //  align-items: center;
-  //  svg {
-  //    flex:initial;
-  //    fill:rgba(0,0,0,.2);
-  //    + div {
-  //      flex:1;
-  //      margin-left:16px;
-  //    }
-  //  }
-  //}
 }

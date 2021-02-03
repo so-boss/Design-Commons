@@ -10,6 +10,9 @@ const Message = ({message, data}) => {
   ]
 
   function mergeData(content, data) {
+    if(!content) {
+      return "";
+    }
     let mergedContent = content;
     _.each(lexicon, function(o) {
       mergedContent = mergedContent.replace(o.regex, data[o.map]);
@@ -28,6 +31,8 @@ const Message = ({message, data}) => {
 
 Message.propTypes = {};
 
-Message.defaultProps = {};
+Message.defaultProps = {
+  message:""
+};
 
 export default Message;

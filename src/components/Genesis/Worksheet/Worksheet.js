@@ -1,21 +1,21 @@
 import React, { useState, useRef, useContext } from 'react';
 import { Paper, Divider, Button } from '@material-ui/core';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
-import InfoIcon from '@material-ui/icons/Info';
+//import AddCircleIcon from '@material-ui/icons/AddCircle';
+//import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+//import InfoIcon from '@material-ui/icons/Info';
 import {makeStyles } from '@material-ui/core/styles';
 
-import Amount from '../Amount/Amount.js'
-import Item from '../Item/Item.js'
+//import Amount from '../Amount/Amount.js'
+//import Item from '../Item/Item.js'
 import Section from '../Section/Section.js'
 
 const _ = require('lodash');
 
-import { Dropdown, Popup } from 'semantic-ui-react'
+//import { Dropdown, Popup } from 'semantic-ui-react'
 
-import {CoverageContextManager, CoverageContextManagerProvider} from "./../contexts/CoverageContextManager"
+//import {CoverageContextManager, CoverageContextManagerProvider} from "./../contexts/CoverageContextManager"
 import {WorksheetContext, WorksheetContextProvider} from "./../contexts/WorksheetContext"
-import limits from "../dictionaries/limits";
+//import limits from "../dictionaries/limits";
 
 import 'semantic-ui-css/semantic.min.css'
 

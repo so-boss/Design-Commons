@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import './InfoExpander.scss';
 import {Button} from "@material-ui/core";
@@ -30,19 +30,31 @@ const ShowLess = ({setExpanded, children}) => (
   </Button>
 )
 
-const InfoExpander = ({labels, expanded, setExpanded, children}) => (
-  <div expandable="container" expanded={expanded}>
-    <div dangerouslySetInnerHTML={{__html: children.join("")}} />
-    <ShowWhat
-      labels={labels}
-      expanded={expanded}
-      setExpanded={setExpanded}
-    />
-  </div>
-);
+//expanded, setExpanded,
+const InfoExpander = ({labels, initially_expanded, children}) => {
+  const [expanded, setExpanded] = useState(initially_expanded);
 
-InfoExpander.propTypes = {};
+  return (
+    <div expandable="container" expanded={expanded}>
+      <div dangerouslySetInnerHTML={{__html: children}} />
+      <ShowWhat
+        labels={labels}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      />
+    </div>
+  );
 
-InfoExpander.defaultProps = {};
+}
+
+InfoExpander.propTypes = {
+  labels: PropTypes.array,
+  initialExpanded: PropTypes.bool
+};
+
+InfoExpander.defaultProps = {
+  labels: ["show more", "show less"],
+  initialExpanded: false
+};
 
 export default InfoExpander;

@@ -79,7 +79,7 @@ export const TaskA = () => {
               limited:{
                 by:"bodily_injury"
               },
-              description_expanded: "false",
+              description_expanded: "true",
               alert_upper: "Max Limit 100k person / 300K incident. Increase your Bodily Injury limits to get more Underinsured Motorist Bodily Injury coverage.",
               description: [
                 "<p>If you are in an accident where the legally liable driver does not have liability insurance or their coverage is inadequate. For example a coverage of $50K / $100K would pay up to $50,000 for an individual, and up to $100,000 for all people injured or killed in that single accident.</p>",
