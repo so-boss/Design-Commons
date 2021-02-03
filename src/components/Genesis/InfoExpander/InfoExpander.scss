@@ -1,0 +1,32 @@
+[expandable] {
+  > div {
+    transition: 600ms;
+    overflow:hidden;
+
+  }
+  &[expanded=false] {
+    > div {
+      height:0;
+
+    }
+  }
+  &[expanded=true] {
+    > div {
+      height:auto;
+      max-height:400px;
+      margin-bottom:24px;
+    }
+  }
+  > div {
+    + button {
+      font-family: RT Raleway;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      border:0px none;
+      padding-left: 0;
+      text-transform: capitalize;
+      background-color:rgba(255,255,255,0);
+    }
+  }
+}

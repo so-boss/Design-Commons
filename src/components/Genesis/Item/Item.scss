@@ -109,11 +109,12 @@
   }
 };
 
+// TODO: Dropdown styles dont belong in here but since
+//       we dont have a component for it, we'll make due
 @mixin dropdown_item {
   [dropdown=container] {
     .ui.dropdown > {
-      //@include dropdown_item-text;
-      .menu {
+       .menu {
         > .item, .item.active {
           @include unset_semantic_ui;
           @content;
@@ -138,8 +139,6 @@
   text-transform: unset;
   font-weight: unset;
 }
-
-
 
 @include dropdown_item {
   @include item-states;
