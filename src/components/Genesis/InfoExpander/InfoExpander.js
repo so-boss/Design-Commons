@@ -49,9 +49,13 @@ const InfoExpander = ({labels, initially_expanded, children}) => {
 }
 
 InfoExpander.propTypes = {
+  /** Two "labels" that appear in the actionable space */
   labels: PropTypes.array,
-  children: PropTypes.array,
+  /** A list of HTML tags passed as "children". typically each item contains text content wrapped with in paragraph. */
+  children: PropTypes.array.isRequired,
+  /** Determines how the info should be initially viewed; either fully exposed or totally hidden. */
   initially_expanded: PropTypes.bool,
+  /** Manages the live state of the Expanded. This is initally set by "initially_expanded" prop */
   expanded: PropTypes.bool
 };
 
