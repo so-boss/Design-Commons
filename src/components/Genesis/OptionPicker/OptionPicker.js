@@ -1,7 +1,7 @@
 import React, {useContext, useRef} from 'react';
 import PropTypes from 'prop-types';
 import './OptionPicker.scss';
-import {CoverageContextManager, CoverageContextManagerProvider} from "./../contexts/CoverageContextManager"
+import {CoverageContextManager} from "./../contexts/CoverageContextManager"
 import {WorksheetContext} from "../contexts/WorksheetContext";
 import {Dropdown, Popup} from "semantic-ui-react";
 import Item from "../Item/Item";

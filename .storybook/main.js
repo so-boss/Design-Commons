@@ -7,8 +7,23 @@ module.exports = {
   ],
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    {
+      name: "@storybook/addon-essentials",
+      options: {
+        actions: false,
+        backgrounds: {
+          grid: {
+            cellSize: 8,
+            opacity: 0.5,
+            cellAmount: 4,
+            //offsetX: 8, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
+            //offsetY: 8, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
+          },
+        }
+      }
+    },
     "@storybook/preset-scss",
+    "@storybook/addon-controls",
     // "@storybook/addon-knobs",
     "storybook-addon-designs"
   ],

@@ -7,14 +7,21 @@ import '@so.boss/pixel/dist/module.css';
 //     header: true,
 //   })
 // );
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
+
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   options: {
-    withKnobs: {
-      disable:true
-    },
-    showPanel: false
+    // withKnobs: {
+    //   disabled:false
+    // },
+    showPanel: true,
   },
-  controls: { disabled: true },
+  controls: {
+    expanded:true
+  },
+  viewport: {
+    viewports: MINIMAL_VIEWPORTS,
+  },
 }

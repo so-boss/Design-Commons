@@ -73,16 +73,19 @@ const Section = ({id, title, summary, description, showMore, showLess, indicator
                 initially_expanded={description_expanded}
                 labels={[showMore, showLess]}
               >
-                {description.join("")}
+                {description}
               </InfoExpander>
             ),
             footer: (
               <>
                 {alert_lower &&
-                  <div alert="container">
-                    <InfoIcon />
-                    <div>{alert_lower}</div>
-                  </div>
+                  <Message
+                    message={alert_lower}
+                    data={{
+                      max:maxLimit,
+                      type:limitSelectorType
+                    }}
+                  />
                 }
               </>
             )

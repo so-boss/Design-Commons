@@ -6,7 +6,7 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 const ShowWhat = ({labels, expanded, setExpanded}) => {
-  if(expanded==="true") {
+  if(expanded==true) {
     return <ShowLess setExpanded={setExpanded}>{labels[1]}</ShowLess>
   }
   return <ShowMore setExpanded={setExpanded}>{labels[0]}</ShowMore>
@@ -15,7 +15,7 @@ const ShowWhat = ({labels, expanded, setExpanded}) => {
 const ShowMore = ({setExpanded, children}) => (
   <Button
     startIcon={<AddCircleIcon />}
-    onClick={() => setExpanded("true")}
+    onClick={() => setExpanded(true)}
   >
     {children}
   </Button>
@@ -24,7 +24,7 @@ const ShowMore = ({setExpanded, children}) => (
 const ShowLess = ({setExpanded, children}) => (
   <Button
     startIcon={<RemoveCircleIcon />}
-    onClick={() => setExpanded("false")}
+    onClick={() => setExpanded(false)}
   >
     {children}
   </Button>
@@ -34,9 +34,10 @@ const ShowLess = ({setExpanded, children}) => (
 const InfoExpander = ({labels, initially_expanded, children}) => {
   const [expanded, setExpanded] = useState(initially_expanded);
 
+
   return (
-    <div expandable="container" expanded={expanded}>
-      <div dangerouslySetInnerHTML={{__html: children}} />
+    <div expandable="container" expanded={expanded.toString()}>
+      <div dangerouslySetInnerHTML={{__html: children.join("")}} />
       <ShowWhat
         labels={labels}
         expanded={expanded}
@@ -49,12 +50,16 @@ const InfoExpander = ({labels, initially_expanded, children}) => {
 
 InfoExpander.propTypes = {
   labels: PropTypes.array,
-  initialExpanded: PropTypes.bool
+  children: PropTypes.array,
+  initially_expanded: PropTypes.bool,
+  expanded: PropTypes.bool
 };
 
 InfoExpander.defaultProps = {
   labels: ["show more", "show less"],
-  initialExpanded: false
+  initially_expanded: false,
+  children: ["<p>...</p>", "<p>...</p>"],
+  expanded: false
 };
 
 export default InfoExpander;
