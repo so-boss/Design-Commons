@@ -33,7 +33,7 @@ const NavItem = ({ labelText, iconID, type, link, ...rest }) => {
   )
 }
 
-const Nav = () => {
+  const Nav = () => {
 
   return (
     <TreeView
