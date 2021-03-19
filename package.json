@@ -13,7 +13,9 @@
     "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
     "start": "gatsby develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "storybook": "start-storybook -s ./public -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
@@ -24,6 +26,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@mdx-js/mdx": "^1.5.9",
     "@so.boss/genesis-icon-library": "^0.0.3",
+    "@so.boss/pixel": "0.1.12",
     "@theme-ui/presets": "^0.3.0",
     "antd": "^4.7.2",
     "gatsby": "^2.20.36",
@@ -64,6 +67,11 @@
     "typescript": "^4.0.3"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/react": "^6.1.11",
+    "babel-loader": "^8.2.2",
     "cross-env": "^5.2.0",
     "prettier": "2.1.2"
   }

@@ -12,7 +12,17 @@
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "@andre-brdoch/sanity-plugin-schema-inspector",
+    "dark-mode",
+    "content-model-graph",
+    "dashboard-widget-notes",
+    "minesweeper",
+    "@sanity/dashboard",
+    "dashboard-widget-netlify",
+    "content-calendar",
+    "media",
+    "autocomplete-tags"
   ],
   "env": {
     "development": {

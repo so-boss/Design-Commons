@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "module": "commonjs",
+    "target": "es6",
+    "pretty": true,
+    "jsx": "react",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es6",
+      "scripthost",
+      "es2019.iterable"
+    ],
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strict": false,
+    "outDir": "dist",
+    "sourceMap": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "./lib/**/*",
+    "./src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
